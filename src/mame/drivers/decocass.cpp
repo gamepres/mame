@@ -14,6 +14,10 @@
     The Dumping Union
     Team Japump!!!
     Hau
+	Jean-Francois Del Nero
+	Omar Cornut
+	Game Preservation Society
+	Joseph Redon
 
     The DECO cassette system consists of three PCBS in a card cage:
     Early boardset: (1980-1983) (proms unknown for this boardset, no schematics for this boardset)
@@ -1226,8 +1230,23 @@ ROM_START( cexplore )
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
 	ROM_LOAD( "cexplore.cas", 0x0000, 0x8000, CRC(fae49c66) SHA1(4ae69e2f706fdf30204f0aa1277619395cacc21b) )
 
-	ROM_REGION( 0x4000, "user3", 0 )      /* roms from the overlay pcb */
-	ROM_LOAD( "cexplore_overlay_roms", 0x0000, 0x4000, NO_DUMP )
+	//ROM_REGION( 0x4000, "user3", 0 )      /* roms from the overlay pcb */
+	//ROM_LOAD( "cexplore_overlay_roms", 0x0000, 0x4000, NO_DUMP )
+
+	ROM_REGION( 0x5000, "user3", 0 )      /* roms from the overlay pcb */
+    ROM_LOAD( "gr0_18.x1",   0x0000, 0x1000, CRC(f2ca58f0) SHA1(5c9faeca6247b70586dc2a3765805ac96960ac79) )
+	ROM_LOAD( "gr0_18.x2",   0x1000, 0x1000, CRC(75d999bf) SHA1(7c257285d5b69642ec542dc56defdbb1f2072454) )
+	ROM_LOAD( "gr0_18.x3",   0x2000, 0x1000, CRC(941539c6) SHA1(2e879107f56bf258ad90fb83c2ab278027acb0bb) )
+	ROM_LOAD( "gr0_18.x4",   0x3000, 0x1000, CRC(73388544) SHA1(9c98f79e431d0881e20eac4c6c4177db8973ce20) )
+	ROM_LOAD( "gr0_18.x5",   0x4000, 0x1000, CRC(b40699c5) SHA1(4934283d2845dbd3ea9a7fa349f663a34fcdfdf8) )
+
+	ROM_REGION( 0x5000, "user4", 0 )      /* roms from the overlay pcb */
+    ROM_LOAD( "gr0_18.y1",   0x0000, 0x1000, CRC(d887dc50) SHA1(9321e40d208bd029657ab87eaf815f8a09e49b48) )
+	ROM_LOAD( "gr0_18.y2",   0x1000, 0x1000, CRC(fe325d0d) SHA1(3e4aaba87e2aa656346169d512d70083605692c6) )
+	ROM_LOAD( "gr0_18.y3",   0x2000, 0x1000, CRC(7a787ecf) SHA1(5261747823b58be3fabb8d1a8cb4069082f95b30) )
+	ROM_LOAD( "gr0_18.y4",   0x3000, 0x1000, CRC(ac30e8c7) SHA1(f8f53b982df356e5bf2624afe0f8a72635b3b4b3) )
+	ROM_LOAD( "gr0_18.y5",   0x4000, 0x1000, CRC(0a6b8f03) SHA1(09b477579a5fed4c45299b6366141ef4a8c9a410) )
+
 ROM_END
 
 /* The Following use Dongle Type 2 (CS82-007)
@@ -1606,6 +1625,7 @@ DRIVER_INIT_MEMBER(decocass_state,decocrom)
 	m_maincpu->space(AS_PROGRAM).install_write_handler(0x6000, 0xafff, write8_delegate(FUNC(decocass_state::decocass_de0091_w),this));
 	membank("bank1")->configure_entry(0, m_charram);
 	membank("bank1")->configure_entry(1, memregion("user3")->base());
+	membank("bank1")->configure_entry(2, memregion("user4")->base());
 	membank("bank1")->set_entry(0);
 
 	/* install the bank selector */
@@ -1668,7 +1688,7 @@ DRIVER_INIT_MEMBER(decocass_state,cdsteljn)
 /*    */ GAME( 1981, ctisland2, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 2)", 0 )
 /*    */ GAME( 1981, ctisland3, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 3)", MACHINE_NOT_WORKING ) /* Different Bitswap? */
 /* 17 */ // 1981.10 Bobbitto
-/* 18 */ GAME( 1982, cexplore,  decocass, cexplore, cexplore, decocass_state, decocass, ROT270, "Data East Corporation", "Explorer (DECO Cassette)", MACHINE_NOT_WORKING )
+/* 18 */ GAME( 1982, cexplore,  decocass, cexplore, cexplore, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer (DECO Cassette)", MACHINE_NOT_WORKING )
 /* 19 */ GAME( 1982, cdiscon1,  decocass, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Disco No.1 (DECO Cassette)", 0 )
 /*    */ GAME( 1982, csweetht,  cdiscon1, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Sweet Heart (DECO Cassette)", 0 )
 /* 20 */ GAME( 1982, ctornado,  decocass, ctornado, ctornado, decocass_state, decocass, ROT270, "Data East Corporation", "Tornado (DECO Cassette)", 0 )

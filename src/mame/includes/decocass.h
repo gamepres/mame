@@ -87,7 +87,6 @@ public:
 	INT32     m_firsttime;
 	UINT8     m_latch1;
 	UINT8     m_decocass_reset;
-	INT32     m_de0091_enable;  /* DE-0091xx daughter board enable */
 	UINT8     m_quadrature_decoder[4];  /* four inputs from the quadrature decoder (H1, V1, H2, V2) */
 	int       m_showmsg;        // for debugging purposes
 
