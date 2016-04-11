@@ -10523,7 +10523,8 @@ cburnrub                        // 27 1982.11 Burnin' Rubber
 cburnrub2                       // 27
 cdiscon1                        // 19 1982.04 Disco No.1
 cdsteljn                        // 14 1981.06 DS Telejan
-cexplore                        // 18 1982.02 Explorer
+cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (cassette MD) (Ver 0) // graphic roms might be corrupted (need redump) // version verified
+cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (cassette MD) (Ver 0) // graphic roms might be corrupted (need redump) // bad encryption (need redump)
 cfghtice                        // 40 1984.04 Fighting Ice Hockey
 cfishing                        // 25 1982.10 Fishing
 cflyball                        // 35 1983.?? Flying Ball/Bampoline
@@ -10543,9 +10544,12 @@ coozumou                        // 41 1984.05 Oozumou/The Grand Sumo
 cppicf                          // 39 1984.02 Peter Pepper's Ice Cream Factory
 cppicf2                         // 39
 cprobowl                        // 31 1983.03 Pro Bowling
-cprogolf                        // 13 1981.08 Tournament Pro Golf
-cprogolf18                      // 23 1982.?? 18 Hole Pro Golf
-cprogolfj                       // 13 1981.08 Tournament Pro Golf (Japan)
+cpgolf1a                        // DT-1[13]1-A   1981.08.25 Pro Golf (Japan) (cassette MD) (Ver 1) // version verified
+cpgolf1b                        // DT-1[13]1-B   1981.08.25 Pro Golf (US) (cassette MD) (Ver 1)  // version verified
+cpgolf4a                        // DT-1[13]4-A   1981.11.25 Pro Golf, 18 Challenge (Japan) (cassette MD) (Ver 4) // version verified
+cpgolf6a                        // DT-1[13]6-A   1981.09.03 Pro Golf, Tournament (Japan) (cassette MD) (Ver 6) // version verified
+cpgolf7d                        // DT-1[13]7-D   1981.09.22 Pro Golf, Tournament (Europe) (cassette MD) (Ver 7) // version verified
+cpgolf9b                        // DT-1[13]9-B   1981.11.13 Pro Golf, Tournament (US) (cassette MD) (Ver 9) // version verified
 cpsoccer                        // 33 1982.08 Pro Soccer
 cpsoccerj                       // 33 1982.08 Pro Soccer (Japan)
 cptennis                        // 22 1982.06 Pro Tennis

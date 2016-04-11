@@ -333,7 +333,7 @@ READ8_MEMBER(decocass_state::decocass_type1_r)
  *
  ***************************************************************************/
 
-static UINT8 type1_latch_26_pass_3_inv_2_table[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM, T1PROM,T1LATCH,T1PROM };
+static UINT8 type1_map1130[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PROM,T1LATCH,T1PROM };
 
 /***************************************************************************
  *
@@ -384,7 +384,7 @@ static UINT8 type1_latch_27_pass_3_inv_2_table[8] = { T1PROM,T1PROM,T1LATCHINV,T
  *
  ***************************************************************************/
 
-static UINT8 type1_latch_26_pass_5_inv_2_table[8] = { T1PROM,T1PROM,T1LATCHINV,T1PROM,T1PROM,T1DIRECT,T1LATCH,T1PROM };
+static UINT8 type1_map1180[8] = { T1PROM,T1PROM,T1LATCHINV,T1PROM,T1PROM,T1DIRECT,T1LATCH,T1PROM };
 
 /***************************************************************************
  *
@@ -1143,7 +1143,7 @@ MACHINE_RESET_MEMBER(decocass_state,cterrani)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (DE-0061 straight)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
 }
@@ -1161,7 +1161,7 @@ MACHINE_RESET_MEMBER(decocass_state,csuperas)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (DE-0061 flip 4-5)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(0,1,2,3,5,4,6,7);
 	m_type1_outmap = MAKE_MAP(0,1,2,3,5,4,6,7);
 }
@@ -1179,27 +1179,17 @@ MACHINE_RESET_MEMBER(decocass_state,clocknch)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (DE-0061 flip 2-3)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(0,1,3,2,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(0,1,3,2,4,5,6,7);
 }
 
-MACHINE_RESET_MEMBER(decocass_state,cprogolf)
+MACHINE_RESET_MEMBER(decocass_state,cpgolf1a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061 flip 0-1)\n"));
+	LOG(0,("dongle type #1 (DT-1130 map)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
-	m_type1_inmap = MAKE_MAP(1,0,2,3,4,5,6,7);
-	m_type1_outmap = MAKE_MAP(1,0,2,3,4,5,6,7);
-}
-
-MACHINE_RESET_MEMBER(decocass_state,cprogolfj)
-{
-	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (A-0061 flip 0-1)\n"));
-	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(1,0,2,3,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(1,0,2,3,4,5,6,7);
 }
@@ -1209,7 +1199,7 @@ MACHINE_RESET_MEMBER(decocass_state,cluckypo)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (DE-0061 flip 1-3)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(0,3,2,1,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(0,3,2,1,4,5,6,7);
 }
@@ -1219,17 +1209,19 @@ MACHINE_RESET_MEMBER(decocass_state,ctisland)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (DE-0061 flip 0-2)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_3_inv_2_table;
+	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(2,1,0,3,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(2,1,0,3,4,5,6,7);
 }
 
-MACHINE_RESET_MEMBER(decocass_state,cexplore)
+MACHINE_RESET_MEMBER(decocass_state,cexplr0a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061 own PROM)\n"));
+	LOG(0,("dongle type #1 (DT-1180 map\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_26_pass_5_inv_2_table;
+	m_type1_map = type1_map1180;
+	m_type1_inmap = MAKE_MAP(0,1,2,4,3,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,4,3,5,6,7);
 }
 
 MACHINE_RESET_MEMBER(decocass_state,cdiscon1)
