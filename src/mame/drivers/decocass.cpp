@@ -27,17 +27,17 @@
     One DE-0066B-0 card rack board that the other three boards plug into.
 	This boardset has two versions : MD, known as "shokase" which is also the version sold out of Japan, and MT, known as "daikase" which is using bigger data tapes.
 	The MT system isn't emulated yet.
-    TODO: get more info about this older boardset: D. Widel has some info about it on his page at http://www.widel.com/stuff/decopin.htm
 
-    Later boardset: (1984 onward, schematic is dated 10/83)
+    Later boardset: (1984 onward, schematic is dated October 1983)
     One DE-0097C-0 RMS-8 pcb with a 6502 processor, two ay-3-8910s, two eproms (2716 and 2732) plus one prom, and 48k worth of 4116 16kx1 DRAMs; the 6502 processor has its own 4K of SRAM. (audio processor and RAM, Main processor's dram, dipswitches)
     One DE-0096C-0 DSP-8 board with a 'DECO 222' custom on it (labeled '8049 // C10707-2') which appears to really be a 'cleverly' disguised 6502, and two proms, plus 4K of sram, and three hm2511-1 1kx1 srams. (main processor and graphics)
     One DE-0098C-0 B10-8 (BIO-8 on schematics) board with an 8041, an analog devices ADC0908 8-bit adc, and 4K of SRAM on it. (DECO Cassette control, inputs)
     One DE-0109C-0 card rack board that the other three boards plug into.
 
     The actual cassettes use a custom player hooked to the BIO board, and are roughly microcassette form factor, but are larger and will not fit in a conventional microcassette player.
-    Each cassette has one track on it and is separated into clock and data by two magtek chips in the player, for a form of synchronous serial. The data is stored in blocks with headers and CRC16 checksums.
-	The first block contains information such as the region (A:Japan, B:USA) and the total number of blocks left to read
+    Each cassette has one track on it and is separated into clock and data by two Magtek IC in the player, for a form of synchronous serial.
+	The data is stored in blocks with headers and CRC16 checksums.
+	The first block contains information such as the region (A:Japan, B:USA, C:UK, D:Europe) and the total number of blocks left to read.
 	The last physical block on the cassette is a dummy block not used by the system.
 
  ***********************************************************************/
@@ -184,23 +184,23 @@ static INPUT_PORTS_START( decocass )
 
 	PORT_START("DSW1")
 	PORT_DIPNAME( 0x03, 0x03, DEF_STR( Coin_A ) )                       PORT_DIPLOCATION("SW1:1,2")
-	PORT_DIPSETTING(    0x00, DEF_STR( 2C_1C ) )
 	PORT_DIPSETTING(    0x03, DEF_STR( 1C_1C ) )
 	PORT_DIPSETTING(    0x02, DEF_STR( 1C_2C ) )
 	PORT_DIPSETTING(    0x01, DEF_STR( 1C_3C ) )
-	PORT_DIPNAME( 0x0c, 0x0c, DEF_STR( Coin_B ) )                       PORT_DIPLOCATION("SW1:3,4")
 	PORT_DIPSETTING(    0x00, DEF_STR( 2C_1C ) )
+	PORT_DIPNAME( 0x0c, 0x0c, DEF_STR( Coin_B ) )                       PORT_DIPLOCATION("SW1:3,4")
 	PORT_DIPSETTING(    0x0c, DEF_STR( 1C_1C ) )
 	PORT_DIPSETTING(    0x08, DEF_STR( 1C_2C ) )
 	PORT_DIPSETTING(    0x04, DEF_STR( 1C_3C ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( 2C_1C ) )
 	PORT_DIPNAME( 0x30, 0x30, "Type of Tape" )                          PORT_DIPLOCATION("SW1:5,6")   /* Used by the "bios" */
-	PORT_DIPSETTING(    0x00, "MT (Big)" )          /* Was listed as "Board Type" with this being "OLD" */
-	PORT_DIPSETTING(    0x10, "invalid?" )
-	PORT_DIPSETTING(    0x20, "invalid?" )
-	PORT_DIPSETTING(    0x30, "MD (Small)" )        /* Was listed as "Board Type" with this being "NEW" */
+	PORT_DIPSETTING(    0x30, "MD" )        /* Was listed as "Board Type" with this being "NEW" */
+	PORT_DIPSETTING(    0x20, "-" )
+	PORT_DIPSETTING(    0x10, "-" )
+	PORT_DIPSETTING(    0x00, "MT" )        /* Was listed as "Board Type" with this being "OLD" */
 	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Cabinet ) )                      PORT_DIPLOCATION("SW1:7")
-	PORT_DIPSETTING(    0x00, DEF_STR( Upright ) )
 	PORT_DIPSETTING(    0x40, DEF_STR( Cocktail ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Upright ) )
 	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_CUSTOM) PORT_VBLANK("screen")
 
 	PORT_START("DSW2") /* Start with all Unknown as each can change per game, except for Country Code */
@@ -216,6 +216,23 @@ static INPUT_PORTS_START( decocass )
 	PORT_DIPSETTING(    0x80, "D" )
 	PORT_DIPSETTING(    0x60, "E" )
 	PORT_DIPSETTING(    0x40, "F" )
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( chwych0a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Cars" )                        PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPSETTING(    0x03, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x01, "5" )
+	PORT_DIPSETTING(    0x00, "6" )
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPSETTING(    0x0c, "3000" )
+	PORT_DIPSETTING(    0x08, "5000" )
+	PORT_DIPSETTING(    0x04, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	/* Switches 5, 6, 7 & 8 are shown as completly blank */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( cterrani )
@@ -276,6 +293,48 @@ static INPUT_PORTS_START( cpgolf1a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, "2" )
+	PORT_DIPSETTING(    0x00, "3" )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x06, "10000" )
+	PORT_DIPSETTING(    0x04, "20000" )
+	PORT_DIPSETTING(    0x02, "30000" )
+	PORT_DIPNAME( 0x08, 0x08, "Number of Shot" )                        PORT_DIPLOCATION("SW2:4")
+	PORT_DIPSETTING(    0x08, "Many" )
+	PORT_DIPSETTING(    0x00, "Few" )
+	PORT_DIPNAME( 0x10, 0x10, "Stroke Power/Ball Direction" )           PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, "Indicated" )
+	PORT_DIPSETTING(    0x00, "Not Indicated" )
+	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cpgolf4a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, "2" )
+	PORT_DIPSETTING(    0x00, "3" )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x06, "10000" )
+	PORT_DIPSETTING(    0x04, "20000" )
+	PORT_DIPSETTING(    0x02, "50000" )
+	PORT_DIPNAME( 0x08, 0x08, "Number of Shot" )                        PORT_DIPLOCATION("SW2:4")
+	PORT_DIPSETTING(    0x08, "Many" )
+	PORT_DIPSETTING(    0x00, "Few" )
+	PORT_DIPNAME( 0x10, 0x10, "Stroke Power" )                          PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, "Indicated" )
+	PORT_DIPSETTING(    0x00, "Not Indicated" )
+	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cpgolf6a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
 	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
@@ -288,8 +347,29 @@ static INPUT_PORTS_START( cpgolf1a )
 	PORT_DIPSETTING(    0x00, "Par +2" )
 	PORT_DIPSETTING(    0x08, "Par +3" )
 	PORT_DIPNAME( 0x10, 0x10, "Show Stroke Power/Ball Direction" )      PORT_DIPLOCATION("SW2:5")
-	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPSETTING(    0x10, "Indicated" )
+	PORT_DIPSETTING(    0x00, "Not Indicated" )
+	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cpgolf9b )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, "2" )
+	PORT_DIPSETTING(    0x00, "3" )
+	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3") /* You must shoot equal to or under the listed value for a bonus */
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x02, "6 Under" )
+	PORT_DIPSETTING(    0x04, "3 Under" )
+	PORT_DIPSETTING(    0x06, "1 Under" )
+	PORT_DIPNAME( 0x08, 0x08, "Number of Strokes" )                     PORT_DIPLOCATION("SW2:4") /* You must shoot equal to or under to continue, else you lose a life */
+	PORT_DIPSETTING(    0x00, "Par +2" )
+	PORT_DIPSETTING(    0x08, "Par +3" )
+	PORT_DIPNAME( 0x10, 0x10, "Show Stroke Power/Ball Direction" )      PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, "Indicated" )
+	PORT_DIPSETTING(    0x00, "Not Indicated" )
 	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
 INPUT_PORTS_END
 
@@ -399,7 +479,7 @@ static INPUT_PORTS_START( ctornado )
 	PORT_DIPNAME( 0x08, 0x08, "Crash Bombs" )                           PORT_DIPLOCATION("SW2:4") /* Printed English translation "Hero Destructor" */
 	PORT_DIPSETTING(    0x08, "3" )
 	PORT_DIPSETTING(    0x00, "5" )
-	PORT_DIPNAME( 0x10, 0x10, "Alens' Speed" )                          PORT_DIPLOCATION("SW2:5")
+	PORT_DIPNAME( 0x10, 0x10, "Aliens' Speed" )                          PORT_DIPLOCATION("SW2:5")
 	PORT_DIPSETTING(    0x10, "Slow" )
 	PORT_DIPSETTING(    0x00, "Fast" )
 	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
@@ -789,10 +869,10 @@ static MACHINE_CONFIG_DERIVED( cfishing, decocass )
 MACHINE_CONFIG_END
 
 
-static MACHINE_CONFIG_DERIVED( chwy, decocass )
+static MACHINE_CONFIG_DERIVED( chwych0a, decocass )
 
 	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,chwy)
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,chwych0a)
 MACHINE_CONFIG_END
 
 
@@ -994,7 +1074,7 @@ MACHINE_CONFIG_END
 
 #define DECOCASS_COMMON_ROMS    \
 	ROM_REGION( 0x10000, "audiocpu", 0 )      \
-	ROM_LOAD( "v1-.5a",     0xf800, 0x0800, CRC(b66b2c2a) SHA1(0097f38beb4872e735e560148052e258a26b08fd) ) /* from RMS-8 board: 2716 eprom @5A w/V1- label,  contains audio cpu code */ \
+	ROM_LOAD( "v1.5a",     0xf800, 0x0800, CRC(b66b2c2a) SHA1(0097f38beb4872e735e560148052e258a26b08fd) ) /* from RMS-8 board: 2716 eprom @5A w/V1- label,  contains audio cpu code */ \
 \
 	ROM_REGION( 0x10000, "mcu", 0 )   /* 4k for the 8041 MCU (actually 1K ROM + 64 bytes RAM @ 0x800) */ \
 	ROM_LOAD( "cassmcu.1c", 0x0000, 0x0400, CRC(a6df18fd) SHA1(1f9ea47e372d31767c936c15852b43df2b0ee8ff) ) /* from B10-B board: "NEC // JAPAN // X1202D-108 // D8041C 535" 8041 MCU @1C, handles cassette and other stuff; This info needs additional verification, as the d8041-535 mcu has not been dumped yet to prove code is the same. */ \
@@ -1004,32 +1084,32 @@ MACHINE_CONFIG_END
 	ROM_LOAD( "v4.10d",     0x0020, 0x0020, CRC(3b5836b4) SHA1(b630bb277d9ec09d46ef26b944014dd6165b35d8) ) /* from DSP-8 board: M3-7603-5 (82s123 equiv, 32x8 TS) PROM @10D w/'V4' stamp, unknown purpose (gfx related: tile banking? horizontal counter related) */ \
 	ROM_LOAD( "v3.3j",      0x0040, 0x0020, CRC(51eef657) SHA1(eaedce5caf55624ad6ae706aedf82c5717c60f1f) ) /* from RMS-8 board: M3-7603-5 (82s123 equiv, 32x8 TS) PROM @3J w/'V3' stamp, handles DRAM banking and timing */
 
-#define DECOCASS_BIOS_A_ROMS    \
+#define DECOCASS_BIOS_AN_ROMS    \
 	/* v0a.7e, New boardset bios, version A for Japan */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
-	ROM_LOAD( "v0a-.7e",    0xf000, 0x1000, CRC(3d33ac34) SHA1(909d59e7a993affd10224402b4370e82a5f5545c) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0A-' label (has HDRA01HDR string inside it), bios code */ \
+	ROM_LOAD( "v0-a.7e",    0xf000, 0x1000, CRC(3d33ac34) SHA1(909d59e7a993affd10224402b4370e82a5f5545c) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0A-' label (has HDRA01HDR string inside it), bios code */ \
 \
 	DECOCASS_COMMON_ROMS
 
-#define DECOCASS_BIOS_B_ROMS    \
+#define DECOCASS_BIOS_BN_ROMS    \
 	/* rms8.7e, New boardset bios, version B for USA */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
-	ROM_LOAD( "v0b-.7e",    0xf000, 0x1000, CRC(23d929b7) SHA1(063f83020ba3d6f43ab8471f95ca919767b93aa4) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0B-' label (has HDRB01HDR string inside it), bios code */ \
+	ROM_LOAD( "v0-b.7e",    0xf000, 0x1000, CRC(23d929b7) SHA1(063f83020ba3d6f43ab8471f95ca919767b93aa4) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0B-' label (has HDRB01HDR string inside it), bios code */ \
 \
 	DECOCASS_COMMON_ROMS
 
-#define DECOCASS_BIOS_D_ROMS    \
-	/* v0d.7e, New boardset bios, version D for Europe */ \
+#define DECOCASS_BIOS_DN_ROMS    \
+	/* v0d.7e, New boardset bios, version D for Europe (except UK) */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
-	ROM_LOAD( "v0d-.7e",    0xf000, 0x1000, CRC(1e0c22b1) SHA1(5fec8fef500bbebc13d0173406afc55235d3affb) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0A-' label (has HDRD01HDR string inside it), bios code */ \
+	ROM_LOAD( "v0-d.7e",    0xf000, 0x1000, CRC(1e0c22b1) SHA1(5fec8fef500bbebc13d0173406afc55235d3affb) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0A-' label (has HDRD01HDR string inside it), bios code */ \
 \
 	DECOCASS_COMMON_ROMS
 
 
-#define DECOCASS_BIOS_B2_ROMS   \
+#define DECOCASS_BIOS_B0_ROMS   \
 	/* dsp3.p0b/p1b, Old boardset bios, version B for USA; from DSP-3 board? has HDRB01x string in it, 2x 2716 EPROM? */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
@@ -1039,7 +1119,7 @@ MACHINE_CONFIG_END
 	DECOCASS_COMMON_ROMS
 
 ROM_START( decocass )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 ROM_END
 
@@ -1048,7 +1128,7 @@ ROM_END
 
 /* Test tapes are using a dongle from another game which number is indicated by the third and fourth digits of the serial number, as second digit is always 9 */
 ROM_START( ctsttape )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1058,20 +1138,31 @@ ROM_START( ctsttape )
 ROM_END
 
 /* 01 HWY Chase */
-ROM_START( chwy )
-	DECOCASS_BIOS_B_ROMS
+ROM_START( chwych0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main data CRC(f0f26b29)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1010-a-0.cas",   0x0000, 0x6900, CRC(6bbbacbc) SHA1(a56842715cb751405794086fcaea2401374f7367) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	/* The dongle data is reverse engineered from manual decryption */
-	ROM_LOAD( "chwy.pro",   0x0000, 0x0020, BAD_DUMP CRC(2fae678e) SHA1(4a7de851442d4c1d690de03262f0e136a52fca35) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "chwy.cas",   0x0000, 0x8000, CRC(68a48064) SHA1(7e389737972fd0c54f398d296159c561f5ec3a93) )
 ROM_END
 
-/* 03 Manhatten */
+ROM_START( chwych1b ) // version MD 1-B-0 not verified (need redump for verification), 103 blocks, decrypted main data CRC(6d7842a5)
+	DECOCASS_BIOS_BN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1011-b-0.cas",   0x0000, 0x6800, CRC(ebb21163) SHA1(93c87ef303b5ed669291f62393d50be5069aff47) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+
+ROM_END
+
+/* 03 Manhattan */
 ROM_START( cmanhat )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "manhattan.pro",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) ) // == a-0061.dgl
@@ -1082,7 +1173,7 @@ ROM_END
 
 /* 04 Terranean */
 ROM_START( cterrani )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1040.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1093,7 +1184,7 @@ ROM_END
 
 /* 07 Astro Fantasia */
 ROM_START( castfant )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1104,7 +1195,7 @@ ROM_END
 
 /* 09 Super Astro Fighter */
 ROM_START( csuperas )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1115,7 +1206,7 @@ ROM_END
 
 /* 11 Lock'n'Chase */
 ROM_START( clocknch )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1110_b.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1126,7 +1217,7 @@ ROM_END
 
 /* 13 Pro Golf */
 ROM_START( cpgolf1a ) // version MD 1-A-0 verified, 099 blocks, decrypted main data CRC(4f713213)
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1131-a-0.cas",   0x0000, 0x6400, CRC(b1f7f304) SHA1(e9e5e9363e239a064fa3da54a54e01bb5ba92a93) )
@@ -1136,7 +1227,7 @@ ROM_START( cpgolf1a ) // version MD 1-A-0 verified, 099 blocks, decrypted main d
 ROM_END
 
 ROM_START( cpgolf1b ) // version MD 1-B-0 verified, 099 blocks, decrypted main data CRC(4f713213)
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1131-b-0.cas",   0x0000, 0x6400, CRC(f1f1e3be) SHA1(1ca40902d30a0fd2b5a1a783b276846088e53112) )
@@ -1146,7 +1237,7 @@ ROM_START( cpgolf1b ) // version MD 1-B-0 verified, 099 blocks, decrypted main d
 ROM_END
 
 ROM_START( cpgolf4a ) // version MD 4-A-0 verified, 102 blocks, decrypted main data CRC(9ebadcad)
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1134-a-0.cas",   0x0000, 0x6700, CRC(3024396c) SHA1(c49d878bae46bf8bf0b0b098a5d94d9ec68b526d) )
@@ -1156,7 +1247,7 @@ ROM_START( cpgolf4a ) // version MD 4-A-0 verified, 102 blocks, decrypted main d
 ROM_END
 
 ROM_START( cpgolf6a ) // version MD 6-A-0 verified, 104 blocks, decrypted main data CRC(3c5418c5)
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1136-a-0.cas",   0x0000, 0x6900, CRC(8441136f) SHA1(7b7702d7b7f094b709fc4503f3d55d3cea59a9b1) )
@@ -1166,7 +1257,7 @@ ROM_START( cpgolf6a ) // version MD 6-A-0 verified, 104 blocks, decrypted main d
 ROM_END
 
 ROM_START( cpgolf7d ) // version MD 7-D-0 verified, 100 blocks, decrypted main data CRC(b5a12cb8)
-	DECOCASS_BIOS_D_ROMS
+	DECOCASS_BIOS_DN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1137-d-0.cas",   0x0000, 0x6500, CRC(9abea0f4) SHA1(8ffe16ebfa98cbe2d3d00fdcac446e3949e7c9e9) )
@@ -1176,7 +1267,7 @@ ROM_START( cpgolf7d ) // version MD 7-D-0 verified, 100 blocks, decrypted main d
 ROM_END
 
 ROM_START( cpgolf9b ) // version MD 9-B-0 verified, 102 blocks, decrypted main data CRC(6f6d904d)
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1139-b-0.cas",  0x0000, 0x6700, CRC(5a535ae5) SHA1(12234d11b68beb450148d52f0103103101b6d919) )
@@ -1187,7 +1278,7 @@ ROM_END
 
 /* 14 */
 ROM_START( cdsteljn ) // version 4-A-3
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "a-0061.dgl",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) ) /* Should be dp-1144a?? */
@@ -1199,7 +1290,7 @@ ROM_END
 /* 15 Lucky Poker */
 /* Photo of Dongle shows DP-1150B (the "B" is in a separate white box then the DP-1150 label) */
 ROM_START( cluckypo )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1150_b.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1210,7 +1301,7 @@ ROM_END
 
 /* 16 Treasure Island */
 ROM_START( ctisland )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1226,7 +1317,7 @@ ROM_START( ctisland )
 ROM_END
 
 ROM_START( ctisland2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1242,7 +1333,7 @@ ROM_START( ctisland2 )
 ROM_END
 
 ROM_START( ctisland3 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1259,7 +1350,7 @@ ROM_END
 
 /* 18 Explorer */
 ROM_START( cexplr0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main data CRC(673D1F0D)
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-1180-a-0.cas", 0x0000, 0x6900, CRC(f96eef1f) SHA1(a8b2bbd6148d9144a9fe1e08380f015eb443f8a9) )
@@ -1283,7 +1374,7 @@ ROM_START( cexplr0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main d
 ROM_END
 
 ROM_START( cexplr0b ) // version MD 0-B-0 unverified (need redump), 104 blocks, decrypted main data CRC(673D1F0D)
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image (need redump for confirmation) */
 	ROM_LOAD( "dt-1180-b-0.cas", 0x0000, 0x6900, CRC(3b912c8a) SHA1(e69212d84e2507ff44e49b8e5586f75e9431fb6c) )
@@ -1312,7 +1403,7 @@ ROM_END
 /* 19 Disco No.1 / Sweet Heart */
 ROM_START( cdiscon1 )
 /* Photo of Dongle shows DP-1190B (the "B" is in a separate white box then the DP-1190 label) */
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1190_b.dgl", 0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
@@ -1322,7 +1413,7 @@ ROM_START( cdiscon1 )
 ROM_END
 
 ROM_START( csweetht )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )   /* dongle data */
 	ROM_LOAD( "cdiscon1.pro", 0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
@@ -1333,7 +1424,7 @@ ROM_END
 
 /* 20 Tornado */
 ROM_START( ctornado )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "ctornado.pro", 0x0000, 0x0800, CRC(c9a91697) SHA1(3f7163291edbdf1a596e3cd2b7a16bbb140ffb36) )
@@ -1345,7 +1436,7 @@ ROM_END
 /* 21 Mission-X */
 /* Photo of Dongle shows DP-121B with Cassette DT-1213B (the "3B" is in a separate white box then the DP-121 label) */
 ROM_START( cmissnx )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-121_b.dgl", 0x0000, 0x0800, CRC(8a41c071) SHA1(7b16d933707bf21d25dcd11db6a6c28834b11c5b) )
@@ -1356,7 +1447,7 @@ ROM_END
 
 /* 22 Pro Tennis */
 ROM_START( cptennis )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cptennis.pro", 0x0000, 0x0800, CRC(59b8cede) SHA1(514861a652b5256a11477fc357bc01dfd87f712b) )
@@ -1371,7 +1462,7 @@ ROM_END
 
 /* 25 Fishing / Angler Dangler */
 ROM_START( cadanglr ) // version 5-B-0
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1250-a-0.dgl", 0x0000, 0x1000, CRC(92a3b387) SHA1(e17a155d02e9ed806590b23a845dc7806b6720b1) )
@@ -1381,7 +1472,7 @@ ROM_START( cadanglr ) // version 5-B-0
 ROM_END
 
 ROM_START( cfishing )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1250-a-0.dgl", 0x0000, 0x1000, CRC(92a3b387) SHA1(e17a155d02e9ed806590b23a845dc7806b6720b1) )
@@ -1394,7 +1485,7 @@ ROM_END
 /* 26 Hamburger / Burger Time */
 /* Photo of Dongle shows DP-126B with Cassette DT-1267B (the "7B" is in a separate white box then the DP-126 label) */
 ROM_START( cbtime ) // version 7-B-0
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-126_b.dgl", 0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
@@ -1404,7 +1495,7 @@ ROM_START( cbtime ) // version 7-B-0
 ROM_END
 
 ROM_START( chamburger ) // version 0-A-0
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-126_a.dgl",   0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
@@ -1416,7 +1507,7 @@ ROM_END
 /* 27 Burnin' Rubber / Bump 'n' Jump */
 /* Photo of Dongle shows DP-127B with Cassette DP-1275B (the "5B" is in a separate white box then the DP-127 label) */
 ROM_START( cburnrub )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
@@ -1426,7 +1517,7 @@ ROM_START( cburnrub )
 ROM_END
 
 ROM_START( cburnrub2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
@@ -1436,7 +1527,7 @@ ROM_START( cburnrub2 )
 ROM_END
 
 ROM_START( cbnj )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
@@ -1447,7 +1538,7 @@ ROM_END
 
 /* 28 Graplop / Cluster Buster */
 ROM_START( cgraplop )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cgraplop.pro", 0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) )
@@ -1457,7 +1548,7 @@ ROM_START( cgraplop )
 ROM_END
 
 ROM_START( cgraplop2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cgraplop.pro", 0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) ) /* is this right for this set? */
@@ -1468,7 +1559,7 @@ ROM_END
 
 /* 29 La-Pa-Pa / Rootin' Tootin' */
 ROM_START( clapapa )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "clapapa.pro",  0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
@@ -1478,7 +1569,7 @@ ROM_START( clapapa )
 ROM_END
 
 ROM_START( clapapa2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
 	ROM_LOAD( "clapapa.pro",  0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
@@ -1489,7 +1580,7 @@ ROM_END
 
 /* 30 Skater */
 ROM_START( cskater )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-130_a.dgl",   0x0000, 0x1000,  CRC(469e80a8) SHA1(f581cd534ce6faba010c6616538cdf9d96d787da) )
@@ -1500,7 +1591,7 @@ ROM_END
 
 /* 31 Pro Bowling */
 ROM_START( cprobowl )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cprobowl.pro", 0x0000, 0x1000, CRC(e3a88e60) SHA1(e6e9a2e5ab26e0463c63201a15f7d5a429ec836e) )
@@ -1511,7 +1602,7 @@ ROM_END
 
 /* 32 Night Star */
 ROM_START( cnightst )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cnightst.pro", 0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
@@ -1521,7 +1612,7 @@ ROM_START( cnightst )
 ROM_END
 
 ROM_START( cnightst2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
 	ROM_LOAD( "cnightst.pro", 0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
@@ -1532,7 +1623,7 @@ ROM_END
 
 /* 33 Pro Soccer */
 ROM_START( cpsoccer )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cprosocc.pro", 0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
@@ -1542,7 +1633,7 @@ ROM_START( cpsoccer )
 ROM_END
 
 ROM_START( cpsoccerj )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-133_a.dgl",   0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
@@ -1553,7 +1644,7 @@ ROM_END
 
 /* 34 Super Doubles Tennis */
 ROM_START( csdtenis )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-134_a.dgl",   0x0000, 0x1000,  CRC(e484d2f5) SHA1(ee4e4c221933d391aeed8ff7182fa931a4e01466) )
@@ -1564,7 +1655,7 @@ ROM_END
 
 /* 37 Zeroize */
 ROM_START( czeroize )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "czeroize.pro",  0x0000, 0x1000, NO_DUMP ) /* The Following have unknown Dongles (dongle data not read) */
@@ -1575,7 +1666,7 @@ ROM_END
 
 /* 39 Peter Pepper's Ice Cream Factory */
 ROM_START( cppicf )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cppicf.pro",   0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
@@ -1585,7 +1676,7 @@ ROM_START( cppicf )
 ROM_END
 
 ROM_START( cppicf2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
 	ROM_LOAD( "cppicf.pro",   0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
@@ -1596,7 +1687,7 @@ ROM_END
 
 /* 40 Fighting Ice Hockey */
 ROM_START( cfghtice )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cfghtice.pro", 0x0000, 0x1000, CRC(5abd27b5) SHA1(2ab1c171adffd491759036d6ce2433706654aad2) )
@@ -1610,7 +1701,7 @@ ROM_END
 
 /* 38 Scrum Try */
 ROM_START( cscrtry )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "cscrtry.pro",  0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
@@ -1620,7 +1711,7 @@ ROM_START( cscrtry )
 ROM_END
 
 ROM_START( cscrtry2 )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )   /* dongle data */
 	ROM_LOAD( "cscrtry.pro",  0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
@@ -1631,7 +1722,7 @@ ROM_END
 
 /* 41 Oozumou - The Grand Sumo */
 ROM_START( coozumou )
-	DECOCASS_BIOS_A_ROMS
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-141_a.dgl",   0x0000, 0x8000,  CRC(bc379d2c) SHA1(bab19dcb6d68fdbd547ebab1598353f436321157) )
@@ -1642,7 +1733,7 @@ ROM_END
 
 /* 44 Boulder Dash */
 ROM_START( cbdash )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 /*  ROM_REGION( 0x01000, "dongle", 0 ) */ /* (max) 4k for dongle data */
 	/* no proms */
@@ -1655,7 +1746,7 @@ ROM_END
 
 /* 35 Flying Ball*/
 ROM_START( cflyball )
-	DECOCASS_BIOS_B_ROMS
+	DECOCASS_BIOS_BN_ROMS
 
 	/* no dongle data */
 
@@ -1725,7 +1816,8 @@ DRIVER_INIT_MEMBER(decocass_state,cdsteljn)
 
 /* -- */ GAME( 1981, decocass,  0,        decocass, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "DECO Cassette System", MACHINE_IS_BIOS_ROOT )
 /* -- */ GAME( 1981, ctsttape,  decocass, ctsttape, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Test Tape (DECO Cassette)", 0 )
-/* 01 */ GAME( 1980, chwy,      decocass, chwy,     decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Highway Chase (DECO Cassette)", 0 )
+/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase (Japan MD v0)", 0 )
+/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase (US MD v1)", 0 )
 /* 02 */ // 1980.12 Sengoku Ninjatai
 /* 03 */ GAME( 1981, cmanhat,   decocass, cmanhat,  decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan (DECO Cassette)", MACHINE_IMPERFECT_GRAPHICS )
 /* 04 */ GAME( 1981, cterrani,  decocass, cterrani, cterrani, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean (DECO Cassette)", 0 )
@@ -1739,10 +1831,10 @@ DRIVER_INIT_MEMBER(decocass_state,cdsteljn)
 /* 12 */ // 1981.08 Flash Boy/DECO Kid
 /* 13 */ GAME( 1981, cpgolf1a,  decocass, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf (Japan MD v1)", 0 )
 /*    */ GAME( 1981, cpgolf1b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf (US MD v1)", 0 )
-/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, 18 Challenge (Japan MD v4)", 0 )
-/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Japan MD v6)", 0 )
-/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Europe MD v7)", 0 )
-/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (US MD v9)", 0 )
+/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, 18 Challenge (Japan MD v4)", 0 )
+/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Japan MD v6)", 0 )
+/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Europe MD v7)", 0 )
+/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf9b, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (US MD v9)", 0 )
 /* 14 */ GAME( 1981, cdsteljn,  decocass, cdsteljn, cdsteljn, decocass_state, cdsteljn, ROT270, "Data East Corporation", "DS Telejan (DECO Cassette, Japan)", 0 )
 /* 15 */ GAME( 1981, cluckypo,  decocass, cluckypo, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Lucky Poker (DECO Cassette)", 0 )
 /* 16 */ GAME( 1981, ctisland,  decocass, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 1)", 0 )

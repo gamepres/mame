@@ -10523,15 +10523,16 @@ cburnrub                        // 27 1982.11 Burnin' Rubber
 cburnrub2                       // 27
 cdiscon1                        // 19 1982.04 Disco No.1
 cdsteljn                        // 14 1981.06 DS Telejan
-cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (cassette MD) (Ver 0) // graphic roms might be corrupted (need redump) // version verified
-cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (cassette MD) (Ver 0) // graphic roms might be corrupted (need redump) // bad encryption (need redump)
+cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (cassette MD) // graphic roms might be corrupted (need redump) // version verified
+cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (cassette MD) // graphic roms might be corrupted (need redump) // not verified (need redump)
 cfghtice                        // 40 1984.04 Fighting Ice Hockey
 cfishing                        // 25 1982.10 Fishing
 cflyball                        // 35 1983.?? Flying Ball/Bampoline
 cgraplop                        // 28 1982.11 Cluster Buster / Graplop
 cgraplop2                       // 28
 chamburger                      // 26 1982.08 Hamburger (Japan)
-chwy                            // 01 1980.12 Highway Chase
+chwych0a                        // DT-10[1]0-A   1980.10    HWY Chase (Japan) (cassette MD) // version verified // pronounced "Highway Chase"
+chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (cassette MD) // not verified (need redump) // pronounced "Highway Chase"
 clapapa                         // 29 1982.11 La-Pa-Pa
 clapapa2                        // 29         Rootin' Tootin'  // this one doesn't display lapapa anywhere
 clocknch                        // 11 1981.04 Lock'n'Chase

@@ -371,7 +371,11 @@ static UINT8 type1_latch_xab_pass_x54_table[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM
  *
  ***************************************************************************/
 
-static UINT8 type1_latch_27_pass_3_inv_2_table[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PROM,T1PROM,T1LATCH };
+static UINT8 type1_map1010[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
+
+/* DS Telejan */
+
+static UINT8 type1_map1140[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
 
 /***************************************************************************
  *
@@ -1122,12 +1126,14 @@ MACHINE_RESET_MEMBER(decocass_state,ctsttape)
 	m_type1_map = type1_pass_136_table;
 }
 
-MACHINE_RESET_MEMBER(decocass_state,chwy)
+MACHINE_RESET_MEMBER(decocass_state,chwych0a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061 own PROM)\n"));
+	LOG(0,("dongle type #1 (DP-1010 map)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_27_pass_3_inv_2_table;
+	m_type1_map = type1_map1010;
+	m_type1_inmap = MAKE_MAP(0,1,2,4,3,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,4,3,5,6,7);
 }
 
 MACHINE_RESET_MEMBER(decocass_state,cdsteljn)
@@ -1135,7 +1141,7 @@ MACHINE_RESET_MEMBER(decocass_state,cdsteljn)
 	decocass_state::machine_reset();
 	LOG(0,("dongle type #1 (A-0061)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_27_pass_3_inv_2_table;
+	m_type1_map = type1_map1140;
 }
 
 MACHINE_RESET_MEMBER(decocass_state,cterrani)
