@@ -129,7 +129,7 @@ public:
 
 	DECLARE_DRIVER_INIT(decocass);
 	DECLARE_DRIVER_INIT(decocrom);
-	DECLARE_DRIVER_INIT(cdsteljn);
+	DECLARE_DRIVER_INIT(cdstj2a0);
 	TILEMAP_MAPPER_MEMBER(fgvideoram_scan_cols);
 	TILEMAP_MAPPER_MEMBER(bgvideoram_scan_cols);
 	TILE_GET_INFO_MEMBER(get_bg_l_tile_info);
@@ -140,14 +140,16 @@ public:
 	virtual void video_start() override;
 	DECLARE_PALETTE_INIT(decocass);
 	DECLARE_MACHINE_RESET(ctsttape);
-	DECLARE_MACHINE_RESET(cdsteljn);
-	DECLARE_MACHINE_RESET(cfishing);
 	DECLARE_MACHINE_RESET(chwych0a);
+	DECLARE_MACHINE_RESET(cninjt0a);
+	DECLARE_MACHINE_RESET(cmanht0a);
 	DECLARE_MACHINE_RESET(cterrani);
 	DECLARE_MACHINE_RESET(castfant);
 	DECLARE_MACHINE_RESET(csuperas);
 	DECLARE_MACHINE_RESET(clocknch);
 	DECLARE_MACHINE_RESET(cpgolf1a);
+	DECLARE_MACHINE_RESET(cdstj2a0);
+	DECLARE_MACHINE_RESET(cfishing);
 	DECLARE_MACHINE_RESET(cluckypo);
 	DECLARE_MACHINE_RESET(ctisland);
 	DECLARE_MACHINE_RESET(cexplr0a);
@@ -171,7 +173,6 @@ public:
 	DECLARE_MACHINE_RESET(type4);
 	DECLARE_MACHINE_RESET(cbdash);
 	DECLARE_MACHINE_RESET(cflyball);
-	DECLARE_MACHINE_RESET(cmanhat);
 	UINT32 screen_update_decocass(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
 	DECLARE_WRITE8_MEMBER(decocass_coin_counter_w);
 	DECLARE_WRITE8_MEMBER(decocass_sound_command_w);
@@ -231,8 +232,8 @@ public:
 	DECLARE_WRITE8_MEMBER(mirrorcolorram_w);
 	DECLARE_READ8_MEMBER(mirrorvideoram_r);
 	DECLARE_READ8_MEMBER(mirrorcolorram_r);
-	DECLARE_READ8_MEMBER(cdsteljn_input_r);
-	DECLARE_WRITE8_MEMBER(cdsteljn_mux_w);
+	DECLARE_READ8_MEMBER(cdstj2a0_input_r);
+	DECLARE_WRITE8_MEMBER(cdstj2a0_mux_w);
 	TIMER_DEVICE_CALLBACK_MEMBER(decocass_audio_nmi_gen);
 private:
 	DECLARE_READ8_MEMBER(decocass_type1_r);

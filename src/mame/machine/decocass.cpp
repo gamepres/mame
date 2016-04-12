@@ -319,21 +319,105 @@ READ8_MEMBER(decocass_state::decocass_type1_r)
 
 /***************************************************************************
  *
- *  TYPE1 DONGLE (DE-0061)
- *  - Terranian
- *  - Super Astro Fighter
- *  - Lock 'n Chase
- *  - Pro Golf
- *  - Lucky Poker
- *  - Treasure Island
+ *  TYPE1 DONGLE DP-1010 MAP for HWY chase
  *
- * Latch bits 2 and 6, pass bit 3, invert bit 2.
- * Lookup PROM DE-0061 using bits 0, 1, 4, 5, and 7 as the
- * address bits; take PROM data 0-4 as data bits 0, 1, 4, 5, and 7.
+ * No latched bits (typically 2 bits are latched).
+ * Input bits that are passed uninverted = $4C (3 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $B3 (5 bits)
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1010[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1020 MAP for Sengoku Ninjatai
+ *
+ * No latched bits (typically 2 bits are latched).
+ * Input bits that are passed uninverted = $4A (3 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $B5 (5 bits)
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1020[8] = { T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1PROM,T1DIRECT,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1030 MAP for Manhattan
+ *
+ * No latched bits (typically 2 bits are latched).
+ * Input bits that are passed uninverted = $54 (3 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $AB (5 bits)
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1030[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1130 MAP for Pro Golf
+ *
+ * Latched bits                          = $44 (2 latch bits)
+ * Input bits that are passed uninverted = $08 (1 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $B3 (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 2
+ * Output bit position = 2
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 6
+ * Output bit position = 6
+ * Type                = Non-inverting latch
  *
  ***************************************************************************/
 
 static UINT8 type1_map1130[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PROM,T1LATCH,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1440 MAP for DS Telejan
+ *
+ * Latched bits                          = $84 (2 latch bits)
+ * Input bits that are passed uninverted = $08 (1 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $73 (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 2
+ * Output bit position = 2
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 7
+ * Output bit position = 7
+ * Type                = Non-inverting latch
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1140[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PROM,T1PROM,T1LATCH };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1180 MAP for Explorer
+ *
+ * Latched bits                          = $44 (2 latch bits)
+ * Input bits that are passed uninverted = $20 (1 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $9B (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 2
+ * Output bit position = 2
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 6
+ * Output bit position = 6
+ * Type                = Non-inverting latch
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1180[8] = { T1PROM,T1PROM,T1LATCHINV,T1PROM,T1PROM,T1DIRECT,T1LATCH,T1PROM };
 
 /***************************************************************************
  *
@@ -346,49 +430,6 @@ static UINT8 type1_map1130[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PRO
  ***************************************************************************/
 
 static UINT8 type1_pass_136_table[8] ={ T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1PROM,T1DIRECT,T1PROM };
-
-/***************************************************************************
- *
- *  TYPE1 DONGLE (DE-0061)
- *  - Manhattan
- *
- * Input bits that are passed uninverted = $54 (3 true bits)
- * Input bits that are passed inverted   = $00 (0 inverted bits)
- * Remaining bits for addressing PROM    = $AB (5 bits)
- *
- ***************************************************************************/
-
-static UINT8 type1_latch_xab_pass_x54_table[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
-
-/***************************************************************************
- *
- *  TYPE1 DONGLE (DE-0061)
- *  - Highway Chase
- *
- * Latch bits 2 and 7, pass bit 3, invert bit 2 to the output.
- * Lookup PROM (Highway Chase) using data bits 0, 1, 4, 5, and 6 as the
- * address bits. Take PROM data 0-4 as data bits 0, 1, 4, 5, and 6.
- *
- ***************************************************************************/
-
-static UINT8 type1_map1010[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
-
-/* DS Telejan */
-
-static UINT8 type1_map1140[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM };
-
-/***************************************************************************
- *
- *  TYPE1 DONGLE (DE-0061)
- *  - Explorer
- *
- * Latch bits 2 and 6, pass bit 5, invert bit 2 to the output.
- * Lookup PROM (Explorer) using bits 0, 1, 3, 4, and 7 as the
- * address bits. Take PROM data 0-4 as data bits 0, 1, 3, 4, and 7.
- *
- ***************************************************************************/
-
-static UINT8 type1_map1180[8] = { T1PROM,T1PROM,T1LATCHINV,T1PROM,T1PROM,T1DIRECT,T1LATCH,T1PROM };
 
 /***************************************************************************
  *
@@ -1136,12 +1177,34 @@ MACHINE_RESET_MEMBER(decocass_state,chwych0a)
 	m_type1_outmap = MAKE_MAP(0,1,2,4,3,5,6,7);
 }
 
-MACHINE_RESET_MEMBER(decocass_state,cdsteljn)
+MACHINE_RESET_MEMBER(decocass_state,cninjt0a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (A-0061)\n"));
+	LOG(0,("dongle type #1 (DP-1020 map)\n"));
+	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
+	m_type1_map = type1_map1020;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+}
+
+MACHINE_RESET_MEMBER(decocass_state,cmanht0a)
+{
+	decocass_state::machine_reset();
+	LOG(0,("dongle type #1 (DP-1030 map)\n"));
+	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
+	m_type1_map = type1_map1030;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+}
+
+MACHINE_RESET_MEMBER(decocass_state,cdstj2a0)
+{
+	decocass_state::machine_reset();
+	LOG(0,("dongle type #1 (DP-1140 map)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
 	m_type1_map = type1_map1140;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
 }
 
 MACHINE_RESET_MEMBER(decocass_state,cterrani)
@@ -1172,14 +1235,6 @@ MACHINE_RESET_MEMBER(decocass_state,csuperas)
 	m_type1_outmap = MAKE_MAP(0,1,2,3,5,4,6,7);
 }
 
-MACHINE_RESET_MEMBER(decocass_state,cmanhat)
-{
-	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061)\n"));
-	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_xab_pass_x54_table;
-}
-
 MACHINE_RESET_MEMBER(decocass_state,clocknch)
 {
 	decocass_state::machine_reset();
@@ -1193,7 +1248,7 @@ MACHINE_RESET_MEMBER(decocass_state,clocknch)
 MACHINE_RESET_MEMBER(decocass_state,cpgolf1a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DT-1130 map)\n"));
+	LOG(0,("dongle type #1 (DP-1130 map)\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
 	m_type1_map = type1_map1130;
 	m_type1_inmap = MAKE_MAP(1,0,2,3,4,5,6,7);
@@ -1223,7 +1278,7 @@ MACHINE_RESET_MEMBER(decocass_state,ctisland)
 MACHINE_RESET_MEMBER(decocass_state,cexplr0a)
 {
 	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DT-1180 map\n"));
+	LOG(0,("dongle type #1 (DP-1180 map\n"));
 	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
 	m_type1_map = type1_map1180;
 	m_type1_inmap = MAKE_MAP(0,1,2,4,3,5,6,7);

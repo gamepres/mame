@@ -10514,59 +10514,66 @@ tattass                         // prototype (c) 1994 Data East Pinball (US)
 tattassa                        // prototype (c) 1994 Data East Pinball (Asia)
 
 @source:decocass.cpp
-cadanglr                        // 25 1982.10 Angler Dangler
-castfant                        // 07 1981.02 Astro Fantasia
-cbdash                          // 44 1985.08 Boulder Dash
-cbnj                            // 27         Bump 'n' Jump
-cbtime                          // 26 1982.08 Hamburger/Burger Time
-cburnrub                        // 27 1982.11 Burnin' Rubber
+cadanglr                        // 25
+castfant                        // 07
+cbdash                          // 44
+cbnj                            // 27
+cbtime                          // 26
+cburnrub                        // 27
 cburnrub2                       // 27
-cdiscon1                        // 19 1982.04 Disco No.1
-cdsteljn                        // 14 1981.06 DS Telejan
-cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (cassette MD) // graphic roms might be corrupted (need redump) // version verified
-cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (cassette MD) // graphic roms might be corrupted (need redump) // not verified (need redump)
-cfghtice                        // 40 1984.04 Fighting Ice Hockey
-cfishing                        // 25 1982.10 Fishing
-cflyball                        // 35 1983.?? Flying Ball/Bampoline
-cgraplop                        // 28 1982.11 Cluster Buster / Graplop
+cdiscon1                        // 19
+cdstj2a0                        // DT-1[14]2-A   1981.06    DS Telejan (Japan) (Cassette MD) (Ver 2) // version verified
+cdstj3a0                        // DT-1[14]3-A   1981       DS Telejan (Japan) (Cassette MD) (Ver 3) // version verified
+cdstj4a2                        // DT-1[14]4-A-2 1981       DS Telejan (Japan) (Cassette MD) (Ver 4 Rev 2) // version verified
+cdstj4a3                        // DT-1[14]4-A-3 1981       DS Telejan (Japan) (Cassette MD) (Ver 4 Rev 3) // version verified
+cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (Cassette MD) // graphic roms might be corrupted (need redump) // version verified
+cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (Cassette MD) // graphic roms might be corrupted (need redump) // not verified (need redump)
+cfghtice                        // 40
+cfishing                        // 25
+cflyball                        // 35
+cgraplop                        // 28
 cgraplop2                       // 28
-chamburger                      // 26 1982.08 Hamburger (Japan)
-chwych0a                        // DT-10[1]0-A   1980.10    HWY Chase (Japan) (cassette MD) // version verified // pronounced "Highway Chase"
-chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (cassette MD) // not verified (need redump) // pronounced "Highway Chase"
-clapapa                         // 29 1982.11 La-Pa-Pa
-clapapa2                        // 29         Rootin' Tootin'  // this one doesn't display lapapa anywhere
-clocknch                        // 11 1981.04 Lock'n'Chase
-cluckypo                        // 15 1981.?? Lucky Poker
-cmanhat                         // 03 1981.01 Manhattan
-cmissnx                         // 21 1982.04 Mission-X/Zoar
-cnightst                        // 32 1983.04 Night Star
+chamburger                      // 26
+chwych0a                        // DT-10[1]0-A   1980.10.24 HWY Chase (Japan) (Cassette MD) // version verified // pronounced "Highway Chase"
+chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (Cassette MD) // not verified (need redump) // pronounced "Highway Chase"
+clapapa                         // 29
+clapapa2                        // 29
+clocknch                        // 11
+cluckypo                        // 15
+cmanht0a                        // DT-10[3]0-A   1981.10    Manhattan (Japan) (Cassette MD) (Ver 0) // version not verified
+cmanht1a                        // DT-10[3]1-A   1981.10.23 Manhattan (Japan) (Cassette MD) (Ver 1) // version verified
+cmanht2a                        // DT-10[3]2-A   1981.10.28 Manhattan (Japan) (Cassette MD) (Ver 2) // version verified
+cmissnx                         // 21
+cnightst                        // 32
 cnightst2                       // 32
-coozumou                        // 41 1984.05 Oozumou/The Grand Sumo
-cppicf                          // 39 1984.02 Peter Pepper's Ice Cream Factory
+cninjt0a                        // DT-10[2]0-A   1980.10.23 Sengoku Ninjatai (Japan) (Cassette MD) // version verified // known as Ninja out of Japan
+cninjt1d                        // DT-10[2]1-D   1981.11.11 Sengoku Ninjatai (Europe) (Cassette MD) // version verified // same title screen as Japanese version, might be a convert
+coozumou                        // 41
+cppicf                          // 39
 cppicf2                         // 39
-cprobowl                        // 31 1983.03 Pro Bowling
-cpgolf1a                        // DT-1[13]1-A   1981.08.25 Pro Golf (Japan) (cassette MD) (Ver 1) // version verified
-cpgolf1b                        // DT-1[13]1-B   1981.08.25 Pro Golf (US) (cassette MD) (Ver 1)  // version verified
-cpgolf4a                        // DT-1[13]4-A   1981.11.25 Pro Golf, 18 Challenge (Japan) (cassette MD) (Ver 4) // version verified
-cpgolf6a                        // DT-1[13]6-A   1981.09.03 Pro Golf, Tournament (Japan) (cassette MD) (Ver 6) // version verified
-cpgolf7d                        // DT-1[13]7-D   1981.09.22 Pro Golf, Tournament (Europe) (cassette MD) (Ver 7) // version verified
-cpgolf9b                        // DT-1[13]9-B   1981.11.13 Pro Golf, Tournament (US) (cassette MD) (Ver 9) // version verified
-cpsoccer                        // 33 1982.08 Pro Soccer
-cpsoccerj                       // 33 1982.08 Pro Soccer (Japan)
-cptennis                        // 22 1982.06 Pro Tennis
-cscrtry                         // 38 1984.03 Scrum Try
+cprobowl                        // 31
+cpgolf1a                        // DT-1[13]1-A   1981.08.25 Pro Golf (Japan) (Cassette MD) (Ver 1) // version verified
+cpgolf1b                        // DT-1[13]1-B   1981.08.25 Pro Golf (US) (Cassette MD) (Ver 1)  // version verified
+cpgolf4a                        // DT-1[13]4-A   1981.11.25 Pro Golf, 18 Challenge (Japan) (Cassette MD) (Ver 4) // version verified
+cpgolf6a                        // DT-1[13]6-A   1981.09.03 Pro Golf, Tournament (Japan) (Cassette MD) (Ver 6) // version verified
+cpgolf7d                        // DT-1[13]7-D   1981.09.22 Pro Golf, Tournament (Europe) (Cassette MD) (Ver 7) // version verified
+cpgolf9b                        // DT-1[13]9-B   1981.11.13 Pro Golf, Tournament (US) (Cassette MD) (Ver 9) // version verified
+cpsoccer                        // 33
+cpsoccerj                       // 33
+cptennis                        // 22
+cscrtry                         // 38
 cscrtry2                        // 38
-csdtenis                        // 34 1983.09 Super Doubles Tennis
-cskater                         // 30 1983.03 Skater
-csuperas                        // 09 1981.05 Super Astro Fighter
-csweetht                        // 19         Sweet Heart
-cterrani                        // 04 1981.02 Terranean
-ctisland                        // 16 1982.02 Treasure Island
+csdtenis                        // 34
+cskater                         // 30
+csuperas                        // 09
+csweetht                        // 19
+cterrani                        // 04
+ctisland                        // 16
 ctisland2                       // 16
 ctisland3                       // 16
-ctornado                        // 20 1982.05 Tornado
-ctsttape                        // ?
-czeroize                        // 37 1983.10 Zeroize
+ctornado                        // 20
+ctsttape                        // DT-1[914]-B   1980        Test tape (US) (Cassette MD) (Enc 14) // not verified
+czeroize                        // 37
 decocass                        //
 
 @source:dectalk.cpp

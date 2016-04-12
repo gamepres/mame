@@ -183,25 +183,23 @@ static INPUT_PORTS_START( decocass )
 	PORT_BIT( 0xff, 0x80, IPT_AD_STICK_Y ) PORT_MINMAX(0x10,0xf0) PORT_SENSITIVITY(100) PORT_KEYDELTA(10) PORT_PLAYER(2)
 
 	PORT_START("DSW1")
-	PORT_DIPNAME( 0x03, 0x03, DEF_STR( Coin_A ) )                       PORT_DIPLOCATION("SW1:1,2")
+	PORT_DIPNAME( 0x03, 0x03, DEF_STR( Coin_A ) )                       PORT_DIPLOCATION("SW1:1,2")   /* Listed as "Game Charge" for "Table" and "Up Right RH selector" */
 	PORT_DIPSETTING(    0x03, DEF_STR( 1C_1C ) )
 	PORT_DIPSETTING(    0x02, DEF_STR( 1C_2C ) )
 	PORT_DIPSETTING(    0x01, DEF_STR( 1C_3C ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( 2C_1C ) )
-	PORT_DIPNAME( 0x0c, 0x0c, DEF_STR( Coin_B ) )                       PORT_DIPLOCATION("SW1:3,4")
+	PORT_DIPNAME( 0x0c, 0x0c, DEF_STR( Coin_B ) )                       PORT_DIPLOCATION("SW1:3,4")   /* Listed as "Game Charge" for "Up Right LH selector" */
 	PORT_DIPSETTING(    0x0c, DEF_STR( 1C_1C ) )
 	PORT_DIPSETTING(    0x08, DEF_STR( 1C_2C ) )
 	PORT_DIPSETTING(    0x04, DEF_STR( 1C_3C ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( 2C_1C ) )
 	PORT_DIPNAME( 0x30, 0x30, "Type of Tape" )                          PORT_DIPLOCATION("SW1:5,6")   /* Used by the "bios" */
 	PORT_DIPSETTING(    0x30, "MD" )        /* Was listed as "Board Type" with this being "NEW" */
-	PORT_DIPSETTING(    0x20, "-" )
-	PORT_DIPSETTING(    0x10, "-" )
 	PORT_DIPSETTING(    0x00, "MT" )        /* Was listed as "Board Type" with this being "OLD" */
-	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Cabinet ) )                      PORT_DIPLOCATION("SW1:7")
-	PORT_DIPSETTING(    0x40, DEF_STR( Cocktail ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( Upright ) )
-	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_CUSTOM) PORT_VBLANK("screen")
+	PORT_DIPNAME( 0x40, 0x40, "Control Panel" )                         PORT_DIPLOCATION("SW1:7")     /* Default is "Up Right" for non Japanese versions */
+	PORT_DIPSETTING(    0x40, "Table" )
+	PORT_DIPSETTING(    0x00, "Up Right" )
+	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_CUSTOM) PORT_VBLANK("screen")        /* Listed as "Screen" > "Table" or "Up Right" */
 
 	PORT_START("DSW2") /* Start with all Unknown as each can change per game, except for Country Code */
 	PORT_DIPUNKNOWN_DIPLOC( 0x01, 0x01, "SW2:1")        /* Most Dipswitch Settings sheets show this as "Number of Players" (Lives) */
@@ -232,7 +230,41 @@ static INPUT_PORTS_START( chwych0a )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
 	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
-	/* Switches 5, 6, 7 & 8 are shown as completly blank */
+	/* Switches 5 to 8 blank */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cninjt0a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Sight" )                       PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPSETTING(    0x03, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x01, "5" )
+	PORT_DIPSETTING(    0x00, "6" )
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPSETTING(    0x0c, "3000" )
+	PORT_DIPSETTING(    0x08, "5000" )
+	PORT_DIPSETTING(    0x04, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	/* Switches 5 to 8 blank */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cmanht0a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Child" )                       PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPSETTING(    0x03, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x01, "5" )
+	PORT_DIPSETTING(    0x00, "6" )
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPSETTING(    0x0c, "3000" )
+	PORT_DIPSETTING(    0x08, "5000" )
+	PORT_DIPSETTING(    0x04, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	/* Switches 5 to 8 blank */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( cterrani )
@@ -367,14 +399,22 @@ static INPUT_PORTS_START( cpgolf9b )
 	PORT_DIPNAME( 0x08, 0x08, "Number of Strokes" )                     PORT_DIPLOCATION("SW2:4") /* You must shoot equal to or under to continue, else you lose a life */
 	PORT_DIPSETTING(    0x00, "Par +2" )
 	PORT_DIPSETTING(    0x08, "Par +3" )
-	PORT_DIPNAME( 0x10, 0x10, "Show Stroke Power/Ball Direction" )      PORT_DIPLOCATION("SW2:5")
+	PORT_DIPNAME( 0x10, 0x10, "Show Stroke Power/Ball Direction" )      PORT_DIPLOCATION("SW2:5") /* Doesn't work in this version, might be a different option */
 	PORT_DIPSETTING(    0x10, "Indicated" )
 	PORT_DIPSETTING(    0x00, "Not Indicated" )
 	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
 INPUT_PORTS_END
 
-static INPUT_PORTS_START( cdsteljn )
+static INPUT_PORTS_START( cdstj2a0 )
 	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x03, 0x03, "Time Speed" )                            PORT_DIPLOCATION("SW2:1,2") /* From A to D, time is decreasing faster  */
+	PORT_DIPSETTING(    0x03, "A" )
+	PORT_DIPSETTING(    0x02, "B" )
+	PORT_DIPSETTING(    0x01, "C" )
+	PORT_DIPSETTING(    0x00, "D" )
+    /* Switches 3 to 8 aren't listed */
 
 	PORT_START("P1_MP0")
 	PORT_BIT( 0xff, IP_ACTIVE_HIGH, IPT_UNUSED )
@@ -848,33 +888,23 @@ static MACHINE_CONFIG_DERIVED( ctsttape, decocass )
 MACHINE_CONFIG_END
 
 
-static MACHINE_CONFIG_DERIVED( cdsteljn, decocass )
-
-	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cdsteljn)
-MACHINE_CONFIG_END
-
-
-static MACHINE_CONFIG_DERIVED( cmanhat, decocass )
-
-	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cmanhat)
-MACHINE_CONFIG_END
-
-
-static MACHINE_CONFIG_DERIVED( cfishing, decocass )
-
-	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cfishing)
-MACHINE_CONFIG_END
-
-
 static MACHINE_CONFIG_DERIVED( chwych0a, decocass )
 
 	/* basic machine hardware */
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,chwych0a)
 MACHINE_CONFIG_END
 
+static MACHINE_CONFIG_DERIVED( cninjt0a, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cninjt0a)
+MACHINE_CONFIG_END
+
+static MACHINE_CONFIG_DERIVED( cmanht0a, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cmanht0a)
+MACHINE_CONFIG_END
 
 static MACHINE_CONFIG_DERIVED( cterrani, decocass )
 
@@ -908,6 +938,20 @@ static MACHINE_CONFIG_DERIVED( cpgolf1a, decocass )
 
 	/* basic machine hardware */
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cpgolf1a)
+MACHINE_CONFIG_END
+
+
+static MACHINE_CONFIG_DERIVED( cdstj2a0, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cdstj2a0)
+MACHINE_CONFIG_END
+
+
+static MACHINE_CONFIG_DERIVED( cfishing, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cfishing)
 MACHINE_CONFIG_END
 
 
@@ -1073,6 +1117,7 @@ MACHINE_CONFIG_END
 
 
 #define DECOCASS_COMMON_ROMS    \
+	/* basic roms for new system */ \
 	ROM_REGION( 0x10000, "audiocpu", 0 )      \
 	ROM_LOAD( "v1.5a",     0xf800, 0x0800, CRC(b66b2c2a) SHA1(0097f38beb4872e735e560148052e258a26b08fd) ) /* from RMS-8 board: 2716 eprom @5A w/V1- label,  contains audio cpu code */ \
 \
@@ -1137,7 +1182,7 @@ ROM_START( ctsttape )
 	ROM_LOAD( "testtape.cas", 0x0000, 0x2000, CRC(4f9d8efb) SHA1(5b77747dad1033e5703f06c0870441b54b4256c5) )
 ROM_END
 
-/* 01 HWY Chase */
+/* 01 HWY Chase (World) */
 ROM_START( chwych0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main data CRC(f0f26b29)
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1160,18 +1205,64 @@ ROM_START( chwych1b ) // version MD 1-B-0 not verified (need redump for verifica
 
 ROM_END
 
-/* 03 Manhattan */
-ROM_START( cmanhat )
+/* 02 Sengoku Ninjatai (Japan), Ninja (World) */
+ROM_START( cninjt0a ) // version MD 0-A-0 verified, 100 blocks, decrypted main data CRC(b838ee76)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "manhattan.pro",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) ) // == a-0061.dgl
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1020-a-0.cas",   0x0000, 0x6500, CRC(e2964e5b) SHA1(74c8475391a363f523368ab3b67d79034bf2c747) )
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "manhattan.cas", 0x000000, 0x006000, CRC(92dae2b1) SHA1(cc048ac6601553675078230290beb3d59775bfe0) )
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+
 ROM_END
 
-/* 04 Terranean */
+ROM_START( cninjt1d ) // version MD 1-D-0 verified (might be a convertion from Japanese version), 100 blocks, decrypted main data CRC(6d7842a5)
+	DECOCASS_BIOS_DN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6500, CRC(f970f436) SHA1(a85534f1bc8c7a4eceae8a095d178a3c6795cdee) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
+
+ROM_END
+
+/* 03 Manhattan (World) */
+ROM_START( cmanht0a ) // version MD 0-A-0 not verified, 095 blocks, decrypted main data CRC(b1fe47cd)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1020-a-0.cas",   0x0000, 0x6000, CRC(59983936) SHA1(10a6785b9e126afd880090b163563fcb47b2fd96) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+
+ROM_END
+
+ROM_START( cmanht1a ) // version MD 1-A-0 verified, 095 blocks, decrypted main data CRC(273c1535)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6000, CRC(92dae2b1) SHA1(cc048ac6601553675078230290beb3d59775bfe0) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+
+ROM_END
+
+ROM_START( cmanht2a ) // version MD 2-A-0 verified, 095 blocks, decrypted main data CRC(ac979eee)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6000, CRC(f19ffcda) SHA1(64a4762901a683f03617948d5658fe9581338bb8) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+
+ROM_END
+
+/* 04 Terranean (World) */
 ROM_START( cterrani )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1182,7 +1273,7 @@ ROM_START( cterrani )
 	ROM_LOAD( "dt-1040.cas", 0x0000, 0x8000, CRC(eb71adbc) SHA1(67becfde39c034d4b8edc2eb100050de102773da) )
 ROM_END
 
-/* 07 Astro Fantasia */
+/* 07 Astro Fantasia (World) */
 ROM_START( castfant )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1193,7 +1284,7 @@ ROM_START( castfant )
 	ROM_LOAD( "castfant.cas", 0x0000, 0x8000, CRC(6d77d1b5) SHA1(821bd65fbe887cbeac9281a2ad3f88595918f886) )
 ROM_END
 
-/* 09 Super Astro Fighter */
+/* 09 Super Astro Fighter (World) */
 ROM_START( csuperas )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1204,7 +1295,7 @@ ROM_START( csuperas )
 	ROM_LOAD( "csuperas.cas", 0x0000, 0x8000, CRC(fabcd07f) SHA1(4070c668ad6725f0710cf7fe6df0d5f80272a449) )
 ROM_END
 
-/* 11 Lock'n'Chase */
+/* 11 Lock'n'Chase (World) */
 ROM_START( clocknch )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1215,7 +1306,7 @@ ROM_START( clocknch )
 	ROM_LOAD( "clocknch.cas",  0x0000, 0x8000, CRC(c9d163a4) SHA1(3ef55a8d8f603059e263776c08eb81f2cf18b75c) )
 ROM_END
 
-/* 13 Pro Golf */
+/* 13 Pro Golf (World), Tournament Pro Golf (World), 18 Challenge Pro Golf (World) */
 ROM_START( cpgolf1a ) // version MD 1-A-0 verified, 099 blocks, decrypted main data CRC(4f713213)
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1276,18 +1367,48 @@ ROM_START( cpgolf9b ) // version MD 9-B-0 verified, 102 blocks, decrypted main d
 	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
-/* 14 */
-ROM_START( cdsteljn ) // version 4-A-3
+/* 14 DS Telejan (Japan) */
+ROM_START( cdstj2a0 ) // version MD 2-A-0 verified, 115 blocks, decrypted main data CRC(f14b605d)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "a-0061.dgl",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) ) /* Should be dp-1144a?? */
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1142-a-0.cas", 0x0000, 0x7400, CRC(2c3f9183) SHA1(7b5e1445353b7785f4bf95ac8bdc2e98fb13656a) )
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1144-a3.cas", 0x000000, 0x007300, CRC(1336a912) SHA1(0c64e069713b411da38b43f14306953621726d35) )
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
-/* 15 Lucky Poker */
+ROM_START( cdstj3a0 ) // version MD 3-A-0 verified, 115 blocks, decrypted main data CRC(812e5222)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1143-a-0.cas", 0x0000, 0x7400, CRC(c842885c) SHA1(c5af43c6c3a0284540b25bd594c7bde4fc92199b) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( cdstj4a2 ) // version MD 4-A-2 verified, 114 blocks, decrypted main data CRC(c0508930)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1144-a-2.cas", 0x0000, 0x7300, CRC(72fa9d71) SHA1(a1682b8635f960db5c970632c8796f63d0d67f57) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( cdstj4a3 ) // version MD 4-A-3 verified, 114 blocks, decrypted main data CRC(eb256274)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1144-a-3.cas", 0x0000, 0x7300, CRC(1336a912) SHA1(0c64e069713b411da38b43f14306953621726d35) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+/* 15 Lucky Poker (World) */
 /* Photo of Dongle shows DP-1150B (the "B" is in a separate white box then the DP-1150 label) */
 ROM_START( cluckypo )
 	DECOCASS_BIOS_BN_ROMS
@@ -1299,7 +1420,7 @@ ROM_START( cluckypo )
 	ROM_LOAD( "cluckypo.cas",  0x0000, 0x8000, CRC(2070c243) SHA1(cd3af309af8eb27937756c1fe6fd0504be5aaaf5) )
 ROM_END
 
-/* 16 Treasure Island */
+/* 16 Treasure Island (World) */
 ROM_START( ctisland )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1348,7 +1469,7 @@ ROM_START( ctisland3 )
 	ROM_LOAD( "deco-ti.x4",   0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
 ROM_END
 
-/* 18 Explorer */
+/* 18 Explorer (World) */
 ROM_START( cexplr0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main data CRC(673D1F0D)
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1400,7 +1521,7 @@ ROM_END
 /* The Following use Dongle Type 2 (CS82-007)
     (dongle data differs for each game)      */
 
-/* 19 Disco No.1 / Sweet Heart */
+/* 19 Disco No.1 (Japan/World), Sweet Heart (World) */
 ROM_START( cdiscon1 )
 /* Photo of Dongle shows DP-1190B (the "B" is in a separate white box then the DP-1190 label) */
 	DECOCASS_BIOS_BN_ROMS
@@ -1422,7 +1543,7 @@ ROM_START( csweetht )
 	ROM_LOAD( "csweetht.cas", 0x0000, 0x8000, CRC(175ef706) SHA1(49b86233f69d0daf54a6e59b86e69b8159e8f6cc) )
 ROM_END
 
-/* 20 Tornado */
+/* 20 Tornado (World) */
 ROM_START( ctornado )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1433,7 +1554,7 @@ ROM_START( ctornado )
 	ROM_LOAD( "ctornado.cas", 0x0000, 0x8000, CRC(e4e36ce0) SHA1(48a11823121fb2e3de31ae08e453c0124fc4f7f3) )
 ROM_END
 
-/* 21 Mission-X */
+/* 21 Mission-X (World) */
 /* Photo of Dongle shows DP-121B with Cassette DT-1213B (the "3B" is in a separate white box then the DP-121 label) */
 ROM_START( cmissnx )
 	DECOCASS_BIOS_BN_ROMS
@@ -1445,7 +1566,7 @@ ROM_START( cmissnx )
 	ROM_LOAD( "cmissnx.cas",  0x0000, 0x8000, CRC(3a094e11) SHA1(c355fe14838187cbde19a799e5c60083c82615ac) ) /* Is this the 3B version? */
 ROM_END
 
-/* 22 Pro Tennis */
+/* 22 Pro Tennis (World) */
 ROM_START( cptennis )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1460,7 +1581,7 @@ ROM_END
 /* The Following use Dongle Type 3 (unknown part number?)
     (dongle data differs for each game)      */
 
-/* 25 Fishing / Angler Dangler */
+/* 25 Fishing (Japan), Angler Dangler (World) */
 ROM_START( cadanglr ) // version 5-B-0
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1482,7 +1603,7 @@ ROM_START( cfishing )
 ROM_END
 
 
-/* 26 Hamburger / Burger Time */
+/* 26 Hamburger (Japan), Burger Time (World) */
 /* Photo of Dongle shows DP-126B with Cassette DT-1267B (the "7B" is in a separate white box then the DP-126 label) */
 ROM_START( cbtime ) // version 7-B-0
 	DECOCASS_BIOS_BN_ROMS
@@ -1504,7 +1625,7 @@ ROM_START( chamburger ) // version 0-A-0
 	ROM_LOAD( "dt-126_a.cas",   0x0000, 0x8000, CRC(334fb987) SHA1(c55906bf6059686dd8a587dabbe3fb4d59200ab9) )
 ROM_END
 
-/* 27 Burnin' Rubber / Bump 'n' Jump */
+/* 27 Burnin' Rubber (Japan/World), Bump'n'Jump (World) */
 /* Photo of Dongle shows DP-127B with Cassette DP-1275B (the "5B" is in a separate white box then the DP-127 label) */
 ROM_START( cburnrub )
 	DECOCASS_BIOS_BN_ROMS
@@ -1536,7 +1657,7 @@ ROM_START( cbnj )
 	ROM_LOAD( "cbnj.cas",       0x0000, 0x8000, CRC(eed41560) SHA1(85d5df76efac33cd10427f659c4259afabb3daaf) )
 ROM_END
 
-/* 28 Graplop / Cluster Buster */
+/* 28 Graplop (Japan/World), Cluster Buster (World) */
 ROM_START( cgraplop )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1557,7 +1678,7 @@ ROM_START( cgraplop2 )
 	ROM_LOAD( "cgraplop2.cas", 0x0000, 0x8000, CRC(2e728981) SHA1(83ba90d95858d647315a1c311b8643672afea5f7) )
 ROM_END
 
-/* 29 La-Pa-Pa / Rootin' Tootin' */
+/* 29 La-Pa-Pa (Japan), Rootin' Tootin' (World) */
 ROM_START( clapapa )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1578,7 +1699,7 @@ ROM_START( clapapa2 )
 	ROM_LOAD( "clapapa2.cas",  0x0000, 0x8000, CRC(069dd3c4) SHA1(5a19392c7ac5aea979187c96267e73bf5126307e) )
 ROM_END
 
-/* 30 Skater */
+/* 30 Skater (Japan), Skater Gaiter (World) */
 ROM_START( cskater )
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1589,7 +1710,7 @@ ROM_START( cskater )
 	ROM_LOAD( "dt-130_a.cas",   0x0000, 0x8000,  CRC(1722e5e1) SHA1(e94066ead608df85d3f7310d4a81ba291da4bee6) )
 ROM_END
 
-/* 31 Pro Bowling */
+/* 31 Pro Bowling (World) */
 ROM_START( cprobowl )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1600,7 +1721,7 @@ ROM_START( cprobowl )
 	ROM_LOAD( "cprobowl.cas", 0x0000, 0x8000, CRC(cb86c5e1) SHA1(66c467418cff2ed6d7c121a8b1650ee97ae48fe9) )
 ROM_END
 
-/* 32 Night Star */
+/* 32 Night Star (World) */
 ROM_START( cnightst )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1621,7 +1742,7 @@ ROM_START( cnightst2 )
 	ROM_LOAD( "cnights2.cas", 0x0000, 0x8000, CRC(1a28128c) SHA1(4b620a1919d02814f734aba995115c09dc2db930) )
 ROM_END
 
-/* 33 Pro Soccer */
+/* 33 Pro Soccer (World) */
 ROM_START( cpsoccer )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1642,7 +1763,7 @@ ROM_START( cpsoccerj )
 	ROM_LOAD( "dt-133_a.cas",   0x0000, 0x10000, CRC(de682a29) SHA1(2ee0dd8cb7fb595020d730a9da5d9cccda3f1264) )
 ROM_END
 
-/* 34 Super Doubles Tennis */
+/* 34 Super Doubles Tennis (World) */
 ROM_START( csdtenis )
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1653,7 +1774,7 @@ ROM_START( csdtenis )
 	ROM_LOAD( "dt-134_a.cas",   0x0000, 0x10000, CRC(9a69d961) SHA1(f88e267815ca0697708aca0ac9fa6f7664a0519c) )
 ROM_END
 
-/* 37 Zeroize */
+/* 37 Zeroize (World) */
 ROM_START( czeroize )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1664,7 +1785,7 @@ ROM_START( czeroize )
 	ROM_LOAD( "czeroize.cas",   0x0000, 0x10000, CRC(3ef0a406) SHA1(645b34cd477e0bb5539c8fe937a7a2dbd8369003) )
 ROM_END
 
-/* 39 Peter Pepper's Ice Cream Factory */
+/* 39 Ice Cream (Japan), Peter Pepper's Ice Cream Factory (World) */
 ROM_START( cppicf )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1685,7 +1806,7 @@ ROM_START( cppicf2 )
 	ROM_LOAD( "cppicf2.cas",   0x0000, 0x8000, CRC(78ffa1bc) SHA1(d15f2a240ae7b45885d32b5f507243f82e820d4b) )
 ROM_END
 
-/* 40 Fighting Ice Hockey */
+/* 40 Fighting Ice Hockey (World) */
 ROM_START( cfghtice )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1699,7 +1820,7 @@ ROM_END
 /* The Following use Dongle Type 4 (unknown part number?)
     (dongle data is used for most of the graphics) */
 
-/* 38 Scrum Try */
+/* 38 Scrum Try (World) */
 ROM_START( cscrtry )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1720,7 +1841,7 @@ ROM_START( cscrtry2 )
 	ROM_LOAD( "cscrtry2.cas",  0x0000, 0x8000, CRC(04597842) SHA1(7f1fc3e06b61df880debe9056bdfbbb8600af739) )
 ROM_END
 
-/* 41 Oozumou - The Grand Sumo */
+/* 41 Oozumou (Japan), The Grand Sumo (World) */
 ROM_START( coozumou )
 	DECOCASS_BIOS_AN_ROMS
 
@@ -1731,7 +1852,7 @@ ROM_START( coozumou )
 	ROM_LOAD( "dt-141_1a.cas",  0x0000, 0x10000, CRC(20c2e86a) SHA1(a18248ba00b847a09df0bea7752a21162af8af76) )
 ROM_END
 
-/* 44 Boulder Dash */
+/* 44 Boulder Dash (World) */
 ROM_START( cbdash )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1744,7 +1865,7 @@ ROM_END
 
 /* The Following have no Dongles at all */
 
-/* 35 Flying Ball*/
+/* 35 Flying Ball (World) */
 ROM_START( cflyball )
 	DECOCASS_BIOS_BN_ROMS
 
@@ -1780,7 +1901,7 @@ DRIVER_INIT_MEMBER(decocass_state,decocrom)
 	m_maincpu->space(AS_PROGRAM).install_write_handler(0xe900, 0xe900, write8_delegate(FUNC(decocass_state::decocass_e900_w),this));
 }
 
-READ8_MEMBER(decocass_state::cdsteljn_input_r )
+READ8_MEMBER(decocass_state::cdstj2a0_input_r )
 {
 	UINT8 res;
 	static const char *const portnames[2][4] = {
@@ -1795,7 +1916,7 @@ READ8_MEMBER(decocass_state::cdsteljn_input_r )
 	return res;
 }
 
-WRITE8_MEMBER(decocass_state::cdsteljn_mux_w )
+WRITE8_MEMBER(decocass_state::cdstj2a0_mux_w )
 {
 	m_mux_data = (data & 0xc) >> 2;
 	/* bit 0 and 1 are p1/p2 lamps */
@@ -1804,22 +1925,25 @@ WRITE8_MEMBER(decocass_state::cdsteljn_mux_w )
 		printf("%02x\n",data);
 }
 
-DRIVER_INIT_MEMBER(decocass_state,cdsteljn)
+DRIVER_INIT_MEMBER(decocass_state,cdstj2a0)
 {
 	/* standard init */
 	DRIVER_INIT_CALL(decocass);
 
 	/* install custom mahjong panel */
-	m_maincpu->space(AS_PROGRAM).install_write_handler(0xe413, 0xe413, write8_delegate(FUNC(decocass_state::cdsteljn_mux_w), this));
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0xe600, 0xe6ff, read8_delegate(FUNC(decocass_state::cdsteljn_input_r), this));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0xe413, 0xe413, write8_delegate(FUNC(decocass_state::cdstj2a0_mux_w), this));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0xe600, 0xe6ff, read8_delegate(FUNC(decocass_state::cdstj2a0_input_r), this));
 }
 
 /* -- */ GAME( 1981, decocass,  0,        decocass, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "DECO Cassette System", MACHINE_IS_BIOS_ROOT )
 /* -- */ GAME( 1981, ctsttape,  decocass, ctsttape, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Test Tape (DECO Cassette)", 0 )
-/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase (Japan MD v0)", 0 )
-/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase (US MD v1)", 0 )
-/* 02 */ // 1980.12 Sengoku Ninjatai
-/* 03 */ GAME( 1981, cmanhat,   decocass, cmanhat,  decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan (DECO Cassette)", MACHINE_IMPERFECT_GRAPHICS )
+/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [MD Cassette] (No.01/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [MD Cassette] (No.01/Ver.1,US)", MACHINE_IMPERFECT_GRAPHICS )
+/* 02 */ GAME( 1980, cninjt0a,  decocass, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [MD Cassette] (No.02/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1981, cninjt1d,  cninjt0a, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [MD Cassette] (No.02/Ver.1,Europe)", MACHINE_IMPERFECT_GRAPHICS )
+/* 03 */ GAME( 1980, cmanht0a,  decocass, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1980, cmanht1a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.1,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1980, cmanht2a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.2,Japan)", MACHINE_IMPERFECT_GRAPHICS )
 /* 04 */ GAME( 1981, cterrani,  decocass, cterrani, cterrani, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean (DECO Cassette)", 0 )
 /* 05 */ // 1981.?? Missile Sprinter
 /* 06 */ // 1980.12 Nebula
@@ -1829,20 +1953,23 @@ DRIVER_INIT_MEMBER(decocass_state,cdsteljn)
 /* 10 */ // 1981.?? Ocean to Ocean (medal)
 /* 11 */ GAME( 1981, clocknch,  decocass, clocknch, clocknch, decocass_state, decocass, ROT270, "Data East Corporation", "Lock'n'Chase (DECO Cassette)", 0 )
 /* 12 */ // 1981.08 Flash Boy/DECO Kid
-/* 13 */ GAME( 1981, cpgolf1a,  decocass, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf (Japan MD v1)", 0 )
-/*    */ GAME( 1981, cpgolf1b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf (US MD v1)", 0 )
-/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, 18 Challenge (Japan MD v4)", 0 )
-/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Japan MD v6)", 0 )
-/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (Europe MD v7)", 0 )
-/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf9b, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf, Tournament (US MD v9)", 0 )
-/* 14 */ GAME( 1981, cdsteljn,  decocass, cdsteljn, cdsteljn, decocass_state, cdsteljn, ROT270, "Data East Corporation", "DS Telejan (DECO Cassette, Japan)", 0 )
+/* 13 */ GAME( 1981, cpgolf1a,  decocass, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [MD Cassette] (No.13/Ver.1,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf1b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [MD Cassette] (No.13/Ver.1,US)", 0 )
+/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf4a, decocass_state, decocass, ROT270, "Data East Corporation", "18 Challenge Pro Golf [MD Cassette (No.13/Ver.4,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.6,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.7,Europe)", 0 )
+/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf9b, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.9,US)", 0 )
+/* 14 */ GAME( 1981, cdstj2a0,  decocass, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.2,Japan)", 0 )
+/*    */ GAME( 1981, cdstj3a0,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.3,Japan)", 0 )
+/*    */ GAME( 1981, cdstj4a2,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.4.2,Japan)", 0 )
+/*    */ GAME( 1981, cdstj4a3,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.4.3,Japan)", 0 )
 /* 15 */ GAME( 1981, cluckypo,  decocass, cluckypo, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Lucky Poker (DECO Cassette)", 0 )
 /* 16 */ GAME( 1981, ctisland,  decocass, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 1)", 0 )
 /*    */ GAME( 1981, ctisland2, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 2)", 0 )
-/*    */ GAME( 1981, ctisland3, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 3)", MACHINE_NOT_WORKING ) /* Different Bitswap? */
+/*    */ GAME( 1981, ctisland3, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 3)", MACHINE_NOT_WORKING )
 /* 17 */ // 1981.10 Bobbitto
-/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer (Japan MD v0)", 0 )
-/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer (US MD v0)", 0 )  // bad encryption
+/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [MD Cassette] (No.18/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [MD Cassette] (No.18/Ver.0,US)", MACHINE_IMPERFECT_GRAPHICS )
 /* 19 */ GAME( 1982, cdiscon1,  decocass, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Disco No.1 (DECO Cassette)", 0 )
 /*    */ GAME( 1982, csweetht,  cdiscon1, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Sweet Heart (DECO Cassette)", 0 )
 /* 20 */ GAME( 1982, ctornado,  decocass, ctornado, ctornado, decocass_state, decocass, ROT270, "Data East Corporation", "Tornado (DECO Cassette)", 0 )
