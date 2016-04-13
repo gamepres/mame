@@ -229,7 +229,10 @@ static INPUT_PORTS_START( chwych0a )
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x10, 0x10, "Unused" )                                PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
@@ -246,7 +249,10 @@ static INPUT_PORTS_START( cninjt0a )
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x10, 0x10, "Unused" )                                PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
@@ -263,7 +269,10 @@ static INPUT_PORTS_START( cmanht0a )
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x10, 0x10, "Unused" )                                PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
@@ -301,7 +310,10 @@ static INPUT_PORTS_START( cnebul2a )
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x10, 0x10, "Unused" )                                PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
@@ -316,7 +328,7 @@ static INPUT_PORTS_START( castro6a )
 	PORT_DIPSETTING(    0x06, "3000" )
 	PORT_DIPSETTING(    0x04, "5000" )
 	PORT_DIPSETTING(    0x02, "7000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
 	PORT_DIPNAME( 0x08, 0x08, "Number of Missiles" )                    PORT_DIPLOCATION("SW2:4")
 	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
@@ -326,7 +338,7 @@ static INPUT_PORTS_START( castro6a )
 	/* Switches 6 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
-static INPUT_PORTS_START( csuperas )
+static INPUT_PORTS_START( ctower0a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
@@ -334,14 +346,38 @@ static INPUT_PORTS_START( csuperas )
 	PORT_DIPSETTING(    0x01, "3" )
 	PORT_DIPSETTING(    0x00, "5" )
 	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3")
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
 	PORT_DIPSETTING(    0x06, "20000" )
 	PORT_DIPSETTING(    0x04, "30000" )
 	PORT_DIPSETTING(    0x02, "40000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x08, 0x08, DEF_STR( Difficulty ) )                          PORT_DIPLOCATION("SW2:4")
+	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
+	PORT_DIPNAME( 0x10, 0x10, "Unknown" )                               PORT_DIPLOCATION("SW2:5") /* TBD */
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	/* Switches 6 to 8 are shown as completly blank */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( csastf4a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Rockets" )                     PORT_DIPLOCATION("SW2:1") /* Lives */
+	PORT_DIPSETTING(    0x01, "3" )
+	PORT_DIPSETTING(    0x00, "5" )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
+	PORT_DIPSETTING(    0x06, "5000" )
+	PORT_DIPSETTING(    0x04, "5000" )
+	PORT_DIPSETTING(    0x02, "10000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
 	PORT_DIPNAME( 0x08, 0x08, "Alien Craft Movement" )                  PORT_DIPLOCATION("SW2:4")
 	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
-	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
+	PORT_DIPNAME( 0x10, 0x10, "Unused" )                                PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	/* Switches 5 is left blank, switches 6 to 8 are listed as "Country Code" A through F and "Don't Change" */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( clocknch )
@@ -367,7 +403,7 @@ static INPUT_PORTS_START( cpgolf1a )
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
 	PORT_DIPSETTING(    0x06, "10000" )
 	PORT_DIPSETTING(    0x04, "20000" )
 	PORT_DIPSETTING(    0x02, "30000" )
@@ -388,7 +424,7 @@ static INPUT_PORTS_START( cpgolf4a )
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
 	PORT_DIPSETTING(    0x06, "10000" )
 	PORT_DIPSETTING(    0x04, "20000" )
 	PORT_DIPSETTING(    0x02, "50000" )
@@ -533,7 +569,7 @@ static INPUT_PORTS_START( cexplr0a )
 	PORT_DIPSETTING(    0x06, "10000" )
 	PORT_DIPSETTING(    0x04, "1500000" )
 	PORT_DIPSETTING(    0x02, "30000" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
 	PORT_DIPNAME( 0x08, 0x08, "Missile" )                               PORT_DIPLOCATION("SW2:4")
 	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
@@ -551,7 +587,7 @@ static INPUT_PORTS_START( ctornado )
 	PORT_DIPSETTING(    0x01, "3" )
 	PORT_DIPSETTING(    0x00, "5" )
 	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3")
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
 	PORT_DIPSETTING(    0x06, "10000" )
 	PORT_DIPSETTING(    0x04, "20000" )
 	PORT_DIPSETTING(    0x02, "30000" )
@@ -933,11 +969,13 @@ static MACHINE_CONFIG_DERIVED( chwych0a, decocass )
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,chwych0a)
 MACHINE_CONFIG_END
 
+
 static MACHINE_CONFIG_DERIVED( cninjt0a, decocass )
 
 	/* basic machine hardware */
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cninjt0a)
 MACHINE_CONFIG_END
+
 
 static MACHINE_CONFIG_DERIVED( cmanht0a, decocass )
 
@@ -945,11 +983,13 @@ static MACHINE_CONFIG_DERIVED( cmanht0a, decocass )
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cmanht0a)
 MACHINE_CONFIG_END
 
+
 static MACHINE_CONFIG_DERIVED( cterra2a, decocass )
 
 	/* basic machine hardware */
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cterra2a)
 MACHINE_CONFIG_END
+
 
 static MACHINE_CONFIG_DERIVED( cnebul2a, decocass )
 
@@ -965,10 +1005,17 @@ static MACHINE_CONFIG_DERIVED( castro6a, decocass )
 MACHINE_CONFIG_END
 
 
-static MACHINE_CONFIG_DERIVED( csuperas, decocass )
+static MACHINE_CONFIG_DERIVED( ctower0a, decocass )
 
 	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,csuperas)
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,ctower0a)
+MACHINE_CONFIG_END
+
+
+static MACHINE_CONFIG_DERIVED( csastf4a, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,csastf4a)
 MACHINE_CONFIG_END
 
 
@@ -1164,7 +1211,7 @@ MACHINE_CONFIG_END
 #define DECOCASS_COMMON_ROMS    \
 	/* basic roms for new system */ \
 	ROM_REGION( 0x10000, "audiocpu", 0 )      \
-	ROM_LOAD( "v1.5a",     0xf800, 0x0800, CRC(b66b2c2a) SHA1(0097f38beb4872e735e560148052e258a26b08fd) ) /* from RMS-8 board: 2716 eprom @5A w/V1- label,  contains audio cpu code */ \
+	ROM_LOAD( "v1.5a",      0xf800, 0x0800, CRC(b66b2c2a) SHA1(0097f38beb4872e735e560148052e258a26b08fd) ) /* from RMS-8 board: 2716 eprom @5A w/V1- label,  contains audio cpu code */ \
 \
 	ROM_REGION( 0x10000, "mcu", 0 )   /* 4k for the 8041 MCU (actually 1K ROM + 64 bytes RAM @ 0x800) */ \
 	ROM_LOAD( "cassmcu.1c", 0x0000, 0x0400, CRC(a6df18fd) SHA1(1f9ea47e372d31767c936c15852b43df2b0ee8ff) ) /* from B10-B board: "NEC // JAPAN // X1202D-108 // D8041C 535" 8041 MCU @1C, handles cassette and other stuff; This info needs additional verification, as the d8041-535 mcu has not been dumped yet to prove code is the same. */ \
@@ -1229,10 +1276,10 @@ ROM_START( ctsttape )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "de-0061.pro",     0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "testtape.cas", 0x0000, 0x2000, CRC(4f9d8efb) SHA1(5b77747dad1033e5703f06c0870441b54b4256c5) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "testtape.cas",    0x0000, 0x2000, CRC(4f9d8efb) SHA1(5b77747dad1033e5703f06c0870441b54b4256c5) )
 ROM_END
 
 /* 01 HWY Chase (World) */
@@ -1240,7 +1287,7 @@ ROM_START( chwych0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1010-a-0.cas",   0x0000, 0x6900, CRC(6bbbacbc) SHA1(a56842715cb751405794086fcaea2401374f7367) )
+	ROM_LOAD( "dt-1010-a-0.cas", 0x0000, 0x6900, CRC(6bbbacbc) SHA1(a56842715cb751405794086fcaea2401374f7367) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1251,7 +1298,7 @@ ROM_START( chwych1b ) // version MD 1-B-0 not verified (need redump for verifica
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1011-b-0.cas",   0x0000, 0x6800, CRC(ebb21163) SHA1(93c87ef303b5ed669291f62393d50be5069aff47) )
+	ROM_LOAD( "dt-1011-b-0.cas", 0x0000, 0x6800, CRC(ebb21163) SHA1(93c87ef303b5ed669291f62393d50be5069aff47) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
@@ -1263,7 +1310,7 @@ ROM_START( cninjt0a ) // version MD 0-A-0 verified, 100 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1020-a-0.cas",   0x0000, 0x6500, CRC(e2964e5b) SHA1(74c8475391a363f523368ab3b67d79034bf2c747) )
+	ROM_LOAD( "dt-1020-a-0.cas", 0x0000, 0x6500, CRC(e2964e5b) SHA1(74c8475391a363f523368ab3b67d79034bf2c747) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1274,7 +1321,7 @@ ROM_START( cninjt1d ) // version MD 1-D-0 verified (might be a convert from A ve
 	DECOCASS_BIOS_DN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6500, CRC(f970f436) SHA1(a85534f1bc8c7a4eceae8a095d178a3c6795cdee) )
+	ROM_LOAD( "dt-1021-d-0.cas", 0x0000, 0x6500, CRC(f970f436) SHA1(a85534f1bc8c7a4eceae8a095d178a3c6795cdee) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
@@ -1286,7 +1333,7 @@ ROM_START( cmanht0a ) // version MD 0-A-0 not verified, 095 blocks, decrypted ma
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1020-a-0.cas",   0x0000, 0x6000, CRC(59983936) SHA1(10a6785b9e126afd880090b163563fcb47b2fd96) )
+	ROM_LOAD( "dt-1020-a-0.cas", 0x0000, 0x6000, CRC(59983936) SHA1(10a6785b9e126afd880090b163563fcb47b2fd96) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1297,7 +1344,7 @@ ROM_START( cmanht1a ) // version MD 1-A-0 verified, 095 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6000, CRC(92dae2b1) SHA1(cc048ac6601553675078230290beb3d59775bfe0) )
+	ROM_LOAD( "dt-1021-d-0.cas", 0x0000, 0x6000, CRC(92dae2b1) SHA1(cc048ac6601553675078230290beb3d59775bfe0) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1308,7 +1355,7 @@ ROM_START( cmanht2a ) // version MD 2-A-0 verified, 095 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1021-d-0.cas",   0x0000, 0x6000, CRC(f19ffcda) SHA1(64a4762901a683f03617948d5658fe9581338bb8) )
+	ROM_LOAD( "dt-1021-d-0.cas", 0x0000, 0x6000, CRC(f19ffcda) SHA1(64a4762901a683f03617948d5658fe9581338bb8) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
 	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1319,114 +1366,155 @@ ROM_END
 ROM_START( cterra2a ) // version MD 2-A-0 verified, 104 blocks, decrypted main data CRC(5978ca00)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1042-a.cas", 0x0000, 0x6900, CRC(d7dae636) SHA1(a00e8e74a8f416ece44933077c6ac60e57181120) )
+	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1042-a.cas",   0x0000, 0x6900, CRC(d7dae636) SHA1(a00e8e74a8f416ece44933077c6ac60e57181120) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 ROM_START( cterra2d ) // version MD 2-D-0 verified, 104 blocks, decrypted main data CRC(013e7750), 1 bit difference with A version
 	DECOCASS_BIOS_DN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1042-d.cas", 0x0000, 0x6900, CRC(3b4961ce) SHA1(871d19a1203f828a43103162c043f63ed44c2105) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1042-d.cas",   0x0000, 0x6900, CRC(3b4961ce) SHA1(871d19a1203f828a43103162c043f63ed44c2105) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-d.rom", 0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
+	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
 ROM_END
 
 ROM_START( cterra4a ) // version MD 4-A-0 not verified, 105 blocks, decrypted main data CRC(dcce263c)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1044-a.cas", 0x0000, 0x6a00, CRC(3f5c7bd8) SHA1(2e88a59386c63523c041065b753e132b61b4e306) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1044-a.cas",   0x0000, 0x6a00, CRC(3f5c7bd8) SHA1(2e88a59386c63523c041065b753e132b61b4e306) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 ROM_START( cterra4b ) // version MD 4-B-0 not verified, 105 blocks, decrypted main data CRC(dcce263c)
 	DECOCASS_BIOS_BN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1044-b.cas", 0x0000, 0x6a00, CRC(e1d4846c) SHA1(893f81d32b74e82a61f19bd3298ff964834cddd7) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1044-b.cas",   0x0000, 0x6a00, CRC(e1d4846c) SHA1(893f81d32b74e82a61f19bd3298ff964834cddd7) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 /* 06 Nebula (World) */
 ROM_START( cnebul2a ) // version MD 2-A-0 verified, 091 blocks, decrypted main data CRC(6eac1650)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1062-a.cas", 0x0000, 0x5c00, CRC(c457f713) SHA1(9de093d9768180a466286f5ef48d40eb901cab7b) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1062-a.cas",   0x0000, 0x5c00, CRC(c457f713) SHA1(9de093d9768180a466286f5ef48d40eb901cab7b) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 /* 07 Astro Fantasia (World) */
 ROM_START( castro6a ) // version MD 6-A-0 verified, 104 blocks, decrypted main data CRC(b5c3bc9b)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castro6a.cas", 0x0000, 0x6900, CRC(6d3ab1c3) SHA1(b201891623533df9c899107786b11e8e82224735) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "castro6a.cas",   0x0000, 0x6900, CRC(6d3ab1c3) SHA1(b201891623533df9c899107786b11e8e82224735) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 ROM_START( castro6b ) // version MD 6-B-0 verified, 104 blocks, decrypted main data CRC(b5C3bc9b)
 	DECOCASS_BIOS_BN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castro6b.cas", 0x0000, 0x6900, CRC(e2a4fd76) SHA1(3664f05bea493eeef03e74a0be1f3267c2f2136f) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "castro6b.cas",    0x0000, 0x6900, CRC(e2a4fd76) SHA1(3664f05bea493eeef03e74a0be1f3267c2f2136f) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 ROM_START( castro7a ) // version MD 7-A-0 verified, 105 blocks, decrypted main data CRC(d9260c6e)
 	DECOCASS_BIOS_AN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castro7a.cas", 0x0000, 0x6a00, CRC(748d750b) SHA1(4a8239e2c665b12c8293032b4f905f286116914c) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "castro7a.cas",    0x0000, 0x6a00, CRC(748d750b) SHA1(4a8239e2c665b12c8293032b4f905f286116914c) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 ROM_START( castro7b ) // version MD 7-B-0 verified, 105 blocks, decrypted main data CRC(d9260c6e)
 	DECOCASS_BIOS_BN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castro7b.cas", 0x0000, 0x6a00, CRC(85182551) SHA1(64cdd47c54f8cbb84c25605005eab0f390330f9a) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "castro7b.cas",    0x0000, 0x6a00, CRC(85182551) SHA1(64cdd47c54f8cbb84c25605005eab0f390330f9a) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 ROM_START( castro4c ) // version MD 4-C-0 verified, 104 blocks, decrypted main data CRC(03eb00ee)
 	DECOCASS_BIOS_CN_ROMS
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castro4c.cas", 0x0000, 0x6900, CRC(8565c89e) SHA1(34a6b31546dec54808d177d5e2888896f2ae8b8b) )
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "castro4c.cas",    0x0000, 0x6900, CRC(8565c89e) SHA1(34a6b31546dec54808d177d5e2888896f2ae8b8b) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(095953c8) SHA1(74e898f305da38dab639d7fc1d22a2db2b1cc2b9) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(095953c8) SHA1(74e898f305da38dab639d7fc1d22a2db2b1cc2b9) )
+ROM_END
+
+/* 08 The Tower (World) */
+ROM_START( ctower0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main data CRC(ae729432)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1080-a.cas",   0x0000, 0x6900, CRC(6fee3ba6) SHA1(3cf3d8becaf3e55045dd58fd3e1d51e786a44391) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 /* 09 Super Astro Fighter (World) */
-ROM_START( csuperas )
+ROM_START( csastf4a ) // version MD 4-A-0 verified, 094 blocks, decrypted main data CRC(e334ed6f)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1094-a-0.cas", 0x0000, 0x5f00, CRC(5e86c2a5) SHA1(e0aafe1db67b9fd52570f9029c10fadcd8cf1404) )
+	
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( csastf4b ) // version MD 4-B-0 verified, 094 blocks, decrypted main data CRC(e334ed6f)
 	DECOCASS_BIOS_BN_ROMS
 
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1094-b-0.cas", 0x0000, 0x5f00, CRC(95574a9b) SHA1(cc2d4a328a3279e7b641effb42098b5dd02e0c82) )
+	
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_END
 
-	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "csuperas.cas", 0x0000, 0x8000, CRC(fabcd07f) SHA1(4070c668ad6725f0710cf7fe6df0d5f80272a449) )
+ROM_START( csastf2c ) // version MD 2-C-0 verified, 092 blocks, decrypted main data CRC(ea665fbb)
+	DECOCASS_BIOS_CN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1092-c-0.cas", 0x0000, 0x5d00, CRC(c9b8e154) SHA1(78ed3e1398ba8603850d0f578fc97f26a48532bc) )
+	
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-c.rom",   0x0000, 0x0020, CRC(095953c8) SHA1(74e898f305da38dab639d7fc1d22a2db2b1cc2b9) )
+ROM_END
+
+ROM_START( csastf3b ) // version MD 3-B-0 verified, 094 blocks, decrypted main data CRC(52e8d339)
+	DECOCASS_BIOS_BN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1093-b-0.cas", 0x0000, 0x5f00, CRC(92184930) SHA1(16a764be11cd8e002126e49769ce7eced70ec7ef) )
+	
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 /* 11 Lock'n'Chase (World) */
@@ -1434,10 +1522,10 @@ ROM_START( clocknch )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1110_b.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1110_b.dgl",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "clocknch.cas",  0x0000, 0x8000, CRC(c9d163a4) SHA1(3ef55a8d8f603059e263776c08eb81f2cf18b75c) )
+	ROM_LOAD( "clocknch.cas",    0x0000, 0x8000, CRC(c9d163a4) SHA1(3ef55a8d8f603059e263776c08eb81f2cf18b75c) )
 ROM_END
 
 /* 13 Pro Golf (World), Tournament Pro Golf (World), 18 Challenge Pro Golf (World) */
@@ -1445,7 +1533,7 @@ ROM_START( cpgolf1a ) // version MD 1-A-0 verified, 099 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1131-a-0.cas",   0x0000, 0x6400, CRC(b1f7f304) SHA1(e9e5e9363e239a064fa3da54a54e01bb5ba92a93) )
+	ROM_LOAD( "dt-1131-a-0.cas", 0x0000, 0x6400, CRC(b1f7f304) SHA1(e9e5e9363e239a064fa3da54a54e01bb5ba92a93) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1455,17 +1543,17 @@ ROM_START( cpgolf1b ) // version MD 1-B-0 verified, 099 blocks, decrypted main d
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1131-b-0.cas",   0x0000, 0x6400, CRC(f1f1e3be) SHA1(1ca40902d30a0fd2b5a1a783b276846088e53112) )
+	ROM_LOAD( "dt-1131-b-0.cas", 0x0000, 0x6400, CRC(f1f1e3be) SHA1(1ca40902d30a0fd2b5a1a783b276846088e53112) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
-	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 ROM_START( cpgolf4a ) // version MD 4-A-0 verified, 102 blocks, decrypted main data CRC(9ebadcad)
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1134-a-0.cas",   0x0000, 0x6700, CRC(3024396c) SHA1(c49d878bae46bf8bf0b0b098a5d94d9ec68b526d) )
+	ROM_LOAD( "dt-1134-a-0.cas", 0x0000, 0x6700, CRC(3024396c) SHA1(c49d878bae46bf8bf0b0b098a5d94d9ec68b526d) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1475,7 +1563,7 @@ ROM_START( cpgolf6a ) // version MD 6-A-0 verified, 104 blocks, decrypted main d
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1136-a-0.cas",   0x0000, 0x6900, CRC(8441136f) SHA1(7b7702d7b7f094b709fc4503f3d55d3cea59a9b1) )
+	ROM_LOAD( "dt-1136-a-0.cas", 0x0000, 0x6900, CRC(8441136f) SHA1(7b7702d7b7f094b709fc4503f3d55d3cea59a9b1) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
 	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
@@ -1485,7 +1573,7 @@ ROM_START( cpgolf7d ) // version MD 7-D-0 verified, 100 blocks, decrypted main d
 	DECOCASS_BIOS_DN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1137-d-0.cas",   0x0000, 0x6500, CRC(9abea0f4) SHA1(8ffe16ebfa98cbe2d3d00fdcac446e3949e7c9e9) )
+	ROM_LOAD( "dt-1137-d-0.cas", 0x0000, 0x6500, CRC(9abea0f4) SHA1(8ffe16ebfa98cbe2d3d00fdcac446e3949e7c9e9) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
 	ROM_LOAD( "dp-1000-d.rom",   0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
@@ -1495,10 +1583,10 @@ ROM_START( cpgolf9b ) // version MD 9-B-0 verified, 102 blocks, decrypted main d
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1139-b-0.cas",  0x0000, 0x6700, CRC(5a535ae5) SHA1(12234d11b68beb450148d52f0103103101b6d919) )
+	ROM_LOAD( "dt-1139-b-0.cas", 0x0000, 0x6700, CRC(5a535ae5) SHA1(12234d11b68beb450148d52f0103103101b6d919) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
-	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 ROM_END
 
 /* 14 DS Telejan (Japan) */
@@ -1548,10 +1636,10 @@ ROM_START( cluckypo )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1150_b.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1150_b.dgl",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cluckypo.cas",  0x0000, 0x8000, CRC(2070c243) SHA1(cd3af309af8eb27937756c1fe6fd0504be5aaaf5) )
+	ROM_LOAD( "cluckypo.cas",    0x0000, 0x8000, CRC(2070c243) SHA1(cd3af309af8eb27937756c1fe6fd0504be5aaaf5) )
 ROM_END
 
 /* 16 Treasure Island (World) */
@@ -1559,48 +1647,48 @@ ROM_START( ctisland )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "de-0061.pro",     0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "ctisland.cas", 0x0000, 0x8000, CRC(3f63b8f8) SHA1(2fd0679ef9750a228ebb098672ab6091fda75804) )
+	ROM_LOAD( "ctisland.cas",    0x0000, 0x8000, CRC(3f63b8f8) SHA1(2fd0679ef9750a228ebb098672ab6091fda75804) )
 
 	ROM_REGION( 0x4000, "user3", 0 )      /* roms from the overlay pcb */
-	ROM_LOAD( "deco-ti.x1",   0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
-	ROM_LOAD( "deco-ti.x2",   0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
-	ROM_LOAD( "deco-ti.x3",   0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
-	ROM_LOAD( "deco-ti.x4",   0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
+	ROM_LOAD( "deco-ti.x1",      0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
+	ROM_LOAD( "deco-ti.x2",      0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
+	ROM_LOAD( "deco-ti.x3",      0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
+	ROM_LOAD( "deco-ti.x4",      0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
 ROM_END
 
 ROM_START( ctisland2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "de-0061.pro",     0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "ctislnd2.cas", 0x0000, 0x8000, CRC(2854b4c0) SHA1(d3b4e0031dbb2340fbbe396a1ff9b8fbfd63663e) )
+	ROM_LOAD( "ctislnd2.cas",    0x0000, 0x8000, CRC(2854b4c0) SHA1(d3b4e0031dbb2340fbbe396a1ff9b8fbfd63663e) )
 
 	ROM_REGION( 0x4000, "user3", 0 )      /* roms from the overlay pcb */
-	ROM_LOAD( "deco-ti.x1",   0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
-	ROM_LOAD( "deco-ti.x2",   0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
-	ROM_LOAD( "deco-ti.x3",   0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
-	ROM_LOAD( "deco-ti.x4",   0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
+	ROM_LOAD( "deco-ti.x1",      0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
+	ROM_LOAD( "deco-ti.x2",      0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
+	ROM_LOAD( "deco-ti.x3",      0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
+	ROM_LOAD( "deco-ti.x4",      0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
 ROM_END
 
 ROM_START( ctisland3 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "de-0061.pro",     0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "ctislnd3.cas", 0x0000, 0x8000, CRC(45464e1e) SHA1(03275694d963c7ab0e0f5525e248e69da5f9b591) )
+	ROM_LOAD( "ctislnd3.cas",    0x0000, 0x8000, CRC(45464e1e) SHA1(03275694d963c7ab0e0f5525e248e69da5f9b591) )
 
 	ROM_REGION( 0x4000, "user3", 0 )      /* roms from the overlay pcb */
-	ROM_LOAD( "deco-ti.x1",   0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
-	ROM_LOAD( "deco-ti.x2",   0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
-	ROM_LOAD( "deco-ti.x3",   0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
-	ROM_LOAD( "deco-ti.x4",   0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
+	ROM_LOAD( "deco-ti.x1",      0x0000, 0x1000, CRC(a7f8aeba) SHA1(0c9ba1a46d0636b36f40fad31638db89f374f778) )
+	ROM_LOAD( "deco-ti.x2",      0x1000, 0x1000, CRC(2a0d3c91) SHA1(552d08fcddddbea5b52fa1e8decd188ae49c86ea) )
+	ROM_LOAD( "deco-ti.x3",      0x2000, 0x1000, CRC(3a26b97c) SHA1(f57e76077806e149a9e455c85e5431eac2d42bc3) )
+	ROM_LOAD( "deco-ti.x4",      0x3000, 0x1000, CRC(1cbe43de) SHA1(8f26ad224e96c87da810c60d3dd88d415400b9fc) )
 ROM_END
 
 /* 18 Explorer (World) */
@@ -1611,21 +1699,21 @@ ROM_START( cexplr0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main d
 	ROM_LOAD( "dt-1180-a-0.cas", 0x0000, 0x6900, CRC(f96eef1f) SHA1(a8b2bbd6148d9144a9fe1e08380f015eb443f8a9) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
-	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+	ROM_LOAD( "dp-1000-a.rom",   0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 
 	ROM_REGION( 0x5000, "user3", 0 )      /* roms from the overlay pcb, first row (need redump for confirmation) */
-    ROM_LOAD( "gr0_18.x1",   0x0000, 0x1000, CRC(f2ca58f0) SHA1(5c9faeca6247b70586dc2a3765805ac96960ac79) )
-	ROM_LOAD( "gr0_18.x2",   0x1000, 0x1000, CRC(75d999bf) SHA1(7c257285d5b69642ec542dc56defdbb1f2072454) )
-	ROM_LOAD( "gr0_18.x3",   0x2000, 0x1000, CRC(941539c6) SHA1(2e879107f56bf258ad90fb83c2ab278027acb0bb) )
-	ROM_LOAD( "gr0_18.x4",   0x3000, 0x1000, CRC(73388544) SHA1(9c98f79e431d0881e20eac4c6c4177db8973ce20) )
-	ROM_LOAD( "gr0_18.x5",   0x4000, 0x1000, CRC(b40699c5) SHA1(4934283d2845dbd3ea9a7fa349f663a34fcdfdf8) )
+    ROM_LOAD( "gr0_18.x1",       0x0000, 0x1000, CRC(f2ca58f0) SHA1(5c9faeca6247b70586dc2a3765805ac96960ac79) )
+	ROM_LOAD( "gr0_18.x2",       0x1000, 0x1000, CRC(75d999bf) SHA1(7c257285d5b69642ec542dc56defdbb1f2072454) )
+	ROM_LOAD( "gr0_18.x3",       0x2000, 0x1000, CRC(941539c6) SHA1(2e879107f56bf258ad90fb83c2ab278027acb0bb) )
+	ROM_LOAD( "gr0_18.x4",       0x3000, 0x1000, CRC(73388544) SHA1(9c98f79e431d0881e20eac4c6c4177db8973ce20) )
+	ROM_LOAD( "gr0_18.x5",       0x4000, 0x1000, CRC(b40699c5) SHA1(4934283d2845dbd3ea9a7fa349f663a34fcdfdf8) )
 
 	ROM_REGION( 0x5000, "user4", 0 )      /* roms from the overlay pcb, second row (need redump for confirmation) */
-    ROM_LOAD( "gr0_18.y1",   0x0000, 0x1000, CRC(d887dc50) SHA1(9321e40d208bd029657ab87eaf815f8a09e49b48) )
-	ROM_LOAD( "gr0_18.y2",   0x1000, 0x1000, CRC(fe325d0d) SHA1(3e4aaba87e2aa656346169d512d70083605692c6) )
-	ROM_LOAD( "gr0_18.y3",   0x2000, 0x1000, CRC(7a787ecf) SHA1(5261747823b58be3fabb8d1a8cb4069082f95b30) )
-	ROM_LOAD( "gr0_18.y4",   0x3000, 0x1000, CRC(ac30e8c7) SHA1(f8f53b982df356e5bf2624afe0f8a72635b3b4b3) )
-	ROM_LOAD( "gr0_18.y5",   0x4000, 0x1000, CRC(0a6b8f03) SHA1(09b477579a5fed4c45299b6366141ef4a8c9a410) )
+    ROM_LOAD( "gr0_18.y1",       0x0000, 0x1000, CRC(d887dc50) SHA1(9321e40d208bd029657ab87eaf815f8a09e49b48) )
+	ROM_LOAD( "gr0_18.y2",       0x1000, 0x1000, CRC(fe325d0d) SHA1(3e4aaba87e2aa656346169d512d70083605692c6) )
+	ROM_LOAD( "gr0_18.y3",       0x2000, 0x1000, CRC(7a787ecf) SHA1(5261747823b58be3fabb8d1a8cb4069082f95b30) )
+	ROM_LOAD( "gr0_18.y4",       0x3000, 0x1000, CRC(ac30e8c7) SHA1(f8f53b982df356e5bf2624afe0f8a72635b3b4b3) )
+	ROM_LOAD( "gr0_18.y5",       0x4000, 0x1000, CRC(0a6b8f03) SHA1(09b477579a5fed4c45299b6366141ef4a8c9a410) )
 ROM_END
 
 ROM_START( cexplr0b ) // version MD 0-B-0 unverified (need redump), 104 blocks, decrypted main data CRC(673D1F0D)
@@ -1635,21 +1723,21 @@ ROM_START( cexplr0b ) // version MD 0-B-0 unverified (need redump), 104 blocks, 
 	ROM_LOAD( "dt-1180-b-0.cas", 0x0000, 0x6900, CRC(3b912c8a) SHA1(e69212d84e2507ff44e49b8e5586f75e9431fb6c) )
 
 	ROM_REGION( 0x00020, "dongle", 0 )    /* decryption rom from dongle */
-	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+	ROM_LOAD( "dp-1000-b.rom",   0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
 
 	ROM_REGION( 0x5000, "user3", 0 )      /* roms from the overlay pcb, first row (need redump for confirmation) */
-    ROM_LOAD( "gr0_18.x1",   0x0000, 0x1000, CRC(f2ca58f0) SHA1(5c9faeca6247b70586dc2a3765805ac96960ac79) )
-	ROM_LOAD( "gr0_18.x2",   0x1000, 0x1000, CRC(75d999bf) SHA1(7c257285d5b69642ec542dc56defdbb1f2072454) )
-	ROM_LOAD( "gr0_18.x3",   0x2000, 0x1000, CRC(941539c6) SHA1(2e879107f56bf258ad90fb83c2ab278027acb0bb) )
-	ROM_LOAD( "gr0_18.x4",   0x3000, 0x1000, CRC(73388544) SHA1(9c98f79e431d0881e20eac4c6c4177db8973ce20) )
-	ROM_LOAD( "gr0_18.x5",   0x4000, 0x1000, CRC(b40699c5) SHA1(4934283d2845dbd3ea9a7fa349f663a34fcdfdf8) )
+    ROM_LOAD( "gr0_18.x1",       0x0000, 0x1000, CRC(f2ca58f0) SHA1(5c9faeca6247b70586dc2a3765805ac96960ac79) )
+	ROM_LOAD( "gr0_18.x2",       0x1000, 0x1000, CRC(75d999bf) SHA1(7c257285d5b69642ec542dc56defdbb1f2072454) )
+	ROM_LOAD( "gr0_18.x3",       0x2000, 0x1000, CRC(941539c6) SHA1(2e879107f56bf258ad90fb83c2ab278027acb0bb) )
+	ROM_LOAD( "gr0_18.x4",       0x3000, 0x1000, CRC(73388544) SHA1(9c98f79e431d0881e20eac4c6c4177db8973ce20) )
+	ROM_LOAD( "gr0_18.x5",       0x4000, 0x1000, CRC(b40699c5) SHA1(4934283d2845dbd3ea9a7fa349f663a34fcdfdf8) )
 
 	ROM_REGION( 0x5000, "user4", 0 )      /* roms from the overlay pcb, second row (need redump for confirmation) */
-    ROM_LOAD( "gr0_18.y1",   0x0000, 0x1000, CRC(d887dc50) SHA1(9321e40d208bd029657ab87eaf815f8a09e49b48) )
-	ROM_LOAD( "gr0_18.y2",   0x1000, 0x1000, CRC(fe325d0d) SHA1(3e4aaba87e2aa656346169d512d70083605692c6) )
-	ROM_LOAD( "gr0_18.y3",   0x2000, 0x1000, CRC(7a787ecf) SHA1(5261747823b58be3fabb8d1a8cb4069082f95b30) )
-	ROM_LOAD( "gr0_18.y4",   0x3000, 0x1000, CRC(ac30e8c7) SHA1(f8f53b982df356e5bf2624afe0f8a72635b3b4b3) )
-	ROM_LOAD( "gr0_18.y5",   0x4000, 0x1000, CRC(0a6b8f03) SHA1(09b477579a5fed4c45299b6366141ef4a8c9a410) )
+    ROM_LOAD( "gr0_18.y1",       0x0000, 0x1000, CRC(d887dc50) SHA1(9321e40d208bd029657ab87eaf815f8a09e49b48) )
+	ROM_LOAD( "gr0_18.y2",       0x1000, 0x1000, CRC(fe325d0d) SHA1(3e4aaba87e2aa656346169d512d70083605692c6) )
+	ROM_LOAD( "gr0_18.y3",       0x2000, 0x1000, CRC(7a787ecf) SHA1(5261747823b58be3fabb8d1a8cb4069082f95b30) )
+	ROM_LOAD( "gr0_18.y4",       0x3000, 0x1000, CRC(ac30e8c7) SHA1(f8f53b982df356e5bf2624afe0f8a72635b3b4b3) )
+	ROM_LOAD( "gr0_18.y5",       0x4000, 0x1000, CRC(0a6b8f03) SHA1(09b477579a5fed4c45299b6366141ef4a8c9a410) )
 ROM_END
 
 /* The Following use Dongle Type 2 (CS82-007)
@@ -1661,20 +1749,20 @@ ROM_START( cdiscon1 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1190_b.dgl", 0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
+	ROM_LOAD( "dp-1190_b.dgl",   0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cdiscon1.cas", 0x0000, 0x8000, CRC(1429a397) SHA1(12f9e03fcda31dc6161a39bf5c3315a1e9e94565) )
+	ROM_LOAD( "cdiscon1.cas",    0x0000, 0x8000, CRC(1429a397) SHA1(12f9e03fcda31dc6161a39bf5c3315a1e9e94565) )
 ROM_END
 
 ROM_START( csweetht )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )   /* dongle data */
-	ROM_LOAD( "cdiscon1.pro", 0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
+	ROM_LOAD( "cdiscon1.pro",    0x0000, 0x0800, CRC(0f793fab) SHA1(331f1b1b482fcd10f42c388a503f9af62d705401) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
-	ROM_LOAD( "csweetht.cas", 0x0000, 0x8000, CRC(175ef706) SHA1(49b86233f69d0daf54a6e59b86e69b8159e8f6cc) )
+	ROM_LOAD( "csweetht.cas",    0x0000, 0x8000, CRC(175ef706) SHA1(49b86233f69d0daf54a6e59b86e69b8159e8f6cc) )
 ROM_END
 
 /* 20 Tornado (World) */
@@ -1682,10 +1770,10 @@ ROM_START( ctornado )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "ctornado.pro", 0x0000, 0x0800, CRC(c9a91697) SHA1(3f7163291edbdf1a596e3cd2b7a16bbb140ffb36) )
+	ROM_LOAD( "ctornado.pro",    0x0000, 0x0800, CRC(c9a91697) SHA1(3f7163291edbdf1a596e3cd2b7a16bbb140ffb36) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "ctornado.cas", 0x0000, 0x8000, CRC(e4e36ce0) SHA1(48a11823121fb2e3de31ae08e453c0124fc4f7f3) )
+	ROM_LOAD( "ctornado.cas",    0x0000, 0x8000, CRC(e4e36ce0) SHA1(48a11823121fb2e3de31ae08e453c0124fc4f7f3) )
 ROM_END
 
 /* 21 Mission-X (World) */
@@ -1694,10 +1782,10 @@ ROM_START( cmissnx )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-121_b.dgl", 0x0000, 0x0800, CRC(8a41c071) SHA1(7b16d933707bf21d25dcd11db6a6c28834b11c5b) )
+	ROM_LOAD( "dp-121_b.dgl",    0x0000, 0x0800, CRC(8a41c071) SHA1(7b16d933707bf21d25dcd11db6a6c28834b11c5b) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cmissnx.cas",  0x0000, 0x8000, CRC(3a094e11) SHA1(c355fe14838187cbde19a799e5c60083c82615ac) ) /* Is this the 3B version? */
+	ROM_LOAD( "cmissnx.cas",     0x0000, 0x8000, CRC(3a094e11) SHA1(c355fe14838187cbde19a799e5c60083c82615ac) ) /* Is this the 3B version? */
 ROM_END
 
 /* 22 Pro Tennis (World) */
@@ -1705,10 +1793,10 @@ ROM_START( cptennis )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x00800, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cptennis.pro", 0x0000, 0x0800, CRC(59b8cede) SHA1(514861a652b5256a11477fc357bc01dfd87f712b) )
+	ROM_LOAD( "cptennis.pro",    0x0000, 0x0800, CRC(59b8cede) SHA1(514861a652b5256a11477fc357bc01dfd87f712b) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cptennis.cas", 0x0000, 0x8000, CRC(6bb257fe) SHA1(7554bf1996bc9e9c04a276aab050708d70103f54) )
+	ROM_LOAD( "cptennis.cas",    0x0000, 0x8000, CRC(6bb257fe) SHA1(7554bf1996bc9e9c04a276aab050708d70103f54) )
 ROM_END
 
 
@@ -1723,7 +1811,7 @@ ROM_START( cadanglr ) // version 5-B-0
 	ROM_LOAD( "dp-1250-a-0.dgl", 0x0000, 0x1000, CRC(92a3b387) SHA1(e17a155d02e9ed806590b23a845dc7806b6720b1) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1255-b-0.cas",   0x0000, 0x7400, CRC(eb985257) SHA1(1285724352a59c96cc4edf4f43e89dd6d8c585b2) )
+	ROM_LOAD( "dt-1255-b-0.cas", 0x0000, 0x7400, CRC(eb985257) SHA1(1285724352a59c96cc4edf4f43e89dd6d8c585b2) )
 ROM_END
 
 ROM_START( cfishing )
@@ -1733,7 +1821,7 @@ ROM_START( cfishing )
 	ROM_LOAD( "dp-1250-a-0.dgl", 0x0000, 0x1000, CRC(92a3b387) SHA1(e17a155d02e9ed806590b23a845dc7806b6720b1) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1250-a-0.cas",   0x0000, 0x7500, CRC(d4a16425) SHA1(25afaabdc8b2217d5e73606a36ea9ba408d7bc4b) )
+	ROM_LOAD( "dt-1250-a-0.cas", 0x0000, 0x7500, CRC(d4a16425) SHA1(25afaabdc8b2217d5e73606a36ea9ba408d7bc4b) )
 ROM_END
 
 
@@ -1743,7 +1831,7 @@ ROM_START( cbtime ) // version 7-B-0
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-126_b.dgl", 0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
+	ROM_LOAD( "dp-126_b.dgl",    0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
 	ROM_LOAD( "dt-126_7b.cas",   0x0000, 0x8000, CRC(56d7dc58) SHA1(34b2513c9ca7ab40f532b6d6d911aa3012113632) )
@@ -1753,10 +1841,10 @@ ROM_START( chamburger ) // version 0-A-0
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-126_a.dgl",   0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
+	ROM_LOAD( "dp-126_a.dgl",    0x0000, 0x1000, CRC(25bec0f0) SHA1(9fb1f9699f37937421e26d4fb8fdbcd21a5ddc5c) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-126_a.cas",   0x0000, 0x8000, CRC(334fb987) SHA1(c55906bf6059686dd8a587dabbe3fb4d59200ab9) )
+	ROM_LOAD( "dt-126_a.cas",    0x0000, 0x8000, CRC(334fb987) SHA1(c55906bf6059686dd8a587dabbe3fb4d59200ab9) )
 ROM_END
 
 /* 27 Burnin' Rubber (Japan/World), Bump'n'Jump (World) */
@@ -1765,30 +1853,30 @@ ROM_START( cburnrub )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
+	ROM_LOAD( "dp-127_b.pro",    0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cburnrub.cas",   0x0000, 0x8000, CRC(4528ac22) SHA1(dc0fcc5e5fd21c1c858a90f43c175e36a24b3c3d) ) /* Is this the 5B version? */
+	ROM_LOAD( "cburnrub.cas",    0x0000, 0x8000, CRC(4528ac22) SHA1(dc0fcc5e5fd21c1c858a90f43c175e36a24b3c3d) ) /* Is this the 5B version? */
 ROM_END
 
 ROM_START( cburnrub2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
+	ROM_LOAD( "dp-127_b.pro",    0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cburnrb2.cas",   0x0000, 0x8000, CRC(84a9ed66) SHA1(a9c536e46b89fc6b9c6271776292fed1241d2f3f) ) /* Is this the 5B version? */
+	ROM_LOAD( "cburnrb2.cas",    0x0000, 0x8000, CRC(84a9ed66) SHA1(a9c536e46b89fc6b9c6271776292fed1241d2f3f) ) /* Is this the 5B version? */
 ROM_END
 
 ROM_START( cbnj )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-127_b.pro",   0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
+	ROM_LOAD( "dp-127_b.pro",    0x0000, 0x1000, CRC(9f396832) SHA1(0e302fd094474ac792882948a018c73ce76e0759) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cbnj.cas",       0x0000, 0x8000, CRC(eed41560) SHA1(85d5df76efac33cd10427f659c4259afabb3daaf) )
+	ROM_LOAD( "cbnj.cas",        0x0000, 0x8000, CRC(eed41560) SHA1(85d5df76efac33cd10427f659c4259afabb3daaf) )
 ROM_END
 
 /* 28 Graplop (Japan/World), Cluster Buster (World) */
@@ -1796,20 +1884,20 @@ ROM_START( cgraplop )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cgraplop.pro", 0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) )
+	ROM_LOAD( "cgraplop.pro",    0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cgraplop.cas", 0x0000, 0x8000, CRC(d2c1c1bb) SHA1(db67304caa11540363735e7d4bf03507ccbe9980) )
+	ROM_LOAD( "cgraplop.cas",    0x0000, 0x8000, CRC(d2c1c1bb) SHA1(db67304caa11540363735e7d4bf03507ccbe9980) )
 ROM_END
 
 ROM_START( cgraplop2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cgraplop.pro", 0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) ) /* is this right for this set? */
+	ROM_LOAD( "cgraplop.pro",    0x0000, 0x1000, CRC(ee93787d) SHA1(0c753d62fdce2fdbd5b329a5aa259a967d07a651) ) /* is this right for this set? */
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cgraplop2.cas", 0x0000, 0x8000, CRC(2e728981) SHA1(83ba90d95858d647315a1c311b8643672afea5f7) )
+	ROM_LOAD( "cgraplop2.cas",   0x0000, 0x8000, CRC(2e728981) SHA1(83ba90d95858d647315a1c311b8643672afea5f7) )
 ROM_END
 
 /* 29 La-Pa-Pa (Japan), Rootin' Tootin' (World) */
@@ -1817,20 +1905,20 @@ ROM_START( clapapa )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "clapapa.pro",  0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
+	ROM_LOAD( "clapapa.pro",     0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "clapapa.cas",  0x0000, 0x8000, CRC(4ffbac24) SHA1(1ec0d7ac1886d4b430dc12be27f387e9d952d235) )
+	ROM_LOAD( "clapapa.cas",     0x0000, 0x8000, CRC(4ffbac24) SHA1(1ec0d7ac1886d4b430dc12be27f387e9d952d235) )
 ROM_END
 
 ROM_START( clapapa2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
-	ROM_LOAD( "clapapa.pro",  0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
+	ROM_LOAD( "clapapa.pro",     0x0000, 0x1000, CRC(e172819a) SHA1(3492775f4f0a0b31ce5a1a998076829b3f264e98) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
-	ROM_LOAD( "clapapa2.cas",  0x0000, 0x8000, CRC(069dd3c4) SHA1(5a19392c7ac5aea979187c96267e73bf5126307e) )
+	ROM_LOAD( "clapapa2.cas",    0x0000, 0x8000, CRC(069dd3c4) SHA1(5a19392c7ac5aea979187c96267e73bf5126307e) )
 ROM_END
 
 /* 30 Skater (Japan), Skater Gaiter (World) */
@@ -1838,10 +1926,10 @@ ROM_START( cskater )
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-130_a.dgl",   0x0000, 0x1000,  CRC(469e80a8) SHA1(f581cd534ce6faba010c6616538cdf9d96d787da) )
+	ROM_LOAD( "dp-130_a.dgl",    0x0000, 0x1000,  CRC(469e80a8) SHA1(f581cd534ce6faba010c6616538cdf9d96d787da) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-130_a.cas",   0x0000, 0x8000,  CRC(1722e5e1) SHA1(e94066ead608df85d3f7310d4a81ba291da4bee6) )
+	ROM_LOAD( "dt-130_a.cas",    0x0000, 0x8000,  CRC(1722e5e1) SHA1(e94066ead608df85d3f7310d4a81ba291da4bee6) )
 ROM_END
 
 /* 31 Pro Bowling (World) */
@@ -1849,10 +1937,10 @@ ROM_START( cprobowl )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cprobowl.pro", 0x0000, 0x1000, CRC(e3a88e60) SHA1(e6e9a2e5ab26e0463c63201a15f7d5a429ec836e) )
+	ROM_LOAD( "cprobowl.pro",    0x0000, 0x1000, CRC(e3a88e60) SHA1(e6e9a2e5ab26e0463c63201a15f7d5a429ec836e) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cprobowl.cas", 0x0000, 0x8000, CRC(cb86c5e1) SHA1(66c467418cff2ed6d7c121a8b1650ee97ae48fe9) )
+	ROM_LOAD( "cprobowl.cas",    0x0000, 0x8000, CRC(cb86c5e1) SHA1(66c467418cff2ed6d7c121a8b1650ee97ae48fe9) )
 ROM_END
 
 /* 32 Night Star (World) */
@@ -1860,20 +1948,20 @@ ROM_START( cnightst )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cnightst.pro", 0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
+	ROM_LOAD( "cnightst.pro",    0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cnightst.cas", 0x0000, 0x8000, CRC(c6f844cb) SHA1(5fc6154c20ee4e2f4049a78df6f3cacbb96b0dc0) )
+	ROM_LOAD( "cnightst.cas",    0x0000, 0x8000, CRC(c6f844cb) SHA1(5fc6154c20ee4e2f4049a78df6f3cacbb96b0dc0) )
 ROM_END
 
 ROM_START( cnightst2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
-	ROM_LOAD( "cnightst.pro", 0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
+	ROM_LOAD( "cnightst.pro",    0x0000, 0x1000, CRC(553b0fbc) SHA1(2cdf4560992b62e59b6de760d7996be4ed25f505) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
-	ROM_LOAD( "cnights2.cas", 0x0000, 0x8000, CRC(1a28128c) SHA1(4b620a1919d02814f734aba995115c09dc2db930) )
+	ROM_LOAD( "cnights2.cas",    0x0000, 0x8000, CRC(1a28128c) SHA1(4b620a1919d02814f734aba995115c09dc2db930) )
 ROM_END
 
 /* 33 Pro Soccer (World) */
@@ -1881,20 +1969,20 @@ ROM_START( cpsoccer )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cprosocc.pro", 0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
+	ROM_LOAD( "cprosocc.pro",    0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cprosocc.cas", 0x0000, 0x10000, CRC(76b1ad2c) SHA1(6188667e5bc001dfdf83deaf7251eae794de4702) )
+	ROM_LOAD( "cprosocc.cas",    0x0000, 0x10000, CRC(76b1ad2c) SHA1(6188667e5bc001dfdf83deaf7251eae794de4702) )
 ROM_END
 
 ROM_START( cpsoccerj )
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-133_a.dgl",   0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
+	ROM_LOAD( "dp-133_a.dgl",    0x0000, 0x1000,  CRC(919fabb2) SHA1(3d6a0676cea7b0be0fe69d06e04ca08c36b2851a) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-133_a.cas",   0x0000, 0x10000, CRC(de682a29) SHA1(2ee0dd8cb7fb595020d730a9da5d9cccda3f1264) )
+	ROM_LOAD( "dt-133_a.cas",    0x0000, 0x10000, CRC(de682a29) SHA1(2ee0dd8cb7fb595020d730a9da5d9cccda3f1264) )
 ROM_END
 
 /* 34 Super Doubles Tennis (World) */
@@ -1902,10 +1990,10 @@ ROM_START( csdtenis )
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-134_a.dgl",   0x0000, 0x1000,  CRC(e484d2f5) SHA1(ee4e4c221933d391aeed8ff7182fa931a4e01466) )
+	ROM_LOAD( "dp-134_a.dgl",    0x0000, 0x1000,  CRC(e484d2f5) SHA1(ee4e4c221933d391aeed8ff7182fa931a4e01466) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-134_a.cas",   0x0000, 0x10000, CRC(9a69d961) SHA1(f88e267815ca0697708aca0ac9fa6f7664a0519c) )
+	ROM_LOAD( "dt-134_a.cas",    0x0000, 0x10000, CRC(9a69d961) SHA1(f88e267815ca0697708aca0ac9fa6f7664a0519c) )
 ROM_END
 
 /* 37 Zeroize (World) */
@@ -1913,10 +2001,10 @@ ROM_START( czeroize )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "czeroize.pro",  0x0000, 0x1000, NO_DUMP ) /* The Following have unknown Dongles (dongle data not read) */
+	ROM_LOAD( "czeroize.pro",    0x0000, 0x1000, NO_DUMP ) /* The Following have unknown Dongles (dongle data not read) */
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "czeroize.cas",   0x0000, 0x10000, CRC(3ef0a406) SHA1(645b34cd477e0bb5539c8fe937a7a2dbd8369003) )
+	ROM_LOAD( "czeroize.cas",    0x0000, 0x10000, CRC(3ef0a406) SHA1(645b34cd477e0bb5539c8fe937a7a2dbd8369003) )
 ROM_END
 
 /* 39 Ice Cream (Japan), Peter Pepper's Ice Cream Factory (World) */
@@ -1924,20 +2012,20 @@ ROM_START( cppicf )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cppicf.pro",   0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
+	ROM_LOAD( "cppicf.pro",      0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cppicf.cas",   0x0000, 0x8000, CRC(8c02f160) SHA1(03430dd8d4b2e6ca931986dac4d39be6965ffa6f) )
+	ROM_LOAD( "cppicf.cas",      0x0000, 0x8000, CRC(8c02f160) SHA1(03430dd8d4b2e6ca931986dac4d39be6965ffa6f) )
 ROM_END
 
 ROM_START( cppicf2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )   /* dongle data */
-	ROM_LOAD( "cppicf.pro",   0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
+	ROM_LOAD( "cppicf.pro",      0x0000, 0x1000, CRC(0b1a1ecb) SHA1(2106da6837c78812c102b0eaaa1127fcc21ea780) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
-	ROM_LOAD( "cppicf2.cas",   0x0000, 0x8000, CRC(78ffa1bc) SHA1(d15f2a240ae7b45885d32b5f507243f82e820d4b) )
+	ROM_LOAD( "cppicf2.cas",     0x0000, 0x8000, CRC(78ffa1bc) SHA1(d15f2a240ae7b45885d32b5f507243f82e820d4b) )
 ROM_END
 
 /* 40 Fighting Ice Hockey (World) */
@@ -1945,10 +2033,10 @@ ROM_START( cfghtice )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x01000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cfghtice.pro", 0x0000, 0x1000, CRC(5abd27b5) SHA1(2ab1c171adffd491759036d6ce2433706654aad2) )
+	ROM_LOAD( "cfghtice.pro",    0x0000, 0x1000, CRC(5abd27b5) SHA1(2ab1c171adffd491759036d6ce2433706654aad2) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cfghtice.cas", 0x0000, 0x10000, CRC(906dd7fb) SHA1(894a7970d5476ed035edd15656e5cf10d6ddcf57) )
+	ROM_LOAD( "cfghtice.cas",    0x0000, 0x10000, CRC(906dd7fb) SHA1(894a7970d5476ed035edd15656e5cf10d6ddcf57) )
 ROM_END
 
 /* The Following use Dongle Type 4 (unknown part number?)
@@ -1959,20 +2047,20 @@ ROM_START( cscrtry )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "cscrtry.pro",  0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
+	ROM_LOAD( "cscrtry.pro",     0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cscrtry.cas",  0x0000, 0x8000, CRC(5625f0ca) SHA1(f4b0a6f2ca908880386838f06b626479b4b74134) )
+	ROM_LOAD( "cscrtry.cas",     0x0000, 0x8000, CRC(5625f0ca) SHA1(f4b0a6f2ca908880386838f06b626479b4b74134) )
 ROM_END
 
 ROM_START( cscrtry2 )
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )   /* dongle data */
-	ROM_LOAD( "cscrtry.pro",  0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
+	ROM_LOAD( "cscrtry.pro",     0x0000, 0x8000, CRC(7bc3460b) SHA1(7c5668ff9a5073e27f4a83b02d79892eb4df6b92) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )   /* (max) 64k for cassette image */
-	ROM_LOAD( "cscrtry2.cas",  0x0000, 0x8000, CRC(04597842) SHA1(7f1fc3e06b61df880debe9056bdfbbb8600af739) )
+	ROM_LOAD( "cscrtry2.cas",    0x0000, 0x8000, CRC(04597842) SHA1(7f1fc3e06b61df880debe9056bdfbbb8600af739) )
 ROM_END
 
 /* 41 Oozumou (Japan), The Grand Sumo (World) */
@@ -1980,10 +2068,10 @@ ROM_START( coozumou )
 	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x08000, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-141_a.dgl",   0x0000, 0x8000,  CRC(bc379d2c) SHA1(bab19dcb6d68fdbd547ebab1598353f436321157) )
+	ROM_LOAD( "dp-141_a.dgl",    0x0000, 0x8000,  CRC(bc379d2c) SHA1(bab19dcb6d68fdbd547ebab1598353f436321157) )
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-141_1a.cas",  0x0000, 0x10000, CRC(20c2e86a) SHA1(a18248ba00b847a09df0bea7752a21162af8af76) )
+	ROM_LOAD( "dt-141_1a.cas",   0x0000, 0x10000, CRC(20c2e86a) SHA1(a18248ba00b847a09df0bea7752a21162af8af76) )
 ROM_END
 
 /* 44 Boulder Dash (World) */
@@ -1994,7 +2082,7 @@ ROM_START( cbdash )
 	/* no proms */
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cbdash.cas",   0x0000, 0x8000, CRC(cba4c1af) SHA1(5d163d8e31c58b20679c6be06b1aa02df621822b) )
+	ROM_LOAD( "cbdash.cas",      0x0000, 0x8000, CRC(cba4c1af) SHA1(5d163d8e31c58b20679c6be06b1aa02df621822b) )
 ROM_END
 
 /* The Following have no Dongles at all */
@@ -2006,7 +2094,7 @@ ROM_START( cflyball )
 	/* no dongle data */
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "cflyball.cas",   0x0000, 0x10000, CRC(cb40d043) SHA1(57698bac7e0d552167efa99d08116bf19a3b29c9) )
+	ROM_LOAD( "cflyball.cas",    0x0000, 0x10000, CRC(cb40d043) SHA1(57698bac7e0d552167efa99d08116bf19a3b29c9) )
 ROM_END
 
 
@@ -2071,10 +2159,10 @@ DRIVER_INIT_MEMBER(decocass_state,cdstj2a0)
 
 /* -- */ GAME( 1981, decocass,  0,        decocass, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "DECO Cassette System", MACHINE_IS_BIOS_ROOT )
 /* -- */ GAME( 1981, ctsttape,  decocass, ctsttape, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Test Tape (DECO Cassette)", 0 )
-/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.1,US)", MACHINE_IMPERFECT_GRAPHICS )
-/* 02 */ GAME( 1980, cninjt0a,  decocass, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1980, cninjt1d,  cninjt0a, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.1,Europe)", MACHINE_IMPERFECT_GRAPHICS )
+/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS ) /* headlight not fixed */
+/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.1,US)", MACHINE_IMPERFECT_GRAPHICS ) /* headlight not fixed */
+/* 02 */ GAME( 1980, cninjt0a,  decocass, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.0,Japan)", MACHINE_NOT_WORKING ) /* background layer not fixed */
+/*    */ GAME( 1980, cninjt1d,  cninjt0a, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.1,Europe)", MACHINE_NOT_WORKING ) /* background layer not fixed */
 /* 03 */ GAME( 1980, cmanht0a,  decocass, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.0,Japan)", 0 )
 /*    */ GAME( 1980, cmanht1a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.1,Japan)", 0 )
 /*    */ GAME( 1980, cmanht2a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.2,Japan)", 0 )
@@ -2084,13 +2172,16 @@ DRIVER_INIT_MEMBER(decocass_state,cdstj2a0)
 /*    */ GAME( 1981, cterra4b,  cterra2a, cterra2a, cterra2a, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean [DECO Cassette MD] (No.04/Ver.4,US)", 0 )
 /* 05 */ // 1981 Missile Splinter (canceled/unreleased)
 /* 06 */ GAME( 1980, cnebul2a,  decocass, cnebul2a, cnebul2a, decocass_state, decocass, ROT270, "Data East Corporation", "Nebula [DECO Cassette MD] (No.06/Ver.2,Japan)", 0 )
-/* 07 */ GAME( 1981, castro6a,  decocass, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,Japan)", 0 )
-/*    */ GAME( 1981, castro6b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,US)", 0 )
-/*    */ GAME( 1981, castro7a,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,Japan)", 0 )
-/*    */ GAME( 1981, castro7b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,US)", 0 )
-/*    */ GAME( 1981, castro4c,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.4,UK)", 0 )
-/* 08 */ // 1981.03 The Tower
-/* 09 */ GAME( 1981, csuperas,  decocass, csuperas, csuperas, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter (DECO Cassette)", 0 )
+/* 07 */ GAME( 1981, castro6a,  decocass, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,Japan)", MACHINE_IMPERFECT_GRAPHICS ) /* shoot invisible at boss scene */
+/*    */ GAME( 1981, castro6b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,US)", MACHINE_IMPERFECT_GRAPHICS ) /* shoot invisible at boss scene */
+/*    */ GAME( 1981, castro7a,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,Japan)", MACHINE_IMPERFECT_GRAPHICS ) /* shoot invisible at boss scene */
+/*    */ GAME( 1981, castro7b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,US)", MACHINE_IMPERFECT_GRAPHICS ) /* shoot invisible at boss scene */
+/*    */ GAME( 1981, castro4c,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.4,UK)", MACHINE_IMPERFECT_GRAPHICS ) /* shoot invisible at boss scene */
+/* 08 */ GAME( 1981, ctower0a,  decocass, ctower0a, ctower0a, decocass_state, decocass, ROT270, "Data East Corporation", "The Tower [DECO Cassette MD] (No.08/Ver.0,Japan)", MACHINE_NOT_WORKING ) /* second lever not implemented, correct dip unknown */
+/* 09 */ GAME( 1981, csastf4a,  decocass, csastf4a, csastf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter [DECO Cassette MD] (No.09/Ver.4,Japan)", 0 )
+/*    */ GAME( 1981, csastf4b,  csastf4a, csastf4a, csastf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter [DECO Cassette MD] (No.09/Ver.4,US)", 0 )
+/*    */ GAME( 1981, csastf2c,  csastf4a, csastf4a, csastf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter [DECO Cassette MD] (No.09/Ver.2,UK)", 0 )
+/*    */ GAME( 1981, csastf3b,  csastf4a, csastf4a, csastf4a, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter [DECO Cassette MD] (No.09/Ver.3,US)", 0 )
 /* 10 */ // 1981.?? Ocean to Ocean (medal)
 /* 11 */ GAME( 1981, clocknch,  decocass, clocknch, clocknch, decocass_state, decocass, ROT270, "Data East Corporation", "Lock'n'Chase (DECO Cassette)", 0 )
 /* 12 */ // 1981.08 Flash Boy/DECO Kid
@@ -2109,8 +2200,8 @@ DRIVER_INIT_MEMBER(decocass_state,cdstj2a0)
 /*    */ GAME( 1981, ctisland2, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 2)", 0 )
 /*    */ GAME( 1981, ctisland3, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 3)", MACHINE_NOT_WORKING )
 /* 17 */ // 1981.10 Bobbitto
-/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,US)", MACHINE_IMPERFECT_GRAPHICS )
+/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS ) /* graphic roms need redump ? */
+/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,US)", MACHINE_IMPERFECT_GRAPHICS ) /* graphic roms need redump ? */
 /* 19 */ GAME( 1982, cdiscon1,  decocass, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Disco No.1 (DECO Cassette)", 0 )
 /*    */ GAME( 1982, csweetht,  cdiscon1, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Sweet Heart (DECO Cassette)", 0 )
 /* 20 */ GAME( 1982, ctornado,  decocass, ctornado, ctornado, decocass_state, decocass, ROT270, "Data East Corporation", "Tornado (DECO Cassette)", 0 )

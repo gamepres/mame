@@ -10539,7 +10539,7 @@ cgraplop                        // 28
 cgraplop2                       // 28
 chamburger                      // 26
 chwych0a                        // DT-10[1]0-A   1980.10.24 HWY Chase (Japan) (DECO Cassette MD) // version verified // pronounced "Highway Chase"
-chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (DECO Cassette MD) // versionnot verified, set as version 1, might be a convert from A // pronounced "Highway Chase"
+chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (DECO Cassette MD) // version not verified, set as version 1, might be a convert from A // pronounced "Highway Chase"
 clapapa                         // 29
 clapapa2                        // 29
 clocknch                        // 11
@@ -10570,17 +10570,21 @@ cscrtry                         // 38
 cscrtry2                        // 38
 csdtenis                        // 34
 cskater                         // 30
-csuperas                        // 09
+csastf4a                        // DT-10[9]4-A   1981.05    Super Astro Fighter (Japan) (DECO Cassette MD) (Ver 4) // version verified
+csastf4b                        // DT-10[9]4-B   1981.05    Super Astro Fighter (US) (DECO Cassette MD) (Ver 4) // version verified
+csastf2c                        // DT-10[9]2-C   1981.05    Super Astro Fighter (UK) (DECO Cassette MD) (Ver 2) // version verified
+csastf3b                        // DT-10[9]3-B   1981.05    Super Astro Fighter (US) (DECO Cassette MD) (Ver 3) // version verified
 csweetht                        // 19
-cterra2a                        // DT-1[04]2-A   1981.01.21 Terranian (Japan) (DECO Cassette MD) (Ver 2) // version verified
-cterra2d                        // DT-1[04]2-D   1981.01.21 Terranian (Europe) (DECO Cassette MD) (Ver 2) // version verified, 1 bit difference with version 2-A
-cterra4a                        // DT-1[04]?-A   1981.02.23 Terranian (Japan) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (version MT 3-A from 1981.02.05 is verified)
-cterra4b                        // DT-1[04]?-B   1981.02.23 Terranian (US) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (same as 4-A)
+cterra2a                        // DT-10[4]2-A   1981.01.21 Terranian (Japan) (DECO Cassette MD) (Ver 2) // version verified
+cterra2d                        // DT-10[4]2-D   1981.01.21 Terranian (Europe) (DECO Cassette MD) (Ver 2) // version verified, 1 bit difference with version 2-A
+cterra4a                        // DT-10[4]?-A   1981.02.23 Terranian (Japan) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (version MT 3-A from 1981.02.05 is verified)
+cterra4b                        // DT-10[4]?-B   1981.02.23 Terranian (US) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (same as 4-A)
 ctisland                        // 16
 ctisland2                       // 16
 ctisland3                       // 16
 ctornado                        // 20
-ctsttape                        // DT-1[902]-B    1980       Test tape (US) (DECO Cassette MD) (Enc 02) // not verified yet
+ctower0a                        // DT-10[8]?-A   1981.05    The Tower (Japan) (DECO Cassette) (Ver 0) // version not verified, set as version 0
+ctsttape                        // DT-1[902]-B   1980       Test tape (US) (DECO Cassette MD) (Enc 02) // not verified yet
 czeroize                        // 37
 decocass                        //
 
