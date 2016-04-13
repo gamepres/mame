@@ -358,6 +358,73 @@ static UINT8 type1_map1030[8] = { T1PROM,T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,
 
 /***************************************************************************
  *
+ *  TYPE1 DONGLE DP-1040 MAP for Terranian
+ *
+ * Latched bits                          = $44 (2 latch bits)
+ * Input bits that are passed uninverted = $08 (1 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $B3 (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 2
+ * Output bit position = 2
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 6
+ * Output bit position = 6
+ * Type                = Non-inverting latch
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1040[8] = { T1PROM,T1PROM,T1LATCHINV,T1DIRECT,T1PROM,T1PROM,T1LATCH,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1060 MAP for Nebula
+ *
+ * Latched bits                          = $2C (3 latch bits)
+ * Input bits that are passed uninverted = $00 (0 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $D3 (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 2
+ * Output bit position = 4
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 3
+ * Output bit position = 4
+ * Type                = Inverting latch
+ * Latched bit #2:
+ * Input bit position  = 5
+ * Output bit position = 4
+ * Type                = Inverting latch
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1060[8] = { T1PROM,T1PROM,T1DIRECT,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1PROM };
+
+/***************************************************************************
+ *
+ *  TYPE1 DONGLE DP-1070 MAP for Astro Fantasia
+ *
+ * Latched bits                          = $42 (2 latch bits)
+ * Input bits that are passed uninverted = $08 (1 true bits)
+ * Input bits that are passed inverted   = $00 (0 inverted bits)
+ * Remaining bits for addressing PROM    = $B5 (5 bits)
+ * Latched bit #0:
+ * Input bit position  = 1
+ * Output bit position = 1
+ * Type                = Inverting latch
+ * Latched bit #1:
+ * Input bit position  = 6
+ * Output bit position = 6
+ * Type                = Non-inverting latch
+ *
+ ***************************************************************************/
+
+static UINT8 type1_map1070[8] = { T1PROM,T1LATCHINV,T1PROM,T1DIRECT,T1PROM,T1PROM,T1LATCH,T1PROM };
+
+/***************************************************************************
+ *
  *  TYPE1 DONGLE DP-1130 MAP for Pro Golf
  *
  * Latched bits                          = $44 (2 latch bits)
@@ -430,19 +497,6 @@ static UINT8 type1_map1180[8] = { T1PROM,T1PROM,T1LATCHINV,T1PROM,T1PROM,T1DIREC
  ***************************************************************************/
 
 static UINT8 type1_pass_136_table[8] ={ T1PROM,T1DIRECT,T1PROM,T1DIRECT,T1PROM,T1PROM,T1DIRECT,T1PROM };
-
-/***************************************************************************
- *
- *  TYPE1 DONGLE (DE-0061)
- *  - Astro Fantazia
- *
- * Latch bits 1 and 6, pass bit 3, invert bit 1.
- * Lookup PROM DE-0061 using bits 0, 2, 4, 5, and 7 as the
- * address bits; take PROM data 0-4 as data bits 0, 2, 4, 5, and 7.
- *
- ***************************************************************************/
-
-static UINT8 type1_latch_16_pass_3_inv_1_table[8] = { T1PROM,T1LATCHINV,T1PROM,T1DIRECT,T1PROM,T1PROM,T1LATCH,T1PROM };
 
 /***************************************************************************
  *
@@ -1197,6 +1251,36 @@ MACHINE_RESET_MEMBER(decocass_state,cmanht0a)
 	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
 }
 
+MACHINE_RESET_MEMBER(decocass_state,cterra2a)
+{
+	decocass_state::machine_reset();
+	LOG(0,("dongle type #1 (DP-1040 map)\n"));
+	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
+	m_type1_map = type1_map1040;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+}
+
+MACHINE_RESET_MEMBER(decocass_state,cnebul2a)
+{
+	decocass_state::machine_reset();
+	LOG(0,("dongle type #1 (DP-1060 map)\n"));
+	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
+	m_type1_map = type1_map1060;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+}
+
+MACHINE_RESET_MEMBER(decocass_state,castro6a)
+{
+	decocass_state::machine_reset();
+	LOG(0,("dongle type #1 (DP-1070 map)\n"));
+	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
+	m_type1_map = type1_map1070;
+	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
+}
+
 MACHINE_RESET_MEMBER(decocass_state,cdstj2a0)
 {
 	decocass_state::machine_reset();
@@ -1205,24 +1289,6 @@ MACHINE_RESET_MEMBER(decocass_state,cdstj2a0)
 	m_type1_map = type1_map1140;
 	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
 	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
-}
-
-MACHINE_RESET_MEMBER(decocass_state,cterrani)
-{
-	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061 straight)\n"));
-	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_map1130;
-	m_type1_inmap = MAKE_MAP(0,1,2,3,4,5,6,7);
-	m_type1_outmap = MAKE_MAP(0,1,2,3,4,5,6,7);
-}
-
-MACHINE_RESET_MEMBER(decocass_state,castfant)
-{
-	decocass_state::machine_reset();
-	LOG(0,("dongle type #1 (DE-0061)\n"));
-	m_dongle_r = read8_delegate(FUNC(decocass_state::decocass_type1_r),this);
-	m_type1_map = type1_latch_16_pass_3_inv_1_table;
 }
 
 MACHINE_RESET_MEMBER(decocass_state,csuperas)

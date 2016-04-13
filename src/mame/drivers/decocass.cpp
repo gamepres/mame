@@ -220,72 +220,110 @@ static INPUT_PORTS_START( chwych0a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x03, 0x03, "Number of Cars" )                        PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Cars" )                        PORT_DIPLOCATION("SW2:1,2") /* Lives */
 	PORT_DIPSETTING(    0x03, "3" )
 	PORT_DIPSETTING(    0x02, "4" )
 	PORT_DIPSETTING(    0x01, "5" )
 	PORT_DIPSETTING(    0x00, "6" )
-	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4") /* Extra Life */
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
 	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
-	/* Switches 5 to 8 blank */
+	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( cninjt0a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x03, 0x03, "Number of Sight" )                       PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Sight" )                       PORT_DIPLOCATION("SW2:1,2") /* Lives */
 	PORT_DIPSETTING(    0x03, "3" )
 	PORT_DIPSETTING(    0x02, "4" )
 	PORT_DIPSETTING(    0x01, "5" )
 	PORT_DIPSETTING(    0x00, "6" )
-	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4") /* Extra Life */
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
 	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
-	/* Switches 5 to 8 blank */
+	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( cmanht0a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x03, 0x03, "Number of Child" )                       PORT_DIPLOCATION("SW2:1,2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Child" )                       PORT_DIPLOCATION("SW2:1,2") /* Lives */
 	PORT_DIPSETTING(    0x03, "3" )
 	PORT_DIPSETTING(    0x02, "4" )
 	PORT_DIPSETTING(    0x01, "5" )
 	PORT_DIPSETTING(    0x00, "6" )
-	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4")
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4") /* Extra Life */
 	PORT_DIPSETTING(    0x0c, "3000" )
 	PORT_DIPSETTING(    0x08, "5000" )
 	PORT_DIPSETTING(    0x04, "7000" )
 	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
-	/* Switches 5 to 8 blank */
+	/* Switches 5 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
-static INPUT_PORTS_START( cterrani )
+static INPUT_PORTS_START( cterra2a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Rockets" )                     PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "3" )
 	PORT_DIPSETTING(    0x00, "5" )
-	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3")
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
 	PORT_DIPSETTING(    0x06, "3000" )
 	PORT_DIPSETTING(    0x04, "5000" )
 	PORT_DIPSETTING(    0x02, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
 	PORT_DIPNAME( 0x08, 0x08, "Player's Rocket Movement" )              PORT_DIPLOCATION("SW2:4")
 	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
 	PORT_DIPNAME( 0x10, 0x10, "Alien Craft Movement" )                  PORT_DIPLOCATION("SW2:5")
 	PORT_DIPSETTING(    0x10, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
-	/* Switches 6, 7 & 8 are shown as completly blank */
+	/* Switches 6 to 8 are shown as completly blank */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( cnebul2a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x03, 0x03, "Number of Rockets" )                     PORT_DIPLOCATION("SW2:1,2") /* Lives */
+	PORT_DIPSETTING(    0x03, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x01, "5" )
+	PORT_DIPSETTING(    0x00, "6" )
+	PORT_DIPNAME( 0x0c, 0x0c, "Bonus Point" )                           PORT_DIPLOCATION("SW2:3,4") /* Extra Life */
+	PORT_DIPSETTING(    0x0c, "3000" )
+	PORT_DIPSETTING(    0x08, "5000" )
+	PORT_DIPSETTING(    0x04, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	/* Switches 5 to 8 are shown as completly blank */
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( castro6a )
+	PORT_INCLUDE( decocass )
+
+	PORT_MODIFY("DSW2")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Rockets" )                     PORT_DIPLOCATION("SW2:1") /* Lives */
+	PORT_DIPSETTING(    0x01, "3" )
+	PORT_DIPSETTING(    0x00, "5" )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
+	PORT_DIPSETTING(    0x06, "3000" )
+	PORT_DIPSETTING(    0x04, "5000" )
+	PORT_DIPSETTING(    0x02, "7000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPNAME( 0x08, 0x08, "Number of Missiles" )                    PORT_DIPLOCATION("SW2:4")
+	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
+	PORT_DIPNAME( 0x10, 0x10, "Alien Craft Movement" )                  PORT_DIPLOCATION("SW2:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
+	/* Switches 6 to 8 are shown as completly blank */
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( csuperas )
@@ -325,7 +363,7 @@ static INPUT_PORTS_START( cpgolf1a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
@@ -346,7 +384,7 @@ static INPUT_PORTS_START( cpgolf4a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
@@ -367,7 +405,7 @@ static INPUT_PORTS_START( cpgolf6a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3") /* You must shoot equal to or under the listed value for a bonus */
@@ -388,7 +426,7 @@ static INPUT_PORTS_START( cpgolf9b )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Golfer" )                      PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "2" )
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3") /* You must shoot equal to or under the listed value for a bonus */
@@ -488,22 +526,23 @@ static INPUT_PORTS_START( cexplr0a )
 	PORT_INCLUDE( decocass )
 
 	PORT_MODIFY("DSW2")
-	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Lives ) )                        PORT_DIPLOCATION("SW2:1")
+	PORT_DIPNAME( 0x01, 0x01, "Number of Space Ship" )                  PORT_DIPLOCATION("SW2:1") /* Lives */
 	PORT_DIPSETTING(    0x01, "3" )
 	PORT_DIPSETTING(    0x00, "5" )
-	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Bonus_Life ) )                   PORT_DIPLOCATION("SW2:2,3")
-	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPNAME( 0x06, 0x06, "Bonus Points" )                          PORT_DIPLOCATION("SW2:2,3") /* Extra Life */
 	PORT_DIPSETTING(    0x06, "10000" )
 	PORT_DIPSETTING(    0x04, "1500000" )
 	PORT_DIPSETTING(    0x02, "30000" )
-	PORT_DIPNAME( 0x08, 0x08, DEF_STR( Difficulty ) )                   PORT_DIPLOCATION("SW2:4") /* Listed as "Missle" */
+	PORT_DIPSETTING(    0x00, DEF_STR( None )  )
+	PORT_DIPNAME( 0x08, 0x08, "Missile" )                               PORT_DIPLOCATION("SW2:4")
 	PORT_DIPSETTING(    0x08, DEF_STR( Easy ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Difficult ) )
-	PORT_DIPNAME( 0x10, 0x10, "Number of UFOs" )                        PORT_DIPLOCATION("SW2:5")
+	PORT_DIPNAME( 0x10, 0x10, "Number of UFO" )                         PORT_DIPLOCATION("SW2:5")
 	PORT_DIPSETTING(    0x10, "Few" )
 	PORT_DIPSETTING(    0x00, "Many" )
-	/* Switches 6, 7 & 8 are listed as "Country Code" A through F and "Don't Change" */
+	/* Switches 6, 7 & 8 are listed as "Don't Change" */
 INPUT_PORTS_END
+
 static INPUT_PORTS_START( ctornado )
 	PORT_INCLUDE( decocass )
 
@@ -906,17 +945,23 @@ static MACHINE_CONFIG_DERIVED( cmanht0a, decocass )
 	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cmanht0a)
 MACHINE_CONFIG_END
 
-static MACHINE_CONFIG_DERIVED( cterrani, decocass )
+static MACHINE_CONFIG_DERIVED( cterra2a, decocass )
 
 	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cterrani)
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cterra2a)
+MACHINE_CONFIG_END
+
+static MACHINE_CONFIG_DERIVED( cnebul2a, decocass )
+
+	/* basic machine hardware */
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,cnebul2a)
 MACHINE_CONFIG_END
 
 
-static MACHINE_CONFIG_DERIVED( castfant, decocass )
+static MACHINE_CONFIG_DERIVED( castro6a, decocass )
 
 	/* basic machine hardware */
-	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,castfant)
+	MCFG_MACHINE_RESET_OVERRIDE(decocass_state,castro6a)
 MACHINE_CONFIG_END
 
 
@@ -1138,10 +1183,18 @@ MACHINE_CONFIG_END
 	DECOCASS_COMMON_ROMS
 
 #define DECOCASS_BIOS_BN_ROMS    \
-	/* rms8.7e, New boardset bios, version B for USA */ \
+	/* rms8.7e, New boardset bios, version B for US */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
 	ROM_LOAD( "v0-b.7e",    0xf000, 0x1000, CRC(23d929b7) SHA1(063f83020ba3d6f43ab8471f95ca919767b93aa4) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0B-' label (has HDRB01HDR string inside it), bios code */ \
+\
+	DECOCASS_COMMON_ROMS
+	
+#define DECOCASS_BIOS_CN_ROMS    \
+	/* rms8.7e, New boardset bios, version C for UK */ \
+\
+	ROM_REGION( 0x10000, "maincpu", 0 ) \
+	ROM_LOAD( "v0-c.7e",    0xf000, 0x1000, CRC(9f505709) SHA1(a9c661ba5a0d3fa5e935fb9c10fa63e2d9809981) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0C-' label (has HDRC01HDR string inside it), bios code */ \
 \
 	DECOCASS_COMMON_ROMS
 
@@ -1149,7 +1202,7 @@ MACHINE_CONFIG_END
 	/* v0d.7e, New boardset bios, version D for Europe (except UK) */ \
 \
 	ROM_REGION( 0x10000, "maincpu", 0 ) \
-	ROM_LOAD( "v0-d.7e",    0xf000, 0x1000, CRC(1e0c22b1) SHA1(5fec8fef500bbebc13d0173406afc55235d3affb) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0A-' label (has HDRD01HDR string inside it), bios code */ \
+	ROM_LOAD( "v0-d.7e",    0xf000, 0x1000, CRC(1e0c22b1) SHA1(5fec8fef500bbebc13d0173406afc55235d3affb) ) /* from RMS-8 board: 2732 EPROM @7E w/'V0D-' label (has HDRD01HDR string inside it), bios code */ \
 \
 	DECOCASS_COMMON_ROMS
 
@@ -1194,7 +1247,7 @@ ROM_START( chwych0a ) // version MD 0-A-0 verified, 104 blocks, decrypted main d
 
 ROM_END
 
-ROM_START( chwych1b ) // version MD 1-B-0 not verified (need redump for verification), 103 blocks, decrypted main data CRC(6d7842a5)
+ROM_START( chwych1b ) // version MD 1-B-0 not verified (need redump for verification, might be a convert from A version), 103 blocks, decrypted main data CRC(6d7842a5)
 	DECOCASS_BIOS_BN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
@@ -1217,7 +1270,7 @@ ROM_START( cninjt0a ) // version MD 0-A-0 verified, 100 blocks, decrypted main d
 
 ROM_END
 
-ROM_START( cninjt1d ) // version MD 1-D-0 verified (might be a convertion from Japanese version), 100 blocks, decrypted main data CRC(6d7842a5)
+ROM_START( cninjt1d ) // version MD 1-D-0 verified (might be a convert from A version), 100 blocks, decrypted main data CRC(6d7842a5)
 	DECOCASS_BIOS_DN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )  /* (max) 64k for cassette image */
@@ -1263,25 +1316,106 @@ ROM_START( cmanht2a ) // version MD 2-A-0 verified, 095 blocks, decrypted main d
 ROM_END
 
 /* 04 Terranean (World) */
-ROM_START( cterrani )
-	DECOCASS_BIOS_BN_ROMS
-
-	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "dp-1040.dgl", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_START( cterra2a ) // version MD 2-A-0 verified, 104 blocks, decrypted main data CRC(5978ca00)
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "dt-1040.cas", 0x0000, 0x8000, CRC(eb71adbc) SHA1(67becfde39c034d4b8edc2eb100050de102773da) )
+	ROM_LOAD( "dt-1042-a.cas", 0x0000, 0x6900, CRC(d7dae636) SHA1(a00e8e74a8f416ece44933077c6ac60e57181120) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( cterra2d ) // version MD 2-D-0 verified, 104 blocks, decrypted main data CRC(013e7750), 1 bit difference with A version
+	DECOCASS_BIOS_DN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1042-d.cas", 0x0000, 0x6900, CRC(3b4961ce) SHA1(871d19a1203f828a43103162c043f63ed44c2105) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-d.rom", 0x0000, 0x0020, CRC(57383f41) SHA1(aae91284b78eb297475a0e1882479c681fcb6c49) )
+ROM_END
+
+ROM_START( cterra4a ) // version MD 4-A-0 not verified, 105 blocks, decrypted main data CRC(dcce263c)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1044-a.cas", 0x0000, 0x6a00, CRC(3f5c7bd8) SHA1(2e88a59386c63523c041065b753e132b61b4e306) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( cterra4b ) // version MD 4-B-0 not verified, 105 blocks, decrypted main data CRC(dcce263c)
+	DECOCASS_BIOS_BN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1044-b.cas", 0x0000, 0x6a00, CRC(e1d4846c) SHA1(893f81d32b74e82a61f19bd3298ff964834cddd7) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-b.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_END
+
+/* 06 Nebula (World) */
+ROM_START( cnebul2a ) // version MD 2-A-0 verified, 091 blocks, decrypted main data CRC(6eac1650)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "dt-1062-a.cas", 0x0000, 0x5c00, CRC(c457f713) SHA1(9de093d9768180a466286f5ef48d40eb901cab7b) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
 ROM_END
 
 /* 07 Astro Fantasia (World) */
-ROM_START( castfant )
-	DECOCASS_BIOS_BN_ROMS
-
-	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
-	ROM_LOAD( "de-0061.pro", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_START( castro6a ) // version MD 6-A-0 verified, 104 blocks, decrypted main data CRC(b5c3bc9b)
+	DECOCASS_BIOS_AN_ROMS
 
 	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
-	ROM_LOAD( "castfant.cas", 0x0000, 0x8000, CRC(6d77d1b5) SHA1(821bd65fbe887cbeac9281a2ad3f88595918f886) )
+	ROM_LOAD( "castro6a.cas", 0x0000, 0x6900, CRC(6d3ab1c3) SHA1(b201891623533df9c899107786b11e8e82224735) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( castro6b ) // version MD 6-B-0 verified, 104 blocks, decrypted main data CRC(b5C3bc9b)
+	DECOCASS_BIOS_BN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "castro6b.cas", 0x0000, 0x6900, CRC(e2a4fd76) SHA1(3664f05bea493eeef03e74a0be1f3267c2f2136f) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_END
+
+ROM_START( castro7a ) // version MD 7-A-0 verified, 105 blocks, decrypted main data CRC(d9260c6e)
+	DECOCASS_BIOS_AN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "castro7a.cas", 0x0000, 0x6a00, CRC(748d750b) SHA1(4a8239e2c665b12c8293032b4f905f286116914c) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(1bc9fccb) SHA1(ffc59c7660d5c87a8deca294f80260b6bc7c3027) )
+ROM_END
+
+ROM_START( castro7b ) // version MD 7-B-0 verified, 105 blocks, decrypted main data CRC(d9260c6e)
+	DECOCASS_BIOS_BN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "castro7b.cas", 0x0000, 0x6a00, CRC(85182551) SHA1(64cdd47c54f8cbb84c25605005eab0f390330f9a) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(e09ae5de) SHA1(7dec067d0739a6dad2607132641b66880a5b7751) )
+ROM_END
+
+ROM_START( castro4c ) // version MD 4-C-0 verified, 104 blocks, decrypted main data CRC(03eb00ee)
+	DECOCASS_BIOS_CN_ROMS
+
+	ROM_REGION( 0x10000, "cassette", 0 )      /* (max) 64k for cassette image */
+	ROM_LOAD( "castro4c.cas", 0x0000, 0x6900, CRC(8565c89e) SHA1(34a6b31546dec54808d177d5e2888896f2ae8b8b) )
+
+	ROM_REGION( 0x00020, "dongle", 0 )    /* dongle data */
+	ROM_LOAD( "dp-1000-a.rom", 0x0000, 0x0020, CRC(095953c8) SHA1(74e898f305da38dab639d7fc1d22a2db2b1cc2b9) )
 ROM_END
 
 /* 09 Super Astro Fighter (World) */
@@ -1937,39 +2071,46 @@ DRIVER_INIT_MEMBER(decocass_state,cdstj2a0)
 
 /* -- */ GAME( 1981, decocass,  0,        decocass, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "DECO Cassette System", MACHINE_IS_BIOS_ROOT )
 /* -- */ GAME( 1981, ctsttape,  decocass, ctsttape, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Test Tape (DECO Cassette)", 0 )
-/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [MD Cassette] (No.01/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [MD Cassette] (No.01/Ver.1,US)", MACHINE_IMPERFECT_GRAPHICS )
-/* 02 */ GAME( 1980, cninjt0a,  decocass, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [MD Cassette] (No.02/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1981, cninjt1d,  cninjt0a, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [MD Cassette] (No.02/Ver.1,Europe)", MACHINE_IMPERFECT_GRAPHICS )
-/* 03 */ GAME( 1980, cmanht0a,  decocass, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1980, cmanht1a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.1,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1980, cmanht2a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [MD Cassette] (No.03/Ver.2,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/* 04 */ GAME( 1981, cterrani,  decocass, cterrani, cterrani, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean (DECO Cassette)", 0 )
-/* 05 */ // 1981.?? Missile Sprinter
-/* 06 */ // 1980.12 Nebula
-/* 07 */ GAME( 1981, castfant,  decocass, castfant, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia (DECO Cassette)", 0 )
+/* 01 */ GAME( 1980, chwych0a,  decocass, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1980, chwych1b,  chwych0a, chwych0a, chwych0a, decocass_state, decocass, ROT270, "Data East Corporation", "HWY Chase [DECO Cassette MD] (No.01/Ver.1,US)", MACHINE_IMPERFECT_GRAPHICS )
+/* 02 */ GAME( 1980, cninjt0a,  decocass, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1980, cninjt1d,  cninjt0a, cninjt0a, cninjt0a, decocass_state, decocass, ROT270, "Data East Corporation", "Sengoku Ninjatai [DECO Cassette MD] (No.02/Ver.1,Europe)", MACHINE_IMPERFECT_GRAPHICS )
+/* 03 */ GAME( 1980, cmanht0a,  decocass, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.0,Japan)", 0 )
+/*    */ GAME( 1980, cmanht1a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.1,Japan)", 0 )
+/*    */ GAME( 1980, cmanht2a,  cmanht0a, cmanht0a, cmanht0a, decocass_state, decocass, ROT270, "Data East Corporation", "Manhattan [DECO Cassette MD] (No.03/Ver.2,Japan)", 0 )
+/* 04 */ GAME( 1981, cterra2a,  decocass, cterra2a, cterra2a, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean [DECO Cassette MD] (No.04/Ver.2,Japan)", 0 )
+/*    */ GAME( 1981, cterra2d,  cterra2a, cterra2a, cterra2a, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean [DECO Cassette MD] (No.04/Ver.2,Europe)", 0 )
+/*    */ GAME( 1981, cterra4a,  cterra2a, cterra2a, cterra2a, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean [DECO Cassette MD] (No.04/Ver.4,Japan)", 0 )
+/*    */ GAME( 1981, cterra4b,  cterra2a, cterra2a, cterra2a, decocass_state, decocass, ROT270, "Data East Corporation", "Terranean [DECO Cassette MD] (No.04/Ver.4,US)", 0 )
+/* 05 */ // 1981 Missile Splinter (canceled/unreleased)
+/* 06 */ GAME( 1980, cnebul2a,  decocass, cnebul2a, cnebul2a, decocass_state, decocass, ROT270, "Data East Corporation", "Nebula [DECO Cassette MD] (No.06/Ver.2,Japan)", 0 )
+/* 07 */ GAME( 1981, castro6a,  decocass, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,Japan)", 0 )
+/*    */ GAME( 1981, castro6b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.6,US)", 0 )
+/*    */ GAME( 1981, castro7a,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,Japan)", 0 )
+/*    */ GAME( 1981, castro7b,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.7,US)", 0 )
+/*    */ GAME( 1981, castro4c,  castro6a, castro6a, castro6a, decocass_state, decocass, ROT270, "Data East Corporation", "Astro Fantasia [DECO Cassette MD] (No.07/Ver.4,UK)", 0 )
 /* 08 */ // 1981.03 The Tower
 /* 09 */ GAME( 1981, csuperas,  decocass, csuperas, csuperas, decocass_state, decocass, ROT270, "Data East Corporation", "Super Astro Fighter (DECO Cassette)", 0 )
 /* 10 */ // 1981.?? Ocean to Ocean (medal)
 /* 11 */ GAME( 1981, clocknch,  decocass, clocknch, clocknch, decocass_state, decocass, ROT270, "Data East Corporation", "Lock'n'Chase (DECO Cassette)", 0 )
 /* 12 */ // 1981.08 Flash Boy/DECO Kid
-/* 13 */ GAME( 1981, cpgolf1a,  decocass, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [MD Cassette] (No.13/Ver.1,Japan)", 0 )
-/*    */ GAME( 1981, cpgolf1b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [MD Cassette] (No.13/Ver.1,US)", 0 )
-/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf4a, decocass_state, decocass, ROT270, "Data East Corporation", "18 Challenge Pro Golf [MD Cassette (No.13/Ver.4,Japan)", 0 )
-/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.6,Japan)", 0 )
-/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.7,Europe)", 0 )
-/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf9b, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [MD Cassette] (No.13/Ver.9,US)", 0 )
-/* 14 */ GAME( 1981, cdstj2a0,  decocass, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.2,Japan)", 0 )
-/*    */ GAME( 1981, cdstj3a0,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.3,Japan)", 0 )
-/*    */ GAME( 1981, cdstj4a2,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.4.2,Japan)", 0 )
-/*    */ GAME( 1981, cdstj4a3,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [MD Cassette] (No.14/Ver.4.3,Japan)", 0 )
+/* 13 */ GAME( 1981, cpgolf1a,  decocass, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [DECO Cassette MD] (No.13/Ver.1,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf1b,  cpgolf1a, cpgolf1a, cpgolf1a, decocass_state, decocass, ROT270, "Data East Corporation", "Pro Golf [DECO Cassette MD] (No.13/Ver.1,US)", 0 )
+/*    */ GAME( 1981, cpgolf4a,  cpgolf1a, cpgolf1a, cpgolf4a, decocass_state, decocass, ROT270, "Data East Corporation", "18 Challenge Pro Golf [DECO Cassette MD] (No.13/Ver.4,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf6a,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [DECO Cassette MD] (No.13/Ver.6,Japan)", 0 )
+/*    */ GAME( 1981, cpgolf7d,  cpgolf1a, cpgolf1a, cpgolf6a, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [DECO Cassette MD] (No.13/Ver.7,Europe)", 0 )
+/*    */ GAME( 1981, cpgolf9b,  cpgolf1a, cpgolf1a, cpgolf9b, decocass_state, decocass, ROT270, "Data East Corporation", "Tournament Pro Golf [DECO Cassette MD] (No.13/Ver.9,US)", 0 )
+/* 14 */ GAME( 1981, cdstj2a0,  decocass, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [DECO Cassette MD] (No.14/Ver.2,Japan)", 0 )
+/*    */ GAME( 1981, cdstj3a0,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [DECO Cassette MD] (No.14/Ver.3,Japan)", 0 )
+/*    */ GAME( 1981, cdstj4a2,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [DECO Cassette MD] (No.14/Ver.4/Rev.2,Japan)", 0 )
+/*    */ GAME( 1981, cdstj4a3,  cdstj2a0, cdstj2a0, cdstj2a0, decocass_state, cdstj2a0, ROT270, "Data East Corporation", "DS Telejan [DECO Cassette MD] (No.14/Ver.4/Rev.3,Japan)", 0 )
 /* 15 */ GAME( 1981, cluckypo,  decocass, cluckypo, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Lucky Poker (DECO Cassette)", 0 )
 /* 16 */ GAME( 1981, ctisland,  decocass, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 1)", 0 )
 /*    */ GAME( 1981, ctisland2, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 2)", 0 )
 /*    */ GAME( 1981, ctisland3, ctisland, ctisland, decocass, decocass_state, decocrom, ROT270, "Data East Corporation", "Treasure Island (DECO Cassette, set 3)", MACHINE_NOT_WORKING )
 /* 17 */ // 1981.10 Bobbitto
-/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [MD Cassette] (No.18/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
-/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [MD Cassette] (No.18/Ver.0,US)", MACHINE_IMPERFECT_GRAPHICS )
+/* 18 */ GAME( 1982, cexplr0a,  decocass, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,Japan)", MACHINE_IMPERFECT_GRAPHICS )
+/*    */ GAME( 1982, cexplr0b,  cexplr0a, cexplr0a, cexplr0a, decocass_state, decocrom, ROT270, "Data East Corporation", "Explorer [DECO Cassette MD] (No.18/Ver.0,US)", MACHINE_IMPERFECT_GRAPHICS )
 /* 19 */ GAME( 1982, cdiscon1,  decocass, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Disco No.1 (DECO Cassette)", 0 )
 /*    */ GAME( 1982, csweetht,  cdiscon1, cdiscon1, decocass, decocass_state, decocass, ROT270, "Data East Corporation", "Sweet Heart (DECO Cassette)", 0 )
 /* 20 */ GAME( 1982, ctornado,  decocass, ctornado, ctornado, decocass_state, decocass, ROT270, "Data East Corporation", "Tornado (DECO Cassette)", 0 )

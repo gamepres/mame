@@ -10515,49 +10515,54 @@ tattassa                        // prototype (c) 1994 Data East Pinball (Asia)
 
 @source:decocass.cpp
 cadanglr                        // 25
-castfant                        // 07
+castro6a                        // DT-1[07]6-A   1981.03.02 Astro Fantasia (Japan) (DECO Cassette MD) (Ver 6) // version verified
+castro6b                        // DT-1[07]6-B   1981.03.02 Astro Fantasia (US) (DECO Cassette MD) (Ver 6) // version verified
+castro7a                        // DT-1[07]7-A   1981.03.02 Astro Fantasia (Japan) (DECO Cassette MD) (Ver 7) // version verified
+castro7b                        // DT-1[07]7-B   1981.03.02 Astro Fantasia (US) (DECO Cassette MD) (Ver 7) // version verified
+castro4c                        // DT-1[07]4-C   1981.02.08 Astro Fantasia (UK) (DECO Cassette MD) (Ver 4) // version verified
 cbdash                          // 44
 cbnj                            // 27
 cbtime                          // 26
 cburnrub                        // 27
 cburnrub2                       // 27
 cdiscon1                        // 19
-cdstj2a0                        // DT-1[14]2-A   1981.06    DS Telejan (Japan) (Cassette MD) (Ver 2) // version verified
-cdstj3a0                        // DT-1[14]3-A   1981       DS Telejan (Japan) (Cassette MD) (Ver 3) // version verified
-cdstj4a2                        // DT-1[14]4-A-2 1981       DS Telejan (Japan) (Cassette MD) (Ver 4 Rev 2) // version verified
-cdstj4a3                        // DT-1[14]4-A-3 1981       DS Telejan (Japan) (Cassette MD) (Ver 4 Rev 3) // version verified
-cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (Cassette MD) // graphic roms might be corrupted (need redump) // version verified
-cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (Cassette MD) // graphic roms might be corrupted (need redump) // not verified (need redump)
+cdstj2a0                        // DT-1[14]2-A   1981.06    DS Telejan (Japan) (DECO Cassette MD) (Ver 2) // version verified
+cdstj3a0                        // DT-1[14]3-A   1981       DS Telejan (Japan) (DECO Cassette MD) (Ver 3) // version verified
+cdstj4a2                        // DT-1[14]4-A-2 1981       DS Telejan (Japan) (DECO Cassette MD) (Ver 4 Rev 2) // version verified
+cdstj4a3                        // DT-1[14]4-A-3 1981       DS Telejan (Japan) (DECO Cassette MD) (Ver 4 Rev 3) // version verified
+cexplr0a                        // DT-1[18]0-A   1982.02    Explorer (Japan) (DECO Cassette MD) // graphic roms might be corrupted (redump needed) // version verified
+cexplr0b                        // DT-1[18]0-B   1982.02    Explorer (US) (DECO Cassette MD) // graphic roms might be corrupted (redump needed) // version verified, might be a convert from A
 cfghtice                        // 40
 cfishing                        // 25
 cflyball                        // 35
 cgraplop                        // 28
 cgraplop2                       // 28
 chamburger                      // 26
-chwych0a                        // DT-10[1]0-A   1980.10.24 HWY Chase (Japan) (Cassette MD) // version verified // pronounced "Highway Chase"
-chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (Cassette MD) // not verified (need redump) // pronounced "Highway Chase"
+chwych0a                        // DT-10[1]0-A   1980.10.24 HWY Chase (Japan) (DECO Cassette MD) // version verified // pronounced "Highway Chase"
+chwych1b                        // DT-10[1]?-B   1980       HWY Chase (US) (DECO Cassette MD) // versionnot verified, set as version 1, might be a convert from A // pronounced "Highway Chase"
 clapapa                         // 29
 clapapa2                        // 29
 clocknch                        // 11
 cluckypo                        // 15
-cmanht0a                        // DT-10[3]0-A   1981.10    Manhattan (Japan) (Cassette MD) (Ver 0) // version not verified
-cmanht1a                        // DT-10[3]1-A   1981.10.23 Manhattan (Japan) (Cassette MD) (Ver 1) // version verified
-cmanht2a                        // DT-10[3]2-A   1981.10.28 Manhattan (Japan) (Cassette MD) (Ver 2) // version verified
+cmanht0a                        // DT-10[3]?-A   1980.10    Manhattan (Japan) (DECO Cassette MD) (Ver 0) // version not verified, set as version 0 even date is 1980.10.29
+cmanht1a                        // DT-10[3]1-A   1980.10.23 Manhattan (Japan) (DECO Cassette MD) (Ver 1) // version verified
+cmanht2a                        // DT-10[3]2-A   1980.10.28 Manhattan (Japan) (DECO Cassette MD) (Ver 2) // version verified
 cmissnx                         // 21
+cnebul2a                        // DT-10[6]2-1   1980.11.25 Nebula (Japan) (DECO Cassette MD) (Ver 2) // version verified
 cnightst                        // 32
 cnightst2                       // 32
-cninjt0a                        // DT-10[2]0-A   1980.10.23 Sengoku Ninjatai (Japan) (Cassette MD) // version verified // known as Ninja out of Japan
-cninjt1d                        // DT-10[2]1-D   1981.11.11 Sengoku Ninjatai (Europe) (Cassette MD) // version verified // same title screen as Japanese version, might be a convert
+cninjt0a                        // DT-10[2]0-A   1980.10.23 Sengoku Ninjatai (Japan) (DECO Cassette MD) // version verified // known as Ninja out of Japan
+cninjt1d                        // DT-10[2]1-D   1980.11.11 Sengoku Ninjatai (Europe) (DECO Cassette MD) // version verified // same title screen as Japanese version, might be a convert from A
 coozumou                        // 41
 cppicf                          // 39
 cppicf2                         // 39
 cprobowl                        // 31
-cpgolf1a                        // DT-1[13]1-A   1981.08.25 Pro Golf (Japan) (Cassette MD) (Ver 1) // version verified
-cpgolf1b                        // DT-1[13]1-B   1981.08.25 Pro Golf (US) (Cassette MD) (Ver 1)  // version verified
-cpgolf4a                        // DT-1[13]4-A   1981.11.25 Pro Golf, 18 Challenge (Japan) (Cassette MD) (Ver 4) // version verified
-cpgolf6a                        // DT-1[13]6-A   1981.09.03 Pro Golf, Tournament (Japan) (Cassette MD) (Ver 6) // version verified
-cpgolf7d                        // DT-1[13]7-D   1981.09.22 Pro Golf, Tournament (Europe) (Cassette MD) (Ver 7) // version verified
-cpgolf9b                        // DT-1[13]9-B   1981.11.13 Pro Golf, Tournament (US) (Cassette MD) (Ver 9) // version verified
+cpgolf1a                        // DT-1[13]1-A   1981.08.25 Pro Golf (Japan) (DECO Cassette MD) (Ver 1) // version verified
+cpgolf1b                        // DT-1[13]1-B   1981.08.25 Pro Golf (US) (DECO Cassette MD) (Ver 1)  // version verified
+cpgolf4a                        // DT-1[13]4-A   1981.11.25 Pro Golf, 18 Challenge (Japan) (DECO Cassette MD) (Ver 4) // version verified
+cpgolf6a                        // DT-1[13]6-A   1981.09.03 Pro Golf, Tournament (Japan) (DECO Cassette MD) (Ver 6) // version verified
+cpgolf7d                        // DT-1[13]7-D   1981.09.22 Pro Golf, Tournament (Europe) (DECO Cassette MD) (Ver 7) // version verified
+cpgolf9b                        // DT-1[13]9-B   1981.11.13 Pro Golf, Tournament (US) (DECO Cassette MD) (Ver 9) // version verified
 cpsoccer                        // 33
 cpsoccerj                       // 33
 cptennis                        // 22
@@ -10567,12 +10572,15 @@ csdtenis                        // 34
 cskater                         // 30
 csuperas                        // 09
 csweetht                        // 19
-cterrani                        // 04
+cterra2a                        // DT-1[04]2-A   1981.01.21 Terranian (Japan) (DECO Cassette MD) (Ver 2) // version verified
+cterra2d                        // DT-1[04]2-D   1981.01.21 Terranian (Europe) (DECO Cassette MD) (Ver 2) // version verified, 1 bit difference with version 2-A
+cterra4a                        // DT-1[04]?-A   1981.02.23 Terranian (Japan) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (version MT 3-A from 1981.02.05 is verified)
+cterra4b                        // DT-1[04]?-B   1981.02.23 Terranian (US) (DECO Cassette MD) (Ver 4) // version not verified, set as version 4 (same as 4-A)
 ctisland                        // 16
 ctisland2                       // 16
 ctisland3                       // 16
 ctornado                        // 20
-ctsttape                        // DT-1[914]-B   1980        Test tape (US) (Cassette MD) (Enc 14) // not verified
+ctsttape                        // DT-1[902]-B    1980       Test tape (US) (DECO Cassette MD) (Enc 02) // not verified yet
 czeroize                        // 37
 decocass                        //
 
