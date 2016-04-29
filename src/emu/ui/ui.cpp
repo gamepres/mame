@@ -118,7 +118,7 @@ std::string ui_manager::messagebox_poptext;
 rgb_t ui_manager::messagebox_backcolor;
 
 // slider info
-std::vector<slider_state *> ui_manager::slider_list;
+std::vector<ui_menu_item> ui_manager::slider_list;
 slider_state *ui_manager::slider_current;
 
 
@@ -340,7 +340,7 @@ void ui_manager::initialize(running_machine &machine)
 	slider_list = slider_init(machine);
 	if (slider_list.size() > 0)
 	{
-		slider_current = slider_list[0];
+		slider_current = reinterpret_cast<slider_state *>(slider_list[0].ref);
 	}
 	else
 	{
@@ -563,7 +563,7 @@ float ui_manager::get_line_height()
 	// if our font is small-ish, do integral scaling
 	if (raw_font_pixel_height < 24)
 	{
-		// do we want to scale smaller? only do so if we exceed the threshhold
+		// do we want to scale smaller? only do so if we exceed the threshold
 		if (scale_factor <= 1.0f)
 		{
 			if (one_to_one_line_height < UI_MAX_FONT_HEIGHT || raw_font_pixel_height < 12)
@@ -602,9 +602,9 @@ float ui_manager::get_char_width(unicode_char ch)
 //  character string
 //-------------------------------------------------
 
-float ui_manager::get_string_width(const char *s)
+float ui_manager::get_string_width(const char *s, float text_size)
 {
-	return get_font()->utf8string_width(get_line_height(), machine().render().ui_aspect(), s);
+	return get_font()->utf8string_width(get_line_height() * text_size, machine().render().ui_aspect(), s);
 }
 
 
@@ -1873,7 +1873,7 @@ UINT32 ui_manager::handler_confirm_quit(running_machine &machine, render_contain
 //  ui_get_slider_list - get the list of sliders
 //-------------------------------------------------
 
-std::vector<slider_state *>& ui_manager::get_slider_list(void)
+std::vector<ui_menu_item>& ui_manager::get_slider_list(void)
 {
 	return slider_list;
 }
@@ -1906,7 +1906,7 @@ static slider_state *slider_alloc(running_machine &machine, const char *title, I
 //  controls
 //----------------------------------------------------------
 
-std::vector<slider_state *> ui_manager::slider_init(running_machine &machine)
+std::vector<ui_menu_item> ui_manager::slider_init(running_machine &machine)
 {
 	std::vector<slider_state *> sliders;
 
@@ -2040,7 +2040,19 @@ std::vector<slider_state *> ui_manager::slider_init(running_machine &machine)
 	}
 #endif
 
-	return sliders;
+    std::vector<ui_menu_item> items;
+    for (slider_state *slider : sliders)
+    {
+        ui_menu_item item;
+        item.text = slider->description;
+        item.subtext = "";
+        item.flags = 0;
+        item.ref = slider;
+        item.type = ui_menu_item_type::UI_MENU_ITEM_TYPE_SLIDER;
+        items.push_back(item);
+    }
+
+	return items;
 }
 
 
@@ -2390,12 +2402,11 @@ static INT32 slider_overyoffset(running_machine &machine, void *arg, int id, std
 
 static INT32 slider_flicker(running_machine &machine, void *arg, int id, std::string *str, INT32 newval)
 {
-	vector_device *vector = nullptr;
 	if (newval != SLIDER_NOCHANGE)
-		vector->set_flicker((float)newval * 0.001f);
+		vector_options::s_flicker = (float)newval * 0.001f;
 	if (str)
-		*str = string_format(_("%1$1.2f"), vector->get_flicker());
-	return floor(vector->get_flicker() * 1000.0f + 0.5f);
+		*str = string_format(_("%1$1.2f"), vector_options::s_flicker);
+	return floor(vector_options::s_flicker * 1000.0f + 0.5f);
 }
 
 
@@ -2406,12 +2417,11 @@ static INT32 slider_flicker(running_machine &machine, void *arg, int id, std::st
 
 static INT32 slider_beam_width_min(running_machine &machine, void *arg, int id, std::string *str, INT32 newval)
 {
-	vector_device *vector = nullptr;
 	if (newval != SLIDER_NOCHANGE)
-		vector->set_beam_width_min(MIN((float)newval * 0.01f, vector->get_beam_width_max()));
+		vector_options::s_beam_width_min = MIN((float)newval * 0.01f, vector_options::s_beam_width_max);
 	if (str != nullptr)
-		*str = string_format(_("%1$1.2f"), vector->get_beam_width_min());
-	return floor(vector->get_beam_width_min() * 100.0f + 0.5f);
+		*str = string_format(_("%1$1.2f"), vector_options::s_beam_width_min);
+	return floor(vector_options::s_beam_width_min * 100.0f + 0.5f);
 }
 
 
@@ -2422,12 +2432,11 @@ static INT32 slider_beam_width_min(running_machine &machine, void *arg, int id, 
 
 static INT32 slider_beam_width_max(running_machine &machine, void *arg, int id, std::string *str, INT32 newval)
 {
-	vector_device *vector = nullptr;
 	if (newval != SLIDER_NOCHANGE)
-		vector->set_beam_width_max(MAX((float)newval * 0.01f, vector->get_beam_width_min()));
+		vector_options::s_beam_width_max = MAX((float)newval * 0.01f, vector_options::s_beam_width_min);
 	if (str != nullptr)
-		*str = string_format(_("%1$1.2f"), vector->get_beam_width_max());
-	return floor(vector->get_beam_width_max() * 100.0f + 0.5f);
+		*str = string_format(_("%1$1.2f"), vector_options::s_beam_width_max);
+	return floor(vector_options::s_beam_width_max * 100.0f + 0.5f);
 }
 
 
@@ -2438,12 +2447,11 @@ static INT32 slider_beam_width_max(running_machine &machine, void *arg, int id, 
 
 static INT32 slider_beam_intensity_weight(running_machine &machine, void *arg, int id, std::string *str, INT32 newval)
 {
-	vector_device *vector = nullptr;
 	if (newval != SLIDER_NOCHANGE)
-		vector->set_beam_intensity_weight((float)newval * 0.001f);
+		vector_options::s_beam_intensity_weight = (float)newval * 0.001f;
 	if (str != nullptr)
-		*str = string_format(_("%1$1.2f"), vector->get_beam_intensity_weight());
-	return floor(vector->get_beam_intensity_weight() * 1000.0f + 0.5f);
+		*str = string_format(_("%1$1.2f"), vector_options::s_beam_intensity_weight);
+	return floor(vector_options::s_beam_intensity_weight * 1000.0f + 0.5f);
 }
 
 
@@ -2670,16 +2678,6 @@ void ui_manager::draw_textured_box(render_container *container, float x0, float 
 	container->add_line(x1, y0, x1, y1, UI_LINE_WIDTH, linecolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
 	container->add_line(x1, y1, x0, y1, UI_LINE_WIDTH, linecolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
 	container->add_line(x0, y1, x0, y0, UI_LINE_WIDTH, linecolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
-}
-
-//-------------------------------------------------
-//  get_string_width_ex - return the width of a
-//  character string with given text size
-//-------------------------------------------------
-
-float ui_manager::get_string_width_ex(const char *s, float text_size)
-{
-	return get_font()->utf8string_width(get_line_height() * text_size, machine().render().ui_aspect(), s);
 }
 
 //-------------------------------------------------

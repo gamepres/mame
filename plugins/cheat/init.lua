@@ -22,10 +22,14 @@
 --     ...
 --   },
 --   "screen": {
---     "varname": "tag"
---     },
+--     "varname": "tag",
 --     ...
+--   },
 --   "region": {
+--     "varname": "tag",
+--     ...
+--   },
+--   "ram": {
 --     "varname": "tag",
 --     ...
 --   },
@@ -149,17 +153,19 @@ function cheat.startplugin()
 				    tobcd = tobcd,
 				    frombcd = frombcd,
 				    pairs = pairs,
-				    ipairs = ipairs }
+				    ipairs = ipairs,
+			    	    table_insert = table.insert,
+			    	    table_remove = table.remove }
 		cheat.enabled = false
 		-- verify scripts are valid first
 		if not cheat.script then
 			return
 		end
 		for name, script in pairs(cheat.script) do
-			script = load(script, cheat.desc .. name, "t", cheat.cheat_env)
+			script, err = load(script, cheat.desc .. name, "t", cheat.cheat_env)
 			if not script then
-				print("error loading cheat script: " .. cheat.desc)
-				cheat = { desc = cheat.desc .. "error" }
+				print("error loading cheat script: " .. cheat.desc .. " " .. err)
+				cheat = { desc = cheat.desc .. " error" }
 				return
 			end
 			cheat.script[name] = script
@@ -174,7 +180,7 @@ function cheat.startplugin()
 				cpu = manager:machine().devices[space.tag]
 				if not cpu then
 					print("error loading cheat script: " .. cheat.desc)
-					cheat = { desc = cheat.desc .. "error" }
+					cheat = { desc = cheat.desc .. " error" }
 					return
 				end
 				if space.type then
@@ -184,7 +190,7 @@ function cheat.startplugin()
 				end
 				if not mem then
 					print("error loading cheat script: " .. cheat.desc)
-					cheat = { desc = cheat.desc .. "error" }
+					cheat = { desc = cheat.desc .. " error" }
 					return
 				end
 				cheat.cheat_env[name] = mem
@@ -207,31 +213,31 @@ function cheat.startplugin()
 				mem = manager:machine():memory().regions[region]
 				if not mem then
 					print("error loading cheat script: " .. cheat.desc)
-					cheat = nil
+					cheat = { desc = cheat.desc .. " error" }
 					return
 				end
 				cheat.cheat_env[name] = mem
+			end
+		end
+		if cheat.ram then
+			for name, ram in pairs(cheat.ram) do
+				local ram
+				ram = manager:machine().devices[ram]
+				if not ram then
+					print("error loading cheat script: " .. cheat.desc)
+					cheat = { desc = cheat.desc .. " error" }
+					return
+				end
+				cheat.cheat_env[name] = emu.item(ram.items["0/pointer"])
 			end
 		end
 		local param = cheat.parameter
 		if not param then
 			return
 		end
-		if not param.min then
-			param.min = 0
-		else
-			param.min = tonumber(param.min)
-		end
-		if not param.max then
-			param.max = #param.item
-		else
-			param.max = tonumber(param.max)
-		end
-		if not param.step then
-			param.step = 1
-		else
-			param.step = tonumber(param.step)
-		end
+		param.min = tonumber(param.min) or 0
+		param.min = tonumber(param.min) or #param.item
+		param.step = tonumber(param.step) or 1
 		if param.item then
 			for count, item in pairs(param.item) do
 				if not item.value then
@@ -416,13 +422,13 @@ function cheat.startplugin()
 
 	emu.register_start(function()
 		cheats = load_cheats()
-		for num, cheat in ipairs(cheats) do
+		for num, cheat in pairs(cheats) do
 			parse_cheat(cheat)
 		end
 	end)
 
 	emu.register_frame(function()
-		for num, cheat in ipairs(cheats) do
+		for num, cheat in pairs(cheats) do
 			if cheat.enabled and cheat.script.run then
 				cheat.script.run()
 			end
@@ -431,7 +437,7 @@ function cheat.startplugin()
 
 	emu.register_frame_done(function()
 		line = 0
-		for num, draw in ipairs(output) do
+		for num, draw in pairs(output) do
 			if draw.type == "text" then
 				if not draw.color then
 					draw.scr:draw_text(draw.x, draw.y, draw.str)
@@ -439,13 +445,25 @@ function cheat.startplugin()
 					draw.scr:draw_text(draw.x, draw.y, draw.str, draw.color)
 				end
 			elseif draw.type == "line" then
-				draw.scr:draw_line(draw.x1, draw.x2, draw.y1, draw.y2, draw.color)
+				draw.scr:draw_line(draw.x1, draw.y1, draw.x2, draw.y2, draw.color)
 			elseif draw.type == "box" then
-				draw.scr:draw_box(draw.x1, draw.x2, draw.y1, draw.y2, draw.bgcolor, draw.linecolor)
+				draw.scr:draw_box(draw.x1, draw.y1, draw.x2, draw.y2, draw.bgcolor, draw.linecolor)
 			end
 		end
 		output = {}
 	end)
+
+	local ce = {}
+
+	-- interface to script cheat engine
+	function ce.inject(newcheat)
+		cheats[#cheats + 1] = newcheat
+		parse_cheat(newcheat)
+		manager:machine():popmessage(newcheat.desc .. " added")
+	end
+
+	_G.ce = ce
+
 end
 
 return exports
